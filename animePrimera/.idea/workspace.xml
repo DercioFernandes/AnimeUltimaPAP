@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/PressPower/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="ProjectId" id="1mv2axpD4gr4T4Fj5dMSAejpsXx" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AnimePrimera/application/views" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\views" />
+      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\controllers" />
+      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower\resources" />
+      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower" />
+      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower\application" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="" />
+      <created>1610359811164</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610359811164</updated>
+      <workItem from="1610359812436" duration="8849000" />
+      <workItem from="1610449498984" duration="654000" />
+      <workItem from="1610536632466" duration="2868000" />
+      <workItem from="1610617871899" duration="1280000" />
+      <workItem from="1610718792327" duration="6880000" />
+      <workItem from="1610968586847" duration="2095000" />
+      <workItem from="1611055309235" duration="638000" />
+      <workItem from="1611068326561" duration="1199000" />
+      <workItem from="1611140479127" duration="3284000" />
+      <workItem from="1611153644767" duration="1279000" />
+      <workItem from="1611671521213" duration="3168000" />
+      <workItem from="1611741648287" duration="6859000" />
+      <workItem from="1611775431613" duration="477000" />
+      <workItem from="1611915066829" duration="1298000" />
+      <workItem from="1611928818361" duration="1542000" />
+      <workItem from="1612190672265" duration="1098000" />
+      <workItem from="1612278507673" duration="2696000" />
+      <workItem from="1612350449410" duration="3761000" />
+      <workItem from="1612435827830" duration="3165000" />
+      <workItem from="1612535568675" duration="2169000" />
+      <workItem from="1612786731023" duration="1139000" />
+      <workItem from="1612867649431" duration="4266000" />
+      <workItem from="1612953524362" duration="600000" />
+      <workItem from="1613040078613" duration="600000" />
+      <workItem from="1613126879219" duration="1820000" />
+      <workItem from="1613383006740" duration="6324000" />
+      <workItem from="1613556857936" duration="7909000" />
+      <workItem from="1613642067198" duration="14076000" />
+      <workItem from="1613730217942" duration="7202000" />
+      <workItem from="1613992445868" duration="9845000" />
+      <workItem from="1614090803225" duration="3702000" />
+      <workItem from="1614163407823" duration="1218000" />
+      <workItem from="1615473622506" duration="1365000" />
+      <workItem from="1620394771781" duration="7847000" />
+      <workItem from="1620580847227" duration="1308000" />
+      <workItem from="1620634961462" duration="2969000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="549" y="202" key="FileChooserDialogImpl" timestamp="1620636007701">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="549" y="202" key="FileChooserDialogImpl/0.30.1536.834@0.30.1536.834" timestamp="1620636007701" />
+    <state x="431" y="186" width="672" height="678" key="search.everywhere.popup" timestamp="1620635464508">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="431" y="186" width="672" height="678" key="search.everywhere.popup/0.30.1536.834@0.30.1536.834" timestamp="1620635464508" />
+  </component>
+</project>
