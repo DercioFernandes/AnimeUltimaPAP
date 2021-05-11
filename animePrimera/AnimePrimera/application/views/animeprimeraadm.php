@@ -9,6 +9,7 @@
             ?>
                 <div>
                     <h3><?php echo $serie['Titulo']?></h3>
+                    <a style="margin-bottom: 5px; margin-top: 5px; margin-left: 5px; margin-right: 5px" class="btn btn-danger btn-lg btn-block" href="<?php echo base_url('serie/remover/' . $serie['idSerie']); ?>"> Remover Série </a>
                     <a style="margin-bottom: 5px; margin-top: 5px; margin-left: 5px; margin-right: 5px" class="btn btn-danger btn-lg btn-block" href="<?php echo base_url('temporada/addTemp/' . $serie['idSerie']); ?>"> Adicionar Temporada </a>
                     <?php
                     $temporadas = $this->main_model->get_main_where('temporadas','idSerie',$serie['idSerie']);
@@ -16,6 +17,7 @@
                     foreach($temporadas as $temporada):
                         ?>
                         <h4> Temporada <?php echo $i++ ?></h4>
+                        <a style="margin-bottom: 5px; margin-top: 5px; margin-left: 5px; margin-right: 5px" class="btn btn-danger btn-lg btn-block" href="<?php echo base_url('temporada/remover/' . $temporada->idTemporada); ?>"> Remover Temporada </a>
                         <a style="margin-bottom: 5px; margin-top: 5px; margin-left: 5px; margin-right: 5px" class="btn btn-danger btn-lg btn-block" href="<?php echo base_url('episodio/addEps/' . $temporada->idTemporada); ?>"> Adicionar Episódio </a>
                         <a style="margin-bottom: 5px; margin-top: 5px; margin-left: 5px; margin-right: 5px" class="btn btn-danger btn-lg btn-block" href="<?php echo base_url('episodio/gerirEps/' . $temporada->idTemporada); ?>"> Gerir Episódios </a>
                     <?php

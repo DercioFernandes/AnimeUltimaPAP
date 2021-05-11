@@ -9,7 +9,6 @@ class Episodio extends CI_Controller {
         $this->load->helper(array('text','string','url','form'));
         $this->load->model('login_model');
         $this->load->model('main_model');
-
     }
 
 	public function index()

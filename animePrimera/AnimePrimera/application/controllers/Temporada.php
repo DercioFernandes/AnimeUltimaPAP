@@ -50,6 +50,16 @@ class Temporada extends CI_Controller {
         }
     }
 
+    public function remover(){
+        $idTemporada = $this->uri->segment(3);
+        $querye = $querye = $this->main_model->get_main_where_array('episodio','idTemporada', $idTemporada);
+        foreach( $querye as $episodio ){
+            $this->main_model->delete('idEpisodio','episodio',$episodio['idEpisodio']);
+        }
+        $this->main_model->delete('idTemporada','temporadas',$idTemporada);
+        redirect();
+    }
+
     public function watchepisode(){
         $idEpisodio = $this->uri->segment(3);
         $query = $this->main_model->get_main_where('episodio','idEpisodio',$idEpisodio);
