@@ -61,8 +61,12 @@ class Episodio extends CI_Controller {
     public function addEps()
     {
         if(isset($_POST['Criar'])){
+            $animeName = str_replace(' ', '%20' ,$_POST['animeName']);
+            $url = 'http://localhost:3000/getAnimeEpisode/' . $animeName . '/' . $_POST['animeEps'];
+            $infoeps = file_get_contents($url);
+            print_r($infoeps);
             $values = array(
-                'url' => $_POST['url'],
+                'url' => json_decode($infoeps),
                 'idTemporada' => $_POST['idTemporada']
             );
             $this->main_model->add('episodio',$values);
