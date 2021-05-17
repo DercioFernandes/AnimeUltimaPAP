@@ -23,6 +23,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/addEpisodio.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/addEpisodio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +48,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../webalizer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ProjetoFinal_php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -106,7 +108,9 @@
       <workItem from="1620580847227" duration="1308000" />
       <workItem from="1620634961462" duration="5410000" />
       <workItem from="1620740140352" duration="4065000" />
-      <workItem from="1620912596442" duration="3803000" />
+      <workItem from="1620912596442" duration="3804000" />
+      <workItem from="1620999484791" duration="1213000" />
+      <workItem from="1621238405338" duration="3673000" />
     </task>
     <servers />
   </component>
@@ -126,10 +130,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="202" key="FileChooserDialogImpl" timestamp="1620640075296">
+    <state x="549" y="202" key="FileChooserDialogImpl" timestamp="1621244714636">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="549" y="202" key="FileChooserDialogImpl/0.30.1536.834@0.30.1536.834" timestamp="1620640075296" />
+    <state x="549" y="202" key="FileChooserDialogImpl/0.30.1536.834@0.30.1536.834" timestamp="1621244714636" />
     <state x="431" y="186" width="672" height="678" key="search.everywhere.popup" timestamp="1620635464508">
       <screen x="0" y="30" width="1536" height="834" />
     </state>

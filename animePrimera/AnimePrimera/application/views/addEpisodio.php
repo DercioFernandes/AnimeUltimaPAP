@@ -7,6 +7,8 @@
     <form action="<?= base_url('episodio/addEps')?>" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <input class="form-control" id="animeName" name="animeName" placeholder="Anime Name" type="text" required="required">
+            <input name="video_name" id="video_name" readonly="readonly" type="file" />
+            <input type="hidden" name="video_upload" value="Upload Video"/>
         </div>
 
         <div class="form-group">

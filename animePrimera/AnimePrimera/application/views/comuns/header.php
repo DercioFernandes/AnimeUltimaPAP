@@ -14,6 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!--        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">-->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel='SHORTCUT ICON' href="<?=base_url('resources/img/logo/icon_1.png')?>"/>
+    <link href=”//vjs.zencdn.net/7.0/video-js.min.css” rel=”stylesheet”>
     <script src="<?=base_url('resources/js/jquery-3.4.1.min.js')?>"></script>
     <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
     <style>
