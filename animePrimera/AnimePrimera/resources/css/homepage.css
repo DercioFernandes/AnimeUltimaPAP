@@ -55,7 +55,7 @@ th{
 
 
 #centered{
-    background: rgb(165, 162, 109);
+    background: #cdc49b;
     margin: 0;
     padding: 0;
 }
@@ -70,3 +70,10 @@ th{
     padding: 0;
     margin: 0;
 }
+
+.nav-link{
+    color: #cdc49b;
+    font-family: "Good Times Rg";
+}
+
+

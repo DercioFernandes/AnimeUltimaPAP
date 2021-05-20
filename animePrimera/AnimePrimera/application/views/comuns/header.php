@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
     <style>
         body {
-            /*background-color: rgba(3,6,3,0.88);*/
+            background-color: rgba(3,6,3,0.88);
         }
     </style>
 </head>
