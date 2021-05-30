@@ -61,6 +61,7 @@ class Episodio extends CI_Controller {
     public function addEps()
     {
         if(isset($_POST['Criar'])){
+            echo "entrou";
             //$animeName = str_replace(' ', '%20' ,$_POST['animeName']);
             //$url = 'http://localhost:3000/getAnimeEpisode/' . $animeName . '/' . $_POST['animeEps'];
             //$infoeps = file_get_contents($url);
@@ -77,6 +78,7 @@ class Episodio extends CI_Controller {
             redirect();
         }else{
             $idTemporada = $this->uri->segment(3);
+            echo $idTemporada;
             $this->data['idTemporada'] = $idTemporada;
             $this->load->view('addEpisodio',$this->data);
         }
@@ -104,7 +106,7 @@ class Episodio extends CI_Controller {
         if ($this->input->post('video_upload')) {
             //set preferences
             //file upload destination
-            $upload_path =  "./resources/vid/";
+            $upload_path =  "resources/vid/";
             $config['upload_path'] = $upload_path;
             //allowed file types. * means all types
             $config['allowed_types'] = 'wmv|mp4|avi|mov';

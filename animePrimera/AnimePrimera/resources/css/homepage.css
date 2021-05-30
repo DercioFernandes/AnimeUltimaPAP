@@ -76,4 +76,21 @@ th{
     font-family: "Good Times Rg";
 }
 
+#vbg{
+    background-color: black;
+}
 
+#btnEpsN{
+    display: block;
+    width: 100%;
+    border: none;
+    height: 63px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+#npm{
+    padding: 0;
+    margin: 0;
+}
