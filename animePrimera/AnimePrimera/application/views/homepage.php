@@ -75,7 +75,7 @@
                 <?php foreach ($series as $serie): ?>
                     <a href="<?php echo base_url('/serie/seriesinfo/' . $serie['idSerie']) ?>">
                         <div class="card text-white bg-dark mb-3">
-                            <img id="imagee" class="card-img-top" src="<?php echo base_url('/resources/img/seriesthumb/' . $serie['Photo']) ?>" alt="Thumbnail">
+                            <img id="image" class="card-img-top" src="<?php echo base_url('/resources/img/seriesthumb/' . $serie['Photo']) ?>" alt="Thumbnail">
                             <div id="middle" class="card-body">
                                 <h5 id="text" class="card-title"><?php echo $serie['Titulo'] ?></h5>
                             </div>

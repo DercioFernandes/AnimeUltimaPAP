@@ -22,6 +22,8 @@
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" afterDir="false" />
     </list>
@@ -111,6 +113,7 @@
       <workItem from="1621238405338" duration="3673000" />
       <workItem from="1621525258769" duration="3263000" />
       <workItem from="1622378979610" duration="7090000" />
+      <workItem from="1622480709397" duration="4105000" />
     </task>
     <servers />
   </component>

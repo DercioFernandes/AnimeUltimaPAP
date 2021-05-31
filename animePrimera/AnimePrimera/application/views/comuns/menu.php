@@ -13,7 +13,7 @@
             </form>
             <ul class="navbar-nav ml-auto ">
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?=base_url()?>">Login</a>
+                    <a class="nav-link" href="<?=base_url('login')?>">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?=base_url('episodio')?>">GERIR</a>

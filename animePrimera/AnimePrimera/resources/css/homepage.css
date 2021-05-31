@@ -80,11 +80,16 @@ th{
     background-color: black;
 }
 
+#video {
+    width: 100%;
+    height: auto;
+}
+
 #btnEpsN{
     display: block;
     width: 100%;
     border: none;
-    height: 63px;
+    height: 29px;
     padding: 0;
     margin: 0;
     text-align: center;

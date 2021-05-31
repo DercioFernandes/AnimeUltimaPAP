@@ -87,8 +87,28 @@ class Episodio extends CI_Controller {
     public function watchepisode(){
         $idEpisodio = $this->uri->segment(3);
         $query = $this->main_model->get_main_where('episodio','idEpisodio',$idEpisodio);
+        $queryTemp = $this->main_model->get_main_where('temporadas','idTemporada',$query[0]->idTemporada);
+        $querySerie = $this->main_model->get_main_where('series','idSerie',$queryTemp[0]->idSerie);
         $this->data['query'] = $query;
+        $recommended = $this->getRecommended($querySerie[0]->Tipo);
+        $q = array();
+        foreach ($recommended as $r){
+            $q[] = $this->main_model->get_main_where('series','idSerie',$r->idSerie);
+        }
+        $this->data['recommended'] = array_slice($q,0,5);
         $this->load->view('watcheps',$this->data);
+    }
+
+    private function getRecommended($category){
+        $categoryArray = explode(',',$category);
+        $querymerged = array();
+        for($i = 0; $i < count($categoryArray); $i++){
+            $tipo = $categoryArray[$i];
+            $query = $this->main_model->get_main_where('series','Tipo', $tipo);
+            $querymerged = array_merge($querymerged, $query);
+        }
+
+        return $querymerged;
     }
 
     //appends all error messages
