@@ -12,9 +12,29 @@
                 <input class="form-control ml-auto " type="search" placeholder="Search" aria-label="Search">
             </form>
             <ul class="navbar-nav ml-auto ">
-                <li class="nav-item active">
-                    <a class="nav-link" href="<?=base_url('login')?>">Login</a>
-                </li>
+                <?php
+                    if(!empty($user)):
+                ?>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="<?=base_url('login/logout')?>">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=base_url('login/logout')?>">
+                            <img id="pfp" src="<?php echo base_url('./resources/img/pfp/' . $fotoPerfil) ?>" title="fotoDePerfil"  />
+                        </a>
+                    </li>
+                <?php
+                    else:
+                ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=base_url('register')?>">Registrar</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="<?=base_url('login')?>">Login</a>
+                    </li>
+                <?php
+                    endif;
+                ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?=base_url('episodio')?>">GERIR</a>
                 </li>

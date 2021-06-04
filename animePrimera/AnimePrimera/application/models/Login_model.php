@@ -1,10 +1,14 @@
 <?php
 
 class Login_model extends CI_Model{
-    protected $table = 'users';
+    protected $table = 'user';
     
     public function __construct(){
         parent::__construct();
+    }
+
+    public function add($values){
+        $this->db->insert($this->table,$values);
     }
     
     public function getByUsername($username){
@@ -33,14 +37,14 @@ class Login_model extends CI_Model{
     }
     
     public function emailExists($email){
-        $user = array('email' => $username);
+        $user = array('email' => $email);
         $query = $this->db->get_where($this->table, $user,1);
         if($query->num_rows()>0)
             return true;
         return false;
     }
     
-    public function usernameExists(){
+    public function usernameExists($username){
         $user = array('username' => $username);
         $query = $this->db->get_where($this->table, $user,1);
         if($query->num_rows()>0)
@@ -53,7 +57,7 @@ class Login_model extends CI_Model{
     }
     
     public function checkPassword($password,$hashed_password) {
-        return (md5($password)==$hashed_password);
+        return (hash('sha256',$password)==$hashed_password);
     }
     
 }

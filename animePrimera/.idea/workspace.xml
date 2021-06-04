@@ -20,11 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Register.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AnimePrimera/application/views/registrar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/config/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Homepage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/models/Login_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/models/Login_model.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,19 +51,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../estagio/projetoEstagio" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AnimePrimera/application/models" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\models" />
       <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\views" />
       <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\controllers" />
       <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower\resources" />
       <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower" />
-      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower\application" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -113,7 +116,9 @@
       <workItem from="1621238405338" duration="3673000" />
       <workItem from="1621525258769" duration="3263000" />
       <workItem from="1622378979610" duration="7090000" />
-      <workItem from="1622480709397" duration="4105000" />
+      <workItem from="1622480709397" duration="4106000" />
+      <workItem from="1622558961508" duration="614000" />
+      <workItem from="1622814167504" duration="6140000" />
     </task>
     <servers />
   </component>
@@ -133,17 +138,17 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="202" key="FileChooserDialogImpl" timestamp="1621527946442">
+    <state x="549" y="202" key="FileChooserDialogImpl" timestamp="1622816129253">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="549" y="202" key="FileChooserDialogImpl/0.30.1536.834@0.30.1536.834" timestamp="1621527946442" />
+    <state x="549" y="202" key="FileChooserDialogImpl/0.30.1536.834@0.30.1536.834" timestamp="1622816129253" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1621527698852">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.30.1536.834@0.30.1536.834" timestamp="1621527698852" />
-    <state x="431" y="186" width="672" height="678" key="search.everywhere.popup" timestamp="1620635464508">
+    <state x="431" y="186" width="672" height="678" key="search.everywhere.popup" timestamp="1622821253900">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="431" y="186" width="672" height="678" key="search.everywhere.popup/0.30.1536.834@0.30.1536.834" timestamp="1620635464508" />
+    <state x="431" y="186" width="672" height="678" key="search.everywhere.popup/0.30.1536.834@0.30.1536.834" timestamp="1622821253900" />
   </component>
 </project>

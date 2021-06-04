@@ -10,14 +10,20 @@ class Homepage extends CI_Controller {
         $this->load->model('login_model');
         $this->load->model('main_model');
 
+        if ($this->login_model->isLoggedIn()) {
+            $this->data['user'] = $this->session->userdata('user');
+            $this->data['estado'] = 1;
+            $this->data['seg'] = FALSE;
+        }
     }
 
 	public function index()
 	{
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
-            $perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            //$perms = $this->getPerms($user['Permissoes']);
+            //$this->data['perms'] = $perms;
         }
         $this->data['titulo'] = 'AnimePrimera';
 

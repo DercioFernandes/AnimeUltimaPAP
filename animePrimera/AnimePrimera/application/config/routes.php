@@ -57,6 +57,8 @@ $route['translate_uri_dashes'] = FALSE;
 // LOGIN
 $route['login'] = 'Login/login';
 $route['logout'] = 'Login/logout';
+$route['register'] = 'Register/registrar';
+
 
 // HOMEPAGE
 $route['episodio'] = 'episodio/index';
