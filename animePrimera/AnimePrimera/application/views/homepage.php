@@ -16,7 +16,7 @@
                         <img class="d-block w-100" src="<?=base_url('/resources/img/Carrousel/PremiumAdd.png')?>" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="<?=base_url('/resources/img/Carrousel/PremiumAdd.png')?>" alt="Second slide">
+                        <img class="d-block w-100" src="<?=base_url('/resources/img/Carrousel/kmaad.png')?>" alt="Second slide">
                     </div>
                     <div class="carousel-item">
                         <img class="d-block w-100" src="<?=base_url('/resources/img/Carrousel/PremiumAdd.png')?>" alt="Third slide">
@@ -55,7 +55,7 @@
                         <div class="card text-white bg-dark mb-3">
                             <img id="image" class="card-img-top" src="<?php echo base_url('/resources/img/seriesthumb/' . $temporadas[0]->Thumbnail) ?>" alt="Thumbnail">
                             <div id="middle" class="card-body" >
-                                <h5 id="text" class="card-title"><?php echo $serie[0]->Titulo ?> <?php echo $episodio['titulo'] ?></h5>
+                                <h5 id="text" class="card-title"><?php echo $episodio['titulo'] ?></h5>
                             </div>
                         </div>
                     </a>

@@ -18,10 +18,16 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="<?=base_url('login/logout')?>">Logout</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?=base_url('login/logout')?>">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img id="pfp" src="<?php echo base_url('./resources/img/pfp/' . $fotoPerfil) ?>" title="fotoDePerfil"  />
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <?php if($perms == 1): ?>
+                                <a class="dropdown-item" href="<?=base_url('serie')?>">Gerir</a>
+                            <?php endif; ?>
+                            <a class="dropdown-item" href="#">Settings</a>
+                        </div>
                     </li>
                 <?php
                     else:
@@ -35,9 +41,6 @@
                 <?php
                     endif;
                 ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('episodio')?>">GERIR</a>
-                </li>
         </div>
     </div>
 </nav>

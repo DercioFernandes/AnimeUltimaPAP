@@ -3,13 +3,28 @@
 <body>
 
     <div class="container-fluid">
-        <div id="centered" class="text-center">
-            <h3> <?php echo $query[0]->Titulo; ?></h3>
+        <div class="row">
+            <div class="col">
+                <img id="seriesBanner" src="<?php echo $query[0]->Banner; ?>" title="Banner">
+            </div>
         </div>
-        <iframe class="metaframe rptss" src="<?php echo $query[0]->url; ?>" scrolling="no" allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0"></iframe>
-    </div>
-    <iframe class="metaframe rptss" src="https://animesonline.org/gcloud/?id=VXQzVTdaMkNFU2REdUkxNDVxaFlxRC85RW5lSVExSXB2UkhncWVsSXBvMnVSeXNUU2xCZkExaTVWZlI5WndTaw&amp;token=24984" scrolling="no" allow="autoplay; encrypted-media" allowfullscreen="" frameborder="0"></iframe>
+        <div class="row">
+            <div class="col-md-2"
 
+            </div>
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-7 col-sm-7">
+                <div id="centered" class="text-center">
+                    <h3> <?php echo $query[0]->Titulo; ?></h3>
+                    <hr>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 
 <?php $this->load->view('comuns/footer'); ?>

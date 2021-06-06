@@ -9,17 +9,24 @@ class Episodio extends CI_Controller {
         $this->load->helper(array('text','string','url','form','file'));
         $this->load->model('login_model');
         $this->load->model('main_model');
+        if ($this->login_model->isLoggedIn()) {
+            $this->data['user'] = $this->session->userdata('user');
+            $this->data['estado'] = 1;
+            $this->data['seg'] = FALSE;
+            $user = $this->data['user'];
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+        }
     }
 
 	public function index()
 	{
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
-            $perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;
+            /*$perms = $this->getPerms($user['perms']);
+            $this->data['perms'] = $perms;*/
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
         }
         $this->data['titulo'] = 'AnimePrimera ADM';
-        print_r($this->main_model->get_table('series'));
         $this->data['series'] = $this->main_model->get_table('series');
 
         $this->load->view('animeprimeraadm',$this->data);
@@ -68,10 +75,11 @@ class Episodio extends CI_Controller {
             //print_r($infoeps);
             $video = $this->UploadVideo($_POST);
             $url = $video['video_path'] . $video['video_name'];
-            print_r($video);
+            $videoname = $_POST['animeName'] . ' | ' . $_POST['animeEps'];
             $values = array(
                 'url' => $url,
-                'idTemporada' => $_POST['idTemporada']
+                'idTemporada' => $_POST['idTemporada'],
+                'titulo' => $videoname
             );
             print_r($values);
             $this->main_model->add('episodio',$values);
@@ -129,7 +137,7 @@ class Episodio extends CI_Controller {
             $upload_path =  "resources/vid/";
             $config['upload_path'] = $upload_path;
             //allowed file types. * means all types
-            $config['allowed_types'] = 'wmv|mp4|avi|mov';
+            $config['allowed_types'] = '*';
             //allowed max file size. 0 means unlimited file size
             $config['max_size'] = '0';
             //max file name size

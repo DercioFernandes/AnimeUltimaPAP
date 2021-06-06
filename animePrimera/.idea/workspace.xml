@@ -20,15 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Register.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AnimePrimera/application/views/registrar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/ControladorAbstrato.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/config/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/models/Login_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/models/Login_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Temporada.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Temporada.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/seriesinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/seriesinfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Video_Editor_Music_Movie_Maker_20201212161618625.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Video_Editor_Music_Movie_Maker_202012121616186251.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Video_Editor_Music_Movie_Maker_202012121616186252.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video01.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video011.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video012.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video0_1.mp4" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,18 +59,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/AnimePrimera/application/models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AnimePrimera/application/controllers" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\models" />
-      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\views" />
-      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\controllers" />
-      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower\resources" />
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\controllers" />
+      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\models" />
+      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\views" />
+      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower\resources" />
       <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower" />
     </key>
   </component>
@@ -118,7 +126,8 @@
       <workItem from="1622378979610" duration="7090000" />
       <workItem from="1622480709397" duration="4106000" />
       <workItem from="1622558961508" duration="614000" />
-      <workItem from="1622814167504" duration="6140000" />
+      <workItem from="1622814167504" duration="6372000" />
+      <workItem from="1622992811930" duration="5159000" />
     </task>
     <servers />
   </component>
@@ -138,10 +147,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="202" key="FileChooserDialogImpl" timestamp="1622816129253">
+    <state x="549" y="202" key="FileChooserDialogImpl" timestamp="1622993422322">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="549" y="202" key="FileChooserDialogImpl/0.30.1536.834@0.30.1536.834" timestamp="1622816129253" />
+    <state x="549" y="202" key="FileChooserDialogImpl/0.30.1536.834@0.30.1536.834" timestamp="1622993422322" />
+    <state x="475" y="154" key="NewPhpClassDialog" timestamp="1622993505394">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="475" y="154" key="NewPhpClassDialog/0.30.1536.834@0.30.1536.834" timestamp="1622993505394" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1621527698852">
       <screen x="0" y="30" width="1536" height="834" />
     </state>

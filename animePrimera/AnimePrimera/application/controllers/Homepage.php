@@ -14,6 +14,9 @@ class Homepage extends CI_Controller {
             $this->data['user'] = $this->session->userdata('user');
             $this->data['estado'] = 1;
             $this->data['seg'] = FALSE;
+            $user = $this->data['user'];
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['perms'] = $user['Permissoes'];
         }
     }
 
