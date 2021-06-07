@@ -47,6 +47,15 @@ class Main_model extends CI_Model
         return $query->result_array(); //Retorna array de objetos quando se usa o Result
     }
 
+    public function get_both_main_where($idEpisodio){
+        $this->db->select('*');
+        $this->db->from('comentario');
+        $this->db->join('user','comentario.idUser = user.idUser');
+        $this->db->where('comentario.idEpisodio =', $idEpisodio);
+        $result = $this->db->get();
+        return $result->result_array();
+    }
+
     public function add($table,$values){
         $this->db->insert($table,$values);
     }

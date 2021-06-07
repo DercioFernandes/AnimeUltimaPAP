@@ -64,6 +64,9 @@ $route['register'] = 'Register/registrar';
 $route['episodio'] = 'episodio/index';
 $route['episodio/watchepisode'] = 'episodio/watchepisode';
 
+// COmentairo
+$route['Comentario/addComment'] = 'Comentario/addComment';
+
 $route['temporada'] = 'temporada/index';
 
 $route['serie/seriesinfo'] = 'serie/seriesinfo';

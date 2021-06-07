@@ -31,7 +31,25 @@
 
         <div class="row">
             <div class="col-md-6">
-
+                <form action="<?= base_url('Comentario/addComment')?>" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="idUser" value="<?php if(isset($idUser)){ echo $idUser; } ?>">
+                    <input type="hidden" name="idEpisodio" value="<?php echo $idEpisodio; ?>">
+                    <textarea name="coment" placeholder="Deixa o teu comentário aqui!"></textarea>
+                    <div class="form-group">
+                        <input class="form-control" type="submit" class="btn btn-primary" name="Submeter" value="Submeter">
+                    </div>
+                </form>
+                <?php foreach ($comentarios as $comentario): ?>
+                    <div class="comentario">
+                        <div class="comentario-head">
+                            <img id="pfp" src="<?php echo base_url('./resources/img/pfp/' . $comentario['FotoPerfil']) ?>">
+                            <h6><?php echo $comentario['Username'] ?></h6>
+                        </div>
+                        <div class="comentario-body">
+                            <p><?php echo $comentario['texto'] ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
             <div id="npm" class="col-md-6">
                 <div id="r" class="card-group">

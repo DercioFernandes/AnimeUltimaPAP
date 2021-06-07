@@ -93,11 +93,29 @@ class Episodio extends CI_Controller {
     }
 
     public function watchepisode(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            /*$perms = $this->getPerms($user['perms']);
+            $this->data['perms'] = $perms;*/
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
+        }
         $idEpisodio = $this->uri->segment(3);
         $query = $this->main_model->get_main_where('episodio','idEpisodio',$idEpisodio);
         $queryTemp = $this->main_model->get_main_where('temporadas','idTemporada',$query[0]->idTemporada);
         $querySerie = $this->main_model->get_main_where('series','idSerie',$queryTemp[0]->idSerie);
+        $queryComentarios = $this->main_model->get_main_where('comentario','idEpisodio',$idEpisodio);
         $this->data['query'] = $query;
+        //print_r($queryComentarios);
+        if(!empty($queryComentarios)){
+            $queryUserCom = $this->main_model->get_both_main_where($idEpisodio);
+            //$queryUserCom = $this->db->query('SELECT * FROM user u INNER JOIN comentario c ON u.idUser = c.idUser WHERE u.idUser =' . $queryComentarios[0]->idUser);
+            $this->data['comentarios'] = $queryUserCom;
+        }else{
+            $this->data['comentarios'] = array();
+        }
+        //print_r($queryUserCom);
+        $this->data['idEpisodio'] = $idEpisodio;
         $recommended = $this->getRecommended($querySerie[0]->Tipo);
         $q = array();
         foreach ($recommended as $r){
@@ -105,6 +123,22 @@ class Episodio extends CI_Controller {
         }
         $this->data['recommended'] = array_slice($q,0,5);
         $this->load->view('watcheps',$this->data);
+    }
+
+    public function addComment(){
+        if(isset($_POST['Submeter'])){
+            if($this->login_model->isLoggedIn() == true) {
+                $values = array(
+                    'idUser' => $_POST['idUser'],
+                    'idEpisodio' => $_POST['idEpisodio'],
+                    'texto' => $_POST['coment']
+                );
+                $this->main_model->add('comentario',$values);
+                redirect(base_url('Episodio/watchepisode/'.$_POST['idEpisodio']));
+            }else{
+
+            }
+        }
     }
 
     private function getRecommended($category){
