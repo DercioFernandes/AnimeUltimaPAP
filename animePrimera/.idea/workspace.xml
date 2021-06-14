@@ -21,10 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/config/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/seriesinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/seriesinfo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +116,7 @@
       <workItem from="1622814167504" duration="6372000" />
       <workItem from="1622992811930" duration="5159000" />
       <workItem from="1623078069593" duration="4806000" />
-      <workItem from="1623664030583" duration="4746000" />
+      <workItem from="1623664030583" duration="6552000" />
     </task>
     <servers />
   </component>
@@ -138,10 +136,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="202" key="FileChooserDialogImpl" timestamp="1623080864456">
+    <state x="549" y="202" key="FileChooserDialogImpl" timestamp="1623669250839">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="549" y="202" key="FileChooserDialogImpl/0.30.1536.834@0.30.1536.834" timestamp="1623080864456" />
+    <state x="549" y="202" key="FileChooserDialogImpl/0.30.1536.834@0.30.1536.834" timestamp="1623669250839" />
     <state x="475" y="154" key="NewPhpClassDialog" timestamp="1622993505394">
       <screen x="0" y="30" width="1536" height="834" />
     </state>

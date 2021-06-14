@@ -136,3 +136,35 @@ th{
     background-color: #cdc49b;
     color: black;
 }
+
+.seriestitle{
+    width: 84%;
+    background-color: #cdc49b;
+    float: right;
+}
+
+.seriesdescription{
+    width: 84%;
+    background-color: #cdc49b;
+    float: right;
+}
+
+.seriesthumbinfo{
+    height:356px;
+    margin-left: 0%;
+    padding-left: 0%;
+}
+
+@media all and (max-width: 575px) {
+    .seriestitle{
+        font-size: 18px;
+        align-self: center;
+        width: 76%;
+        background-color: #cdc49b;
+        float: right;
+    }
+
+    .seriesthumbinfo{
+        height:157px;
+    }
+}
