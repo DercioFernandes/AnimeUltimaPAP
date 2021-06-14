@@ -22,25 +22,37 @@
                 <h4 id="centered" class="btn-block text-center"> Comentários </h4>
             </div>
             <div id="npm" class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
-                <button id="btnEpsN" type="button" class=" btn btn-dark btn-lg btn-block" > Anterior </button>
+                <a href="<?php echo base_url('Episodio/epsAnterior/'.$idEpisodio) ?>" id="btnEpsN" > Anterior </a>
             </div>
             <div id="npm" class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
-                <button id="btnEpsN" type="button" class=" btn btn-dark btn-lg btn-block" > Próximo </button>
+                <a href="<?php echo base_url('Episodio/epsProximo/'.$idEpisodio) ?>" id="btnEpsN" > Próximo </a>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 coment">
                 <form action="<?= base_url('Comentario/addComment')?>" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="idUser" value="<?php if(isset($idUser)){ echo $idUser; } ?>">
                     <input type="hidden" name="idEpisodio" value="<?php echo $idEpisodio; ?>">
-                    <textarea name="coment" placeholder="Deixa o teu comentário aqui!"></textarea>
+                    <textarea class="comentario" name="coment" placeholder="Deixa o teu comentário aqui!"></textarea>
                     <div class="form-group">
                         <input class="form-control" type="submit" class="btn btn-primary" name="Submeter" value="Submeter">
                     </div>
                 </form>
                 <?php foreach ($comentarios as $comentario): ?>
                     <div class="comentario">
+                        <a href="<?php echo base_url('Comentario/reportComment/' . $comentario['idComentario']) ?>">
+                            <img class="flag" src="<?php echo base_url('./resources/img/Icons/flag.png') ?>"/>
+                        </a>
+                        <?php
+                            if($comentario['idUser'] == $idUser):
+                        ?>
+                            <a href="<?php echo base_url('Comentario/removeComment/' . $comentario['idComentario'] )?>">
+                                <img class="flag" src="<?php echo base_url('./resources/img/Icons/remove.png') ?>" alt ="" title="editIcon"/>
+                            </a>
+                        <?php
+                            endif;
+                        ?>
                         <div class="comentario-head">
                             <img id="pfp" src="<?php echo base_url('./resources/img/pfp/' . $comentario['FotoPerfil']) ?>">
                             <h6><?php echo $comentario['Username'] ?></h6>
@@ -49,6 +61,7 @@
                             <p><?php echo $comentario['texto'] ?></p>
                         </div>
                     </div>
+                    <hr>
                 <?php endforeach; ?>
             </div>
             <div id="npm" class="col-md-6">

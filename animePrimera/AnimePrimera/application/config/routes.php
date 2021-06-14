@@ -64,8 +64,10 @@ $route['register'] = 'Register/registrar';
 $route['episodio'] = 'episodio/index';
 $route['episodio/watchepisode'] = 'episodio/watchepisode';
 
-// COmentairo
+// Comentairo
 $route['Comentario/addComment'] = 'Comentario/addComment';
+$route['Comentario/removeComment'] = 'Comentario/removeComment';
+$route['Comentario/reportComment'] = 'Comentario/reportComment';
 
 $route['temporada'] = 'temporada/index';
 

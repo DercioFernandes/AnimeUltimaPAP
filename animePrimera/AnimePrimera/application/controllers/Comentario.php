@@ -29,21 +29,26 @@ class Comentario extends CI_Controller {
                 $this->main_model->add('comentario',$values);
                 redirect(base_url('Episodio/watchepisode/'.$_POST['idEpisodio']));
             }else{
-
+                
             }
         }
     }
 
-    public function editComment(){
-
-    }
-
     public function removeComment(){
-
+        $idComentario = $this->uri->segment(3);
+        $this->main_model->delete('idComentario','comentario',$idComentario);
+        redirect();
     }
 
     public function reportComment(){
-
+        $idComentario = $this->uri->segment(3);
+        $query = $this->main_model->get_main_where_array('comentario','idComentario',$idComentario);
+        $reports = 1 + $query[0]['report'];
+        $values = array(
+            'report' => $reports
+        );
+        $this->main_model->edit('idComentario','comentario',$idComentario,$values);
+        redirect();
     }
 
 }

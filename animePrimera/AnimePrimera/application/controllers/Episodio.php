@@ -86,7 +86,6 @@ class Episodio extends CI_Controller {
             redirect();
         }else{
             $idTemporada = $this->uri->segment(3);
-            echo $idTemporada;
             $this->data['idTemporada'] = $idTemporada;
             $this->load->view('addEpisodio',$this->data);
         }
@@ -139,6 +138,40 @@ class Episodio extends CI_Controller {
 
             }
         }
+    }
+
+    public function epsProximo(){
+        $idEpisodio = $this->uri->segment(3);
+        $query = $this->main_model->get_main_where_array('episodio','idEpisodio',$idEpisodio);
+        $queryEps = $this->main_model->get_main_where_array('episodio','idTemporada',$query[0]['idTemporada']);
+        for($i = 0; $i < count($queryEps); $i++){
+            if($queryEps[$i]['idEpisodio'] == $idEpisodio){
+                if(isset($queryEps[$i + 1])){
+                    $nextEpsId = $queryEps[$i + 1]['idEpisodio'];
+                    redirect(base_url('/Episodio/watchepisode/' . $nextEpsId));
+                }
+                else
+                    redirect(base_url());
+            }
+            break;
+        }
+        redirect(base_url());
+    }
+
+    public function epsAnterior(){
+        $idEpisodio = $this->uri->segment(3);
+        $query = $this->main_model->get_main_where_array('episodio','idEpisodio',$idEpisodio);
+        $queryEps = $this->main_model->get_main_where_array('episodio','idTemporada',$query[0]['idTemporada']);
+        for($i = count($queryEps) - 1; $i >= 0; $i--){
+            if($queryEps[$i]['idEpisodio'] == $idEpisodio){
+                if(isset($queryEps[$i - 1])){
+                    $nextEpsId = $queryEps[$i -1]['idEpisodio'];
+                    redirect(base_url('/Episodio/watchepisode/' . $nextEpsId));
+                }
+            }
+            break;
+        }
+        redirect(base_url());
     }
 
     private function getRecommended($category){

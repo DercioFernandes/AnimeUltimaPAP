@@ -20,12 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/config/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/models/Main_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/models/Main_model.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +118,7 @@
       <workItem from="1622814167504" duration="6372000" />
       <workItem from="1622992811930" duration="5159000" />
       <workItem from="1623078069593" duration="4806000" />
+      <workItem from="1623664030583" duration="4746000" />
     </task>
     <servers />
   </component>
@@ -149,6 +150,10 @@
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.30.1536.834@0.30.1536.834" timestamp="1621527698852" />
+    <state x="425" y="204" key="run.anything.popup" timestamp="1623666182718">
+      <screen x="0" y="30" width="1536" height="834" />
+    </state>
+    <state x="425" y="204" key="run.anything.popup/0.30.1536.834@0.30.1536.834" timestamp="1623666182718" />
     <state x="431" y="186" width="672" height="678" key="search.everywhere.popup" timestamp="1623080377349">
       <screen x="0" y="30" width="1536" height="834" />
     </state>

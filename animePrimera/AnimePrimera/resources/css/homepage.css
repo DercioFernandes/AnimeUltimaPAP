@@ -108,3 +108,31 @@ th{
     height: 40px;
     width: 40px;
 }
+
+.coment{
+    color: white;
+}
+
+.coment h6{
+    font-size: 18px;
+}
+
+.comentario{
+    width: 100%;
+}
+
+.flag{
+    height: 30px;
+    float: right;
+}
+
+#btnEpsN{
+    color: #cdc49b;
+    background-color: black;
+    border: none;
+}
+
+#btnEpsN:hover{
+    background-color: #cdc49b;
+    color: black;
+}
