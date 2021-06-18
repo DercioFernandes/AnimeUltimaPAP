@@ -67,6 +67,12 @@ class Serie extends CI_Controller {
     public function seriesinfo(){
         $idSerie = $this->uri->segment(3);
         $query = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
+        $queryT = $this->main_model->get_main_where_array('temporadas','idSerie',$idSerie);
+        $queryE = array();
+        foreach ($queryT as $q){
+            $queryE = array_merge($queryE,$this->main_model->get_main_where_array('episodio','idTemporada',$q['idTemporada']));
+        }
+        print_r($queryE);
         $this->data['query'] = $query;
         $this->load->view('seriesinfo',$this->data);
     }

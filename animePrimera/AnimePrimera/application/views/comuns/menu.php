@@ -12,6 +12,9 @@
                 <input class="form-control ml-auto " type="search" placeholder="Search" aria-label="Search">
             </form>
             <ul class="navbar-nav ml-auto ">
+                <li class="nav-item active">
+                    <a class="nav-link" href="<?=base_url('Hub')?>"> HUB </a>
+                </li>
                 <?php
                     if(!empty($user)):
                 ?>

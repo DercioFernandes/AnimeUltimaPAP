@@ -1,3 +1,4 @@
+// Rating Initialization
 $(document).ready(function() {
-    $('.cb1').prop('indeterminate', true);
+    $('#rateMe1').mdbRate();
 });
