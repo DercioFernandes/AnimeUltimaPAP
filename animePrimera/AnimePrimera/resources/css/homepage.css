@@ -178,6 +178,54 @@ th{
     background-color: #ffffff;
 }
 
+.tempname a{
+    font-family: "Good Times Rg";
+    font-size: 25px;
+    width: 100%;
+    color: black;
+    background-color: #cdc49b;
+}
+
+.tempname a:hover{
+    color: #cdc49b;
+    background-color: black;
+}
+
+.templist{
+    width: 100%;
+    color: black;
+    background-color: #cdc49b;
+    list-style-type: none;
+}
+
+.templist li{
+    padding-top: 1%;
+    width: 100%;
+    color: black;
+    font-size: 20px;
+    background-color: #cdc49b;
+}
+
+.templist li a{
+    text-decoration: none;
+    width: 100%;
+    color: black;
+    background-color: #cdc49b;
+}
+
+.templist li:hover{
+    width: 100%;
+    color: #cdc49b;
+    background-color: black;
+}
+
+.templist li a:hover{
+    text-decoration: none;
+    width: 100%;
+    color: #cdc49b;
+    background-color: black;
+}
+
 @media all and (max-width: 575px) {
 
 }

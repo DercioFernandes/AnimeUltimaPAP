@@ -45,12 +45,14 @@
                             <img class="flag" src="<?php echo base_url('./resources/img/Icons/flag.png') ?>"/>
                         </a>
                         <?php
-                            if($comentario['idUser'] == $idUser):
+                            if(!empty($idUser)):
+                                if($comentario['idUser'] == $idUser):
                         ?>
-                            <a href="<?php echo base_url('Comentario/removeComment/' . $comentario['idComentario'] )?>">
-                                <img class="flag" src="<?php echo base_url('./resources/img/Icons/remove.png') ?>" alt ="" title="editIcon"/>
-                            </a>
+                                <a href="<?php echo base_url('Comentario/removeComment/' . $comentario['idComentario'] )?>">
+                                    <img class="flag" src="<?php echo base_url('./resources/img/Icons/remove.png') ?>" alt ="" title="editIcon"/>
+                                </a>
                         <?php
+                                endif;
                             endif;
                         ?>
                         <div class="comentario-head">
