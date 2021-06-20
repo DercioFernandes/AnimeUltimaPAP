@@ -76,6 +76,7 @@ $route['Comentario/reportComment'] = 'Comentario/reportComment';
 $route['temporada'] = 'temporada/index';
 
 $route['serie/seriesinfo'] = 'serie/seriesinfo';
+$route['serie/rate'] = 'serie/rate';
 
 //Element
 $route['addElement'] = 'homepage/addElement';

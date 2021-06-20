@@ -40,6 +40,13 @@ class Main_model extends CI_Model
         return $query->result(); //Retorna array de objetos quando se usa o Result
     }
 
+    public function double_get_main_where_array($table,$array){
+        $this->db->where($array);
+        $query = $this->db->get($table);
+        //print_r($writeQuery);
+        return $query->result_array(); //Retorna array de objetos quando se usa o Result
+    }
+
     public function get_main_where_array($table,$whereName,$equalsName){
         $this->db->where($whereName, $equalsName);
         $query = $this->db->get($table);

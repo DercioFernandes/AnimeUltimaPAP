@@ -65,6 +65,13 @@ class Serie extends CI_Controller {
 
 
     public function seriesinfo(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            /*$perms = $this->getPerms($user['perms']);
+            $this->data['perms'] = $perms;*/
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
+        }
         $idSerie = $this->uri->segment(3);
         $query = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
         $queryT = $this->main_model->get_main_where_array('temporadas','idSerie',$idSerie);
@@ -73,10 +80,47 @@ class Serie extends CI_Controller {
             $queryE = array_merge($queryE,$this->main_model->get_main_where_array('episodio','idTemporada',$queryT[$i]['idTemporada']));
         }
         //print_r($queryE);
+        $this->data['idSerie'] = $idSerie;
         $this->data['temporadas'] = $queryT;
         $this->data['episodios'] = $queryE;
         $this->data['query'] = $query;
         $this->load->view('seriesinfo',$this->data);
+    }
+
+    public function rate(){
+        $idSerie = $this->uri->segment(3);
+        if($this->login_model->isLoggedIn()){
+            $comparison = array(
+                'idUser' => $_POST['idUser'],
+                'idSerie' => $idSerie
+            );
+            $query = $this->main_model->double_get_main_where_array('rating',$comparison);
+            if(!empty($query)){
+                if (!empty($_POST['ratesubmited'])) {
+                    $values = array(
+                        'idSerie' => $idSerie,
+                        'idUser' => $_POST['idUser'],
+                        'rating' => $_POST['rate']
+                    );
+                    $this->main_model->edit('idRating','rating',$query[0]['idRating'],$values);
+                    redirect('serie/seriesinfo/' . $idSerie);
+                }
+            }else{
+                if (!empty($_POST['ratesubmited'])) {
+                    $values = array(
+                        'idSerie' => $idSerie,
+                        'idUser' => $_POST['idUser'],
+                        'rating' => $_POST['rate']
+                    );
+                    $this->main_model->add('rating',$values);
+                    redirect('serie/seriesinfo/' . $idSerie);
+                }
+            }
+
+        }else{
+            redirect();
+        }
+        //redirect();
     }
 
     private function UploadFile($inputFileName)

@@ -66,7 +66,27 @@
     </div>
     <div class="row">
         <div class="col">
-            <h3 id="centered" class="text-center"> Series </h3>
+            <h3 id="centered" class="text-center"> Séries Favoritas da Comunidade </h3>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            <h3 id="centered" class="text-center"> Filmes Favoritos da Comunidade </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <a class="btn-block suprise button text-center" id="surprise" href="<?php echo base_url('/serie/seriesinfo/' . $series[$suprise]['idSerie']) ?>"><b>Surprise-me!</b></a>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            <h3 id="centered" class="text-center"> Series Recentes </h3>
         </div>
     </div>
     <div class="row">

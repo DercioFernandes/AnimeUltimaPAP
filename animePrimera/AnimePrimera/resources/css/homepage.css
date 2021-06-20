@@ -153,6 +153,7 @@ th{
 .seriesdescription{
     width: 100%;
     background-color: #cdc49b;
+    margin-bottom: 0;
     font-size: 15px;
     padding-left: 1%;
     padding-right: 1%;
@@ -199,7 +200,6 @@ th{
 }
 
 .templist li{
-    padding-top: 1%;
     width: 100%;
     color: black;
     font-size: 20px;
@@ -207,6 +207,7 @@ th{
 }
 
 .templist li a{
+    padding-top: 1%;
     text-decoration: none;
     width: 100%;
     color: black;
@@ -222,6 +223,54 @@ th{
 .templist li a:hover{
     text-decoration: none;
     width: 100%;
+    color: #cdc49b;
+    background-color: black;
+}
+
+.seguir{
+    border-style: none;
+    font-size: 20px;
+    color: black;
+    background-color: #cdc49b;
+    width: 100%;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin-bottom: 2%;
+}
+
+.seguir:hover{
+    border-color: #cdc49b;
+    border-style: solid;
+    border-width: 1px;
+    border-top: none;
+    text-decoration: none;
+    color: #cdc49b;
+    background-color: black;
+}
+
+.suprise{
+    font-family: "Good Times Rg";
+    border-style: none;
+    color: black;
+    background-color: #cdc49b;
+    font-size: 40px;
+    padding-top: 4%;
+    padding-bottom: 4%;
+
+}
+
+.suprise:hover{
+    text-decoration: none;
+    color: #cdc49b;
+    background-color: black;
+}
+
+.modal-header{
+    color: #cdc49b;
+    background-color: black;
+}
+
+.modal-body{
     color: #cdc49b;
     background-color: black;
 }

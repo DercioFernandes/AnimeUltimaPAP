@@ -29,12 +29,24 @@ class Homepage extends CI_Controller {
             //$this->data['perms'] = $perms;
         }
         $this->data['titulo'] = 'AnimePrimera';
-
         $this->data['series'] = $this->main_model->get_table('series');
         $this->data['episodios'] = $this->main_model->get_table('episodio');
+        $size = count($this->main_model->get_table('series'));
+        $suprise = $this->random($size,$this->main_model->get_table('series'));
+        $this->data['suprise'] = $suprise;
+
 
 
         $this->load->view('homepage',$this->data);
 	}
+
+	private function random($size,$query){
+        $suprise = rand(0, $size-1);
+        if(isset($query[$suprise])){
+            return $suprise;
+        }else{
+            $this->random($size,$query);
+        }
+    }
 
 }
