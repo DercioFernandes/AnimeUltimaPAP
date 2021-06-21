@@ -21,18 +21,33 @@
                     <br/>
                     <b>Autor:</b>
                     <?php echo $query[0]['Autor'] ?>
+                    <br/>
+                    <b>Favoritos:</b>
+                    <?php echo $qFav; ?>
+                    <br/>
+                    <b>Rating:</b>
+                    <?php echo $query[0]['rating'] ?>
                 </p>
             </div>
         </div>
         <div class="row">
             <div class="col ">
-                <button class="seguir btn-block text-center" data-toggle="modal" data-target="#rate"> + Rate </button>
+                <button class="<?php if(!empty($ratingC)){ echo $ratingC; }else{ echo 'seguir'; } ?> btn-block text-center" data-toggle="modal" data-target="#rate"> + Rate </button>
             </div>
             <div class="col">
-                <a class="seguir btn-block text-center" href="#"> + Seguir </a>
+                <a class="<?php if(!empty($seguirC)){ echo $seguirC; }else{ echo 'seguir'; } ?> btn-block text-center" href="<?php echo base_url('Serie/seguir/' . $idSerie) ?>"> + Seguir </a>
             </div>
             <div class="col">
-                <a class="seguir btn-block text-center" href="#"> + Favoritos </a>
+                <a class="<?php if(!empty($vendoC)){ echo $vendoC; }else{ echo 'seguir'; } ?> btn-block text-center" href="<?php echo base_url('Serie/vendo/' . $idSerie) ?>"> + Assistindo </a>
+            </div>
+            <div class="col">
+                <a class="<?php if(!empty($droppedC)){ echo $droppedC; }else{ echo 'seguir'; } ?> btn-block text-center" href="<?php echo base_url('Serie/dropped/' . $idSerie) ?>"> + Parado </a>
+            </div>
+            <div class="col">
+                <a class="<?php if(!empty($porverC)){ echo $porverC; }else{ echo 'seguir'; } ?> btn-block text-center" href="<?php echo base_url('Serie/porver/' . $idSerie) ?>"> + Por Ver </a>
+            </div>
+            <div class="col">
+                <a class="<?php if(!empty($favoritoC)){ echo $favoritoC; }else{ echo 'seguir'; } ?> btn-block text-center" href="<?php echo base_url('Serie/favorito/' . $idSerie) ?>"> + Favoritos </a>
             </div>
         </div>
         <?php
@@ -42,7 +57,7 @@
             <div class="col">
                 <h6 class="tempname">
                     <?php $colapse = 'collapse' . $contador ?>
-                    <a class="btn btn-primary" data-toggle="collapse" href="#<?php echo $colapse ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <a class="btn" data-toggle="collapse" href="#<?php echo $colapse ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <?php echo $t['Titulo'] ?>
                     </a>
                 </h6>

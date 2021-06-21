@@ -20,14 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AnimePrimera/resources/js/modal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/config/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Homepage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/models/Main_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/models/Main_model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/seriesinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/seriesinfo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" afterDir="false" />
     </list>
@@ -127,7 +123,8 @@
       <workItem from="1623664030583" duration="6552000" />
       <workItem from="1624023581611" duration="7261000" />
       <workItem from="1624112029913" duration="4384000" />
-      <workItem from="1624179825321" duration="6691000" />
+      <workItem from="1624179825321" duration="6989000" />
+      <workItem from="1624261887992" duration="5404000" />
     </task>
     <servers />
   </component>
@@ -159,10 +156,10 @@
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.30.1536.834@0.30.1536.834" timestamp="1621527698852" />
-    <state x="425" y="204" key="run.anything.popup" timestamp="1623666182718">
+    <state x="425" y="204" key="run.anything.popup" timestamp="1624265129601">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="425" y="204" key="run.anything.popup/0.30.1536.834@0.30.1536.834" timestamp="1623666182718" />
+    <state x="425" y="204" key="run.anything.popup/0.30.1536.834@0.30.1536.834" timestamp="1624265129601" />
     <state x="431" y="186" width="672" height="678" key="search.everywhere.popup" timestamp="1623080377349">
       <screen x="0" y="30" width="1536" height="834" />
     </state>

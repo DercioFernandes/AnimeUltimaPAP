@@ -65,20 +65,44 @@ class Serie extends CI_Controller {
 
 
     public function seriesinfo(){
+        $idSerie = $this->uri->segment(3);
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
             /*$perms = $this->getPerms($user['perms']);
             $this->data['perms'] = $perms;*/
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $this->data['idUser'] = $user['idUser'];
+            $arrayC = array(
+                'idSerie' => $idSerie,
+                'idUser' => $user['idUser']
+            );
+            if($this->main_model->double_get_main_where_array('rating',$arrayC)){
+                $this->data['ratingC'] = 'seguirDone';
+            }
+            if($this->main_model->double_get_main_where_array('seguir',$arrayC)){
+                $this->data['seguirC'] = 'seguirDone';
+            }
+            if($this->main_model->double_get_main_where_array('dropped',$arrayC)){
+                $this->data['droppedC'] = 'seguirDone';
+            }
+            if($this->main_model->double_get_main_where_array('porver',$arrayC)){
+                $this->data['porverC'] = 'seguirDone';
+            }
+            if($this->main_model->double_get_main_where_array('favorito',$arrayC)){
+                $this->data['favoritoC'] = 'seguirDone';
+            }
+            if($this->main_model->double_get_main_where_array('watching',$arrayC)){
+                $this->data['vendoC'] = 'seguirDone';
+            }
         }
-        $idSerie = $this->uri->segment(3);
+        $this->updateRating($idSerie);
         $query = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
         $queryT = $this->main_model->get_main_where_array('temporadas','idSerie',$idSerie);
         $queryE = array();
         for($i = 0; $i < count($queryT); $i++){
             $queryE = array_merge($queryE,$this->main_model->get_main_where_array('episodio','idTemporada',$queryT[$i]['idTemporada']));
         }
+        $this->data['qFav'] = count($this->main_model->get_table('favorito'));
         //print_r($queryE);
         $this->data['idSerie'] = $idSerie;
         $this->data['temporadas'] = $queryT;
@@ -113,15 +137,115 @@ class Serie extends CI_Controller {
                         'rating' => $_POST['rate']
                     );
                     $this->main_model->add('rating',$values);
+                    $this->updateRating($idSerie);
                     redirect('serie/seriesinfo/' . $idSerie);
                 }
             }
 
         }else{
-            redirect();
+            redirect('serie/seriesinfo/' . $idSerie);
         }
-        //redirect();
+        redirect('serie/seriesinfo/' . $idSerie);
     }
+
+    public function seguir(){
+        $idSerie = $this->uri->segment(3);
+        if($this->login_model->isLoggedIn()){
+            $user = $this->data['user'];
+            $idUser = $user['idUser'];
+            $this->abstrato('seguir',$idSerie,$idUser);
+        }
+    }
+
+    public function porver(){
+        $idSerie = $this->uri->segment(3);
+        if($this->login_model->isLoggedIn()){
+            $user = $this->data['user'];
+            $idUser = $user['idUser'];
+            $this->abstrato('porver',$idSerie,$idUser);
+        }
+    }
+
+    public function dropped(){
+        $idSerie = $this->uri->segment(3);
+        if($this->login_model->isLoggedIn()){
+            $user = $this->data['user'];
+            $idUser = $user['idUser'];
+            $this->abstrato('dropped',$idSerie,$idUser);
+        }
+    }
+
+    public function favorito(){
+        $idSerie = $this->uri->segment(3);
+        if($this->login_model->isLoggedIn()){
+            $user = $this->data['user'];
+            $idUser = $user['idUser'];
+            $this->abstrato('favorito',$idSerie,$idUser);
+        }
+    }
+
+    public function vendo(){
+        $idSerie = $this->uri->segment(3);
+        if($this->login_model->isLoggedIn()){
+            $user = $this->data['user'];
+            $idUser = $user['idUser'];
+            $this->abstrato('watching',$idSerie,$idUser);
+        }
+    }
+
+    private function abstrato($table,$idSerie,$idUser){
+        $comparison = array(
+            'idUser' => $idUser,
+            'idSerie' => $idSerie
+        );
+        $query = $this->main_model->double_get_main_where_array($table,$comparison);
+        if(!empty($query)){
+            $values = array(
+                'idSerie' => $idSerie,
+                'idUser' => $idUser
+            );
+            $this->main_model->deleteA($table,$values);
+            redirect('serie/seriesinfo/' . $idSerie);
+        }else{
+            $values = array(
+                'idSerie' => $idSerie,
+                'idUser' => $idUser
+            );
+            $this->main_model->add($table,$values);
+            redirect('serie/seriesinfo/' . $idSerie);
+        }
+    }
+
+    private function updateRating($idSerie){
+        $query = $this->main_model->get_main_where_array('rating','idSerie',$idSerie);
+        if(!empty($query)){
+            $media = 0;
+            foreach ($query as $q){
+                $media .= $q['rating'];
+            }
+            $media = $media / count($query);
+            $values = array(
+                'rating' => $media
+            );
+            $this->main_model->edit('idSerie','serie',$idSerie,$values);
+        }
+    }
+
+    /*private function checkStates($array,$idUser){
+        $class = 'seguirDone';
+        /*foreach($array as $a){
+            if($value == $a){
+                return $class;
+            }
+        }*/
+        /*foreach ($array as $a){
+            if($this->main_model->get_main_where_array($a,'idUser',$idUser)){
+                return $class;
+            }else{
+                return '';
+            }
+        }
+    }*/
 
     private function UploadFile($inputFileName)
     {

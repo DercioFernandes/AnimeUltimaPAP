@@ -72,9 +72,8 @@ class Main_model extends CI_Model
         $this->db->delete($table);
     }
 
-    public function deletep($table,$idNome,$id,$idNome2,$id2){
-        $this->db->where($idNome, $id);
-        $this->db->where($idNome2, $id2);
+    public function deleteA($table,$array){
+        $this->db->where($array);
         $this->db->delete($table);
     }
 

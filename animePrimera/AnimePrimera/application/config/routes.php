@@ -77,6 +77,11 @@ $route['temporada'] = 'temporada/index';
 
 $route['serie/seriesinfo'] = 'serie/seriesinfo';
 $route['serie/rate'] = 'serie/rate';
+$route['serie/favorito'] = 'serie/favorito';
+$route['serie/dropped'] = 'serie/dropped';
+$route['serie/seguir'] = 'serie/seguir';
+$route['serie/porver'] = 'serie/porver';
+$route['serie/vendo'] = 'serie/vendo';
 
 //Element
 $route['addElement'] = 'homepage/addElement';
