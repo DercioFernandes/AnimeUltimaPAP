@@ -95,7 +95,6 @@ class Serie extends CI_Controller {
                 $this->data['vendoC'] = 'seguirDone';
             }
         }
-        $this->updateRating($idSerie);
         $query = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
         $queryT = $this->main_model->get_main_where_array('temporadas','idSerie',$idSerie);
         $queryE = array();
@@ -221,13 +220,13 @@ class Serie extends CI_Controller {
         if(!empty($query)){
             $media = 0;
             foreach ($query as $q){
-                $media .= $q['rating'];
+                $media += $q['rating'];
             }
             $media = $media / count($query);
             $values = array(
                 'rating' => $media
             );
-            $this->main_model->edit('idSerie','serie',$idSerie,$values);
+            $this->main_model->edit('idSerie','series',$idSerie,$values);
         }
     }
 

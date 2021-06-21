@@ -33,6 +33,13 @@ class Main_model extends CI_Model
         return $query->result_array(); //Retorna array de objetos quando se usa o Result
     }
 
+    public function get_table_orderby($table,$orderby){
+        //$this->db->order_by('id');
+        $this->db->order_by($orderby,'desc');
+        $query = $this->db->get($table);
+        return $query->result_array(); //Retorna array de objetos quando se usa o Result
+    }
+
     public function get_main_where($table,$whereName,$equalsName){
         $this->db->where($whereName, $equalsName);
         $query = $this->db->get($table);
