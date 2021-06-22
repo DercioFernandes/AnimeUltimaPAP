@@ -15,6 +15,7 @@ class Serie extends CI_Controller {
             $this->data['seg'] = FALSE;
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['perms'] = $user['Permissoes'];
         }
     }
 

@@ -20,13 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AnimePrimera/application/views/myprofile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Homepage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/models/Main_model.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/models/Main_model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/img/seriesthumbs/3a6f3718ff7f88b26131f3783dd5a7f2.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,19 +55,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../estagio/projetoEstagio" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AnimePrimera/application/views" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\resources\js" />
-      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\views" />
-      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\controllers" />
-      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\models" />
-      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower\resources" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\views" />
+      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\controllers" />
+      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\resources\js" />
+      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\models" />
+      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower\resources" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -127,6 +131,7 @@
       <workItem from="1624179825321" duration="6989000" />
       <workItem from="1624261887992" duration="5404000" />
       <workItem from="1624299690616" duration="3277000" />
+      <workItem from="1624369955055" duration="4537000" />
     </task>
     <servers />
   </component>
@@ -162,9 +167,9 @@
       <screen x="0" y="30" width="1536" height="834" />
     </state>
     <state x="425" y="204" key="run.anything.popup/0.30.1536.834@0.30.1536.834" timestamp="1624265129601" />
-    <state x="431" y="186" width="672" height="678" key="search.everywhere.popup" timestamp="1624299877170">
+    <state x="431" y="186" width="672" height="678" key="search.everywhere.popup" timestamp="1624373899017">
       <screen x="0" y="30" width="1536" height="834" />
     </state>
-    <state x="431" y="186" width="672" height="678" key="search.everywhere.popup/0.30.1536.834@0.30.1536.834" timestamp="1624299877170" />
+    <state x="431" y="186" width="672" height="678" key="search.everywhere.popup/0.30.1536.834@0.30.1536.834" timestamp="1624373899017" />
   </component>
 </project>

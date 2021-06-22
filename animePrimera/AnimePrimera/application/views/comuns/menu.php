@@ -1,4 +1,4 @@
-<nav id="navbar" class="navbar navbar-expand-lg navbar-custom navShadow">
+<nav id="navbar" class="navbar navbar-expand-lg navbar-custom navShadow py-0">
     <div class="container-fluid">
         <a class="navbar-brand" href="<?=base_url()?>">
             <img src="<?=base_url('/resources/img/logo/animeprimeralargenewc.png')?>" alt="logo" class="img-fluid" id="logo">
@@ -18,9 +18,6 @@
                 <?php
                     if(!empty($user)):
                 ?>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="<?=base_url('login/logout')?>">Logout</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img id="pfp" src="<?php echo base_url('./resources/img/pfp/' . $fotoPerfil) ?>" title="fotoDePerfil"  />
@@ -29,7 +26,9 @@
                             <?php if($perms == 1): ?>
                                 <a class="dropdown-item" href="<?=base_url('serie')?>">Gerir</a>
                             <?php endif; ?>
-                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="<?=base_url('user/myprofile/' . $idUser)?>">Meu Perfil</a>
+                            <a class="dropdown-item" href="#">Definições</a>
+                            <a class="dropdown-item" href="<?=base_url('login/logout')?>">Logout</a>
                         </div>
                     </li>
                 <?php

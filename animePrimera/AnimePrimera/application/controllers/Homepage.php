@@ -25,6 +25,7 @@ class Homepage extends CI_Controller {
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
             //$perms = $this->getPerms($user['Permissoes']);
             //$this->data['perms'] = $perms;
         }

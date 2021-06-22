@@ -70,6 +70,15 @@ class Main_model extends CI_Model
         return $result->result_array();
     }
 
+    public function get_both_main_whereV2($table,$table2,$whereCondition,$idName,$id){
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->join($table2,$whereCondition);
+        $this->db->where($idName,$id);
+        $result = $this->db->get();
+        return $result->result_array();
+    }
+
     public function add($table,$values){
         $this->db->insert($table,$values);
     }

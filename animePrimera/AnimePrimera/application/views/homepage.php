@@ -94,7 +94,7 @@
 
     <div class="row">
         <div class="col">
-            <a class="btn-block suprise button text-center" id="surprise" href="<?php echo base_url('/serie/seriesinfo/' . $series[$suprise]['idSerie']) ?>"><b>Surprise-me!</b></a>
+            <a class="btn-block suprise button text-center" id="surprise" href="<?php echo base_url('/serie/seriesinfo/' . $series[$suprise]['idSerie']) ?>"><b>Surprise me!</b></a>
         </div>
     </div>
 

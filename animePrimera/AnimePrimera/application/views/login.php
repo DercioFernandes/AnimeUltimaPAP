@@ -1,7 +1,7 @@
 <?php $this->load->view('comuns/header'); ?>
     <?php $this->load->view('comuns/menu'); ?>
 
-    <div class="container-fluid">
+    <div class="container-fluid backgroundBodied">
         <div class="row">
             <div class="col logindiv">
                 <h2 class="logintitle text-center">Login</h2>
