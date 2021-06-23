@@ -30,9 +30,9 @@ class Homepage extends CI_Controller {
             //$this->data['perms'] = $perms;
         }
         $this->data['titulo'] = 'AnimePrimera';
-        $this->data['series'] = $this->main_model->get_table('series');
-        $this->data['episodios'] = $this->main_model->get_table('episodio');
-        $this->data['favseries'] = $this->main_model->get_table_orderby('series','rating');
+        $this->data['series'] = $this->main_model->get_table_limited('series',9,'idSerie');
+        $this->data['episodios'] = $this->main_model->get_table_limited('episodio',9,'idEpisodio');
+        $this->data['favseries'] = $this->main_model->get_table_orderby('series','rating',10);
 
         $size = count($this->main_model->get_table('series'));
         $suprise = $this->random($size,$this->main_model->get_table('series'));

@@ -15,6 +15,9 @@ class User extends CI_Controller {
             $this->data['seg'] = FALSE;
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['username'] = $user['Username'];
+            $this->data['email'] = $user['Email'];
+            $this->data['idUser'] = $user['idUser'];
             $this->data['perms'] = $user['Permissoes'];
         }
     }
@@ -23,14 +26,100 @@ class User extends CI_Controller {
 	{
         if($this->login_model->isLoggedIn() == true) {
             $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->data['titulo'] = 'Meu Perfil';
-            $this->data['serieFav'] = $this->main_model->get_both_main_whereV2('series', 'favorito', 'series.idSerie = favorito.idSerie', 'idUser', $user['idUser']);
+            $this->data['serieFav'] = $this->main_model->get_both_main_where_limited('series', 'favorito', 'series.idSerie = favorito.idSerie', 'idUser', $user['idUser'],9);
+            $this->data['serieSeg'] = $this->main_model->get_both_main_where_limited('series', 'seguir', 'series.idSerie = seguir.idSerie', 'idUser', $user['idUser'],9);
+            $this->data['serieHol'] = $this->main_model->get_both_main_where_limited('series', 'onhold', 'series.idSerie = onhold.idSerie', 'idUser', $user['idUser'],9);
+            $this->data['serieDro'] = $this->main_model->get_both_main_where_limited('series', 'dropped', 'series.idSerie = dropped.idSerie', 'idUser', $user['idUser'],9);
+            $this->data['serieAss'] = $this->main_model->get_both_main_where_limited('series', 'watching', 'series.idSerie = watching.idSerie', 'idUser', $user['idUser'],9);
             $this->load->view('myprofile', $this->data);
         }
 	}
+
+	public function editUser(){
+        if($this->login_model->isLoggedIn() == true) {
+            if(isset($_POST['Editar'])){
+                print_r($_POST);
+                $values = array(
+                    'Username' => $_POST['username'],
+                    'Email' => $_POST['email']
+                );
+                if(!isset($_POST['manterImagem'])){
+                    $uploadFile = $this->UploadFile('fotoperfil');
+                    $e = $uploadFile['fileData'];
+                    $pfp = $e['file_name'];
+                    $valuepfp = array(
+                        'FotoPerfil' => $pfp
+                    );
+                    $values = array_merge($values,$valuepfp);
+                }
+                if(!isset($_POST['password'])){
+                    $password = hash('sha256',$_POST['password']);
+                    $valuespass = array(
+                        'Password' => $password
+                    );
+                    $values = array_merge($values,$valuespass);
+                }
+                $this->main_model->edit('idUser','user',$_POST['idUser'],$values);
+                redirect('User/myprofile/' . $_POST['idUser']);
+            }else{
+                $user = $this->data['user'];
+                $idUser = $this->uri->segment(3);
+                $this->data['idUser'] = $idUser;
+                $this->data['query'] = $user;
+                $this->load->view('myprofileedit', $this->data);
+            }
+        }
+    }
+
+    public function allSeriesFav(){
+        if($this->login_model->isLoggedIn() == true) {
+            $user = $this->data['user'];
+            $idUser = $this->uri->segment(3);
+            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'favorito', 'series.idSerie = favorito.idSerie', 'idUser', $user['idUser']);
+            $this->data['h3title'] = 'Meus Favoritos';
+            $this->load->view('all',$this->data);
+        }
+    }
+
+    public function allSeriesSeg(){
+        if($this->login_model->isLoggedIn() == true) {
+            $user = $this->data['user'];
+            $idUser = $this->uri->segment(3);
+            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'seguir', 'series.idSerie = seguir.idSerie', 'idUser', $user['idUser']);
+            $this->data['h3title'] = 'Séries que Segues';
+            $this->load->view('all',$this->data);
+        }
+    }
+
+    public function allSeriesHol(){
+        if($this->login_model->isLoggedIn() == true) {
+            $user = $this->data['user'];
+            $idUser = $this->uri->segment(3);
+            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'onhold', 'series.idSerie = onhold.idSerie', 'idUser', $user['idUser']);
+            $this->data['h3title'] = 'Séries em Espera ';
+            $this->load->view('all',$this->data);
+        }
+    }
+
+    public function allSeriesAss(){
+        if($this->login_model->isLoggedIn() == true) {
+            $user = $this->data['user'];
+            $idUser = $this->uri->segment(3);
+            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'watching', 'series.idSerie = watching.idSerie', 'idUser', $user['idUser']);
+            $this->data['h3title'] = 'Séries que estás a ver ';
+            $this->load->view('all',$this->data);
+        }
+    }
+
+    public function allSeriesDro(){
+        if($this->login_model->isLoggedIn() == true) {
+            $user = $this->data['user'];
+            $idUser = $this->uri->segment(3);
+            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'dropped', 'series.idSerie = dropped.idSerie', 'idUser', $user['idUser']);
+            $this->data['h3title'] = 'Séries Dropadas ';
+            $this->load->view('all',$this->data);
+        }
+    }
 
     private function UploadFile($inputFileName)
     {
@@ -39,7 +128,7 @@ class User extends CI_Controller {
          */
         $this->load->library('upload');
         //Definimos um caminho para upload, neste caso será na raiz /app2
-        $path = "./resources/img/seriesthumb/";
+        $path = "./resources/img/pfp/";
 
         //Definimos as configurações para o upload
 

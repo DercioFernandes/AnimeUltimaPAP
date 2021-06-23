@@ -33,8 +33,16 @@ class Main_model extends CI_Model
         return $query->result_array(); //Retorna array de objetos quando se usa o Result
     }
 
-    public function get_table_orderby($table,$orderby){
+    public function get_table_limited($table,$limit,$idName){
+        $this->db->limit($limit,0);
+        $this->db->order_by($idName,'desc');
+        $query = $this->db->get($table);
+        return $query->result_array();
+    }
+
+    public function get_table_orderby($table,$orderby,$limit){
         //$this->db->order_by('id');
+        $this->db->limit($limit,0);
         $this->db->order_by($orderby,'desc');
         $query = $this->db->get($table);
         return $query->result_array(); //Retorna array de objetos quando se usa o Result
@@ -71,6 +79,16 @@ class Main_model extends CI_Model
     }
 
     public function get_both_main_whereV2($table,$table2,$whereCondition,$idName,$id){
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->join($table2,$whereCondition);
+        $this->db->where($idName,$id);
+        $result = $this->db->get();
+        return $result->result_array();
+    }
+
+    public function get_both_main_where_limited($table,$table2,$whereCondition,$idName,$id,$limit){
+        $this->db->limit($limit,0);
         $this->db->select('*');
         $this->db->from($table);
         $this->db->join($table2,$whereCondition);

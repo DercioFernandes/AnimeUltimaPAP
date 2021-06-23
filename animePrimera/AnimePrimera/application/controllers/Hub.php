@@ -27,8 +27,9 @@ class Hub extends CI_Controller {
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             //$perms = $this->getPerms($user['Permissoes']);
             //$this->data['perms'] = $perms;
+            $this->data['idUser'] = $user['idUser'];
         }
-        $this->data['titulo'] = 'AnimePrimera';
+        $this->data['titulo'] = 'AP Hub';
 
         $this->data['series'] = $this->main_model->get_table('series');
         $this->data['episodios'] = $this->main_model->get_table('episodio');
@@ -36,5 +37,17 @@ class Hub extends CI_Controller {
 
         $this->load->view('hub',$this->data);
 	}
+
+	public function criarPost(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            //$perms = $this->getPerms($user['Permissoes']);
+            //$this->data['perms'] = $perms;
+            $this->data['idUser'] = $user['idUser'];
+
+            $this->load->view('criarPost',$this->data);
+        }
+    }
 
 }

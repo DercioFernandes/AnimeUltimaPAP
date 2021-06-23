@@ -83,5 +83,7 @@ $route['serie/seguir'] = 'serie/seguir';
 $route['serie/porver'] = 'serie/porver';
 $route['serie/vendo'] = 'serie/vendo';
 
+$route['user/editUser'] = 'User/editUser';
+
 //Element
 $route['addElement'] = 'homepage/addElement';

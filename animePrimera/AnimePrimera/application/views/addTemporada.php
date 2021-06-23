@@ -11,6 +11,8 @@
             ?>
         </label>
         <input type="hidden" name="idSerie" value="<?php echo $idSerie; ?>">
+        <input type="text" name="tempTitle" placeholder="Titulo">
+        <input type="number" name="status" placeholder="Status">
         <div class="form-group">
             <input class="form-control" type="submit" class="btn btn-primary" name="Criar" value="Criar">
         </div>

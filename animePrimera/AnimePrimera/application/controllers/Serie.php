@@ -33,6 +33,19 @@ class Serie extends CI_Controller {
         $this->load->view('animeprimeraadm',$this->data);
 	}
 
+    public function allSeries(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            /*$perms = $this->getPerms($user['perms']);
+            $this->data['perms'] = $perms;*/
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
+        }
+        $this->data['h3title'] = 'Series Recentes';
+        $this->data['series'] = $this->main_model->get_table_limited('series',50,'idSerie');
+        $this->load->view('all',$this->data);
+    }
+
 	public function add()
     {
         $this->data['titulo'] = 'Criar Série - AP';

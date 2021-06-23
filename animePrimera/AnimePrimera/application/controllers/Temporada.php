@@ -41,6 +41,8 @@ class Temporada extends CI_Controller {
             $imgname = $e['file_name'];
             $values = array(
                 'idSerie' => $_POST['idSerie'],
+                'Titulo' => $_POST['tempTitle'],
+                'Status' => $_POST['status'],
                 'Thumbnail' => $imgname
             );
             $this->main_model->add('temporadas',$values);

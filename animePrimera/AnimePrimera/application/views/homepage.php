@@ -40,11 +40,6 @@
     </div>
     <div class="row">
         <div class="col">
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
             <div id="r" class="card-group">
                 <?php
                 if(!empty($episodios)):
@@ -61,6 +56,14 @@
                     </a>
                     <?php endforeach; ?>
                 <?php endif;  ?>
+                <a href="<?php echo base_url('episodio/allEpisodio')?>">
+                    <div class="card text-white bg-dark mb-3">
+                        <img id="image" class="card-img-top" src="<?php echo base_url('/resources/img/seriesthumb/+.png')?>" alt="Thumbnail">
+                        <div id="middle" class="card-body">
+                            <h5 id="text" class="card-title">+ Episódios</h5>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -83,12 +86,6 @@
                     </a>
                 <?php endforeach; ?>
             </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            <h3 id="centered" class="text-center"> Filmes Favoritos da Comunidade </h3>
         </div>
     </div>
 
@@ -117,6 +114,14 @@
                         </div>
                     </a>
                 <?php endforeach; ?>
+                <a href="<?php echo base_url('serie/allSeries')?>">
+                    <div class="card text-white bg-dark mb-3">
+                        <img id="image" class="card-img-top" src="<?php echo base_url('/resources/img/seriesthumb/+.png')?>" alt="Thumbnail">
+                        <div id="middle" class="card-body">
+                            <h5 id="text" class="card-title">+ Series</h5>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

@@ -32,6 +32,19 @@ class Episodio extends CI_Controller {
         $this->load->view('animeprimeraadm',$this->data);
 	}
 
+	public function allEpisodio(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            /*$perms = $this->getPerms($user['perms']);
+            $this->data['perms'] = $perms;*/
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
+        }
+        $this->data['h3title'] = 'Adicionados Recentemente';
+        $this->data['episodios'] = $this->main_model->get_table_limited('episodio',50,'idEpisodio');
+        $this->load->view('allEps',$this->data);
+    }
+
 	public function gerirEps(){
         if(isset($_POST['Editar'])){
             if(isset($_POST['idEpisodio'])){
@@ -68,7 +81,6 @@ class Episodio extends CI_Controller {
     public function addEps()
     {
         if(isset($_POST['Criar'])){
-            echo "entrou";
             //$animeName = str_replace(' ', '%20' ,$_POST['animeName']);
             //$url = 'http://localhost:3000/getAnimeEpisode/' . $animeName . '/' . $_POST['animeEps'];
             //$infoeps = file_get_contents($url);
@@ -76,12 +88,16 @@ class Episodio extends CI_Controller {
             $video = $this->UploadVideo($_POST);
             $url = $video['video_path'] . $video['video_name'];
             $videoname = $_POST['animeName'] . ' | ' . $_POST['animeEps'];
+            $query = $this->main_model->get_main_where_array('temporadas','idTemporada',$_POST['idTemporada']);
+            $valuest = array(
+                'nEpisodios' => $query[0]['nEpisodios'] + 1
+            );
             $values = array(
                 'url' => $url,
                 'idTemporada' => $_POST['idTemporada'],
                 'titulo' => $videoname
             );
-            print_r($values);
+            $this->main_model->edit('idTemporada','temporadas',$_POST['idTemporada'],$valuest);
             $this->main_model->add('episodio',$values);
             redirect();
         }else{
@@ -150,7 +166,7 @@ class Episodio extends CI_Controller {
                     $nextEpsId = $queryEps[$i + 1]['idEpisodio'];
                     redirect(base_url('/Episodio/watchepisode/' . $nextEpsId));
                 }
-                else
+                else{}
                     redirect(base_url());
             }
             break;
