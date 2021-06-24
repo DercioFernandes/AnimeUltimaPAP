@@ -9,6 +9,16 @@
         </div>
         <div class="row">
             <div class="col">
+                <?php
+                    if(!empty($user)):
+                ?>
+                        <?php if($perms == 1): ?>
+                            <a class="editTemp" href="<?php echo base_url('serie/editar/' . $idSerie); ?>">Editar</a>
+                            <a class="remTemp" href="<?php echo base_url('serie/remover/' . $idSerie); ?>">Remover</a>
+                        <?php endif; ?>
+                <?php
+                    endif;
+                ?>
                 <h3 class="seriestitle"><b><?php echo $query[0]['Titulo']; ?></b></h3>
                 <p class="seriesdescription">
                     <?php echo $query[0]['Descricao']; ?>
@@ -51,12 +61,30 @@
             </div>
         </div>
         <?php
+        if(!empty($user)):
+            ?>
+            <?php if($perms == 1): ?>
+                <a class="addTemp" href="<?php echo base_url('temporada/addTemp/' . $idSerie); ?>">Adicionar Temporada</a>
+            <?php endif; ?>
+        <?php endif; ?>
+        <?php
         $contador = 0;
         foreach($temporadas as $t): ?>
         <div class="row">
             <div class="col">
                 <h6 class="tempname">
                     <?php $colapse = 'collapse' . $contador ?>
+
+                    <?php
+                    if(!empty($user)):
+                        ?>
+                        <?php if($perms == 1): ?>
+                            <a class="editTemp" href="#">Editar</a>
+                            <a class="gerirTemp" href="<?php echo base_url('episodio/gerirEps/' . $t['idTemporada']); ?>">Gerir Episódios</a>
+                            <a class="remTemp" href="<?php echo base_url('temporada/remover/' . $t['idTemporada']); ?>">Remover</a>
+                        <?php endif; ?>
+                    <?php endif; ?>
+
                     <a class="btn" data-toggle="collapse" href="#<?php echo $colapse ?>" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <?php echo $t['Titulo'] ?>
                     </a>

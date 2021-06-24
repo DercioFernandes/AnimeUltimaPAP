@@ -1,3 +1,6 @@
+body{
+    background-color: #1E1B18;
+}
 
 #logo {
     height: 100px;
@@ -16,9 +19,16 @@ h3{
     font-family: "Good Times Rg" ;
 }
 
+
+
+.card{
+    height: 210px !important;
+    width: 144px !important;
+}
+
 #image{
-    width: 100%;
-    height: 213px;
+    height: inherit;
+    width: inherit;
     /* Width Limite */
     opacity: 1;
     display: block;
@@ -37,9 +47,20 @@ h3{
     text-align: center;
 }
 
+.container:hover .image {
+    opacity: 0.3;
+}
+
+.container:hover .middle {
+    opacity: 1;
+}
+
 #text {
+    height: inherit;
+    width: inherit;
     color: white;
-    font-size: 16px;
+    font-size: 15px;
+    padding: 16px 32px;
 }
 
 th{
@@ -81,7 +102,7 @@ th{
 }
 
 #vbg{
-    background-color: black;
+    background-color: #1E1B18;
 }
 
 #video {
@@ -128,17 +149,17 @@ th{
 
 #btnEpsN{
     color: #cdc49b;
-    background-color: black;
+    background-color: #1E1B18;
     border: none;
 }
 
 #btnEpsN:hover{
     background-color: #cdc49b;
-    color: black;
+    color: #1E1B18;
 }
 
 .seriesinfo{
-    background-color: black;
+    background-color: #1E1B18;
 }
 
 .seriestitle{
@@ -180,16 +201,17 @@ th{
 }
 
 .tempname a{
+    border-top-left-radius: 0px;
     font-family: "Good Times Rg";
     font-size: 25px;
     width: 100%;
-    color: black;
+    color: #1E1B18;
     background-color: #cdc49b;
 }
 
 .tempname a:hover{
     color: #cdc49b;
-    background-color: black;
+    background-color: #1E1B18;
 }
 
 .tempname a:checked{
@@ -199,14 +221,14 @@ th{
 
 .templist{
     width: 100%;
-    color: black;
+    color: #1E1B18;
     background-color: #cdc49b;
     list-style-type: none;
 }
 
 .templist li{
     width: 100%;
-    color: black;
+    color: #1E1B18;
     font-size: 20px;
     background-color: #cdc49b;
 }
@@ -215,27 +237,27 @@ th{
     padding-top: 1%;
     text-decoration: none;
     width: 100%;
-    color: black;
+    color: #1E1B18;
     background-color: #cdc49b;
 }
 
 .templist li:hover{
     width: 100%;
     color: #cdc49b;
-    background-color: black;
+    background-color: #1E1B18;
 }
 
 .templist li a:hover{
     text-decoration: none;
     width: 100%;
     color: #cdc49b;
-    background-color: black;
+    background-color: #1E1B18;
 }
 
 .seguir{
     border-style: none;
     font-size: 20px;
-    color: black;
+    color: #1E1B18;
     background-color: #cdc49b;
     width: 100%;
     padding-left: 1%;
@@ -247,7 +269,7 @@ th{
     border-style: none;
     font-size: 20px;
     color: #cdc49b;
-    background-color: black;
+    background-color: #1E1B18;
     width: 100%;
     padding-left: 1%;
     padding-right: 1%;
@@ -257,7 +279,7 @@ th{
 .seguirDone:hover{
     text-decoration: none;
     border-style: none;
-    color: black;
+    color: #1E1B18;
     background-color: #cdc49b;
     width: 100%;
     padding-left: 1%;
@@ -272,13 +294,13 @@ th{
     border-top: none;
     text-decoration: none;
     color: #cdc49b;
-    background-color: black;
+    background-color: #1E1B18;
 }
 
 .suprise{
     font-family: "Good Times Rg";
     border-style: none;
-    color: black;
+    color: #1E1B18;
     background-color: #cdc49b;
     font-size: 40px;
     padding-top: 4%;
@@ -289,22 +311,22 @@ th{
 .suprise:hover{
     text-decoration: none;
     color: #cdc49b;
-    background-color: black;
+    background-color: #1E1B18;
 }
 
 .modal-header{
     color: #cdc49b;
-    background-color: black;
+    background-color: #1E1B18;
 }
 
 .modal-body{
     color: #cdc49b;
-    background-color: black;
+    background-color: #1E1B18;
 }
 
 .logintitle{
     color: #cdc49b;
-    background-color: black;
+    background-color: #1E1B18;
     margin-left: 20%;
     margin-right: 20%;
     font-family: "Good Times Rg";
@@ -332,13 +354,13 @@ th{
     width: 60%;
     padding-top: 1%;
     padding-bottom: 1%;
-    color: black;
+    color: #1E1B18;
     background-color: #cdc49b;
 }
 
 .loginbutton:hover{
     color: #cdc49b;
-    background-color: black;
+    background-color: #1E1B18;
 }
 
 .logindiv{
@@ -368,17 +390,17 @@ th{
 }
 
 .dropdown-item:hover{
-    color: black !important;
+    color: #1E1B18 !important;
     background-color: #cdc49b !important;
 }
 
 .navbar-expand-lg .navbar-nav .dropdown-menu{
-    background-color: black;
+    background-color: #1E1B18;
 }
 
 .mypfpbg{
     background-image: url("../img/bg/BackgroundAPLogin.png");
-    border-bottom: black;
+    border-bottom: #1E1B18;
 }
 
 .myprofilepfp{
@@ -389,40 +411,42 @@ th{
     width: 250px;
     border-style: solid;
     border-width: 5px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     border-color: #cdc49b;
     border-bottom: none;
-    background-color: black;
+    background-color: #1E1B18;
 }
 
 .mypusername{
-    color: black;
+    color: #1E1B18;
     background-color: #cdc49b;
     margin-bottom: 0;
 }
 
 .mypemail{
-    color: black;
+    color: #1E1B18;
     background-color: #cdc49b;
     margin-bottom: 0;
 }
 
 .mypedit{
     color: #cdc49b;
-    background-color: black;
+    background-color: #1E1B18;
     font-size: 25px;
     text-decoration: none;
     font-family: "Good Times Rg";
 }
 
 .mypedit:hover{
-    color: black !important;
+    color: #1E1B18 !important;
     background-color: #cdc49b !important;
     text-decoration: none;
 
 }
 
 .hubt{
-    color: black;
+    color: #1E1B18;
     background-color: #cdc49b;
     font-size: 50px;
     margin: 0;
@@ -431,12 +455,107 @@ th{
 
 .hubp{
     color: #cdc49b;
-    background-color: black;
+    background-color: #1E1B18;
     font-size: 18px;
     font-family: Helvetica;
     padding-top: 2%;
     padding-bottom: 2%;
 }
+
+.btnEdit{
+    padding:1%;
+    float: right;
+}
+
+.editImg{
+    height: 30px;
+}
+
+.addTemp{
+    font-family: "Good Times Rg";
+    font-size: 25px;
+    width: 100%;
+    color: #1E1B18;
+    background-color: #D8315B;
+    display: block;
+    text-align: center;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+.addTemp:hover{
+    text-decoration:none;
+    color: #D8315B;
+    background-color: #1E1B18;
+}
+
+.editTemp{
+    font-family: "Good Times Rg";
+    color: #1E1B18;
+    border-top-left-radius: 15px !important;
+    padding-left: 1%;
+    padding-right: 1%;
+    font-size: 15px !important;
+    text-decoration: none;
+    background-color: #3E92CC !important;
+}
+
+.gerirTemp{
+    font-family: "Good Times Rg";
+    color: #cdc49b !important;
+    padding-left: 1%;
+    padding-right: 1%;
+    font-size: 15px !important;
+    text-decoration: none;
+    background-color: #0A2463 !important;
+}
+
+.remTemp{
+    color:#1E1B18;
+    font-family: "Good Times Rg";
+    border-top-right-radius: 15px !important;
+    padding-left: 1%;
+    padding-right: 1%;
+    font-size: 15px !important;
+    text-decoration: none;
+    background-color: #D8315B !important;
+}
+
+.editTemp:hover{
+    color: #3E92CC !important;
+    background-color:#1E1B18 !important;
+    text-decoration: none;
+}
+
+.gerirTemp:hover{
+    color: #0A2463 !important;
+    background-color:#cdc49b !important;
+    text-decoration: none;
+}
+
+.remTemp:hover{
+    color: #D8315B !important;
+    background-color:#1E1B18 !important;
+    text-decoration: none;
+}
+
+.fm{
+    background-color: white;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.titlefm th{
+    color: black;
+}
+
+.descfm th{
+
+}
+
+
 
 @media all and (max-width: 575px) {
 
@@ -452,7 +571,7 @@ th{
     .seguir{
         border-style: none;
         font-size: 11px;
-        color: black;
+        color: #1E1B18;
         background-color: #cdc49b;
         width: 100%;
         padding-left: 1%;
@@ -464,7 +583,7 @@ th{
         border-style: none;
         font-size: 11px;
         color: #cdc49b;
-        background-color: black;
+        background-color: #1E1B18;
         width: 100%;
         padding-left: 1%;
         padding-right: 1%;
@@ -498,6 +617,49 @@ th{
     .dropdown-item{
         color: #cdc49b !important;
         text-align: start !important;
+    }
+
+    .card{
+        height: 210px !important;
+        width: 144px !important;
+        display: inline-block !important;
+    }
+
+    #image{
+        height: inherit;
+        width: inherit;
+        /* Width Limite */
+        opacity: 1;
+        display: inline-block;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    #middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .container:hover .image {
+        opacity: 0.3;
+    }
+
+    .container:hover .middle {
+        opacity: 1;
+    }
+
+    #text {
+        height: inherit;
+        width: inherit;
+        color: white;
+        font-size: 15px;
+        padding: 16px 32px;
     }
 
 }

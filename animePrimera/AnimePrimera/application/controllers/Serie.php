@@ -67,6 +67,12 @@ class Serie extends CI_Controller {
         }
     }
 
+    public function editar(){
+        $idSerie = $this->uri->segment(3);
+
+        $this->load->view();
+    }
+
     public function remover(){
         $idSerie = $this->uri->segment(3);
         $querye = $querye = $this->main_model->get_main_where_array('temporadas','idSerie', $idSerie);

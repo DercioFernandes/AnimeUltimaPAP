@@ -46,40 +46,56 @@ class Episodio extends CI_Controller {
     }
 
 	public function gerirEps(){
-        if(isset($_POST['Editar'])){
-            if(isset($_POST['idEpisodio'])){
-                $values = array(
-                    'url' => $_POST['url'],
-                    'titulo' => $_POST['titulo'],
-                    'dataRelease' => $_POST['dataRelease']
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            $this->data['perms'] = $user['Permissoes'];
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
+            if(isset($_POST['Editar'])){
+                if(isset($_POST['idEpisodio'])){
+                    $values = array(
+                        'url' => $_POST['url'],
+                        'titulo' => $_POST['titulo'],
+                        'dataRelease' => $_POST['dataRelease']
+                    );
+                    $this->main_model->edit('idEpisodio','episodio',$_POST['idEpisodio'],$values);
+                    redirect();
+                }else{
+                    $this->data['query'] = $this->main_model->get_main_where('episodio','idEpisodio',$_POST['Editar']);
+                    $this->data['idEpisodio'] = $_POST['Editar'];
+                    $this->load->view('editarEpisodio',$this->data);
+                }
+
+            }elseif(isset($_POST['Remover'])){
+                $this->main_model->delete('idEpisodio','episodio',$_POST['Remover']);
+                $query = $this->main_model->get_main_where_array('temporadas','idTemporada',$_POST['idTemporada']);
+                $valuest = array(
+                    'nEpisodios' => $query[0]['nEpisodios'] - 1
                 );
-                $this->main_model->edit('idEpisodio','episodio',$_POST['idEpisodio'],$values);
+                $this->main_model->edit('idTemporada','temporadas',$_POST['idTemporada'],$valuest);
                 redirect();
             }else{
-                $this->data['query'] = $this->main_model->get_main_where('episodio','idEpisodio',$_POST['Editar']);
-                $this->data['idEpisodio'] = $_POST['Editar'];
-                $this->load->view('editarEpisodio',$this->data);
+                $idTemporada = $this->uri->segment(3);
+                $this->data['idTemporada'] = $idTemporada;
+                $query = $this->main_model->get_main_where('temporadas','idTemporada',$idTemporada);
+                $querye = $this->main_model->get_main_where_array('episodio','idTemporada', $idTemporada);
+                $this->data['query'] = $query;
+                $this->data['querye'] = $querye;
+                $this->data['querys'] = $this->main_model->get_main_where('series','idSerie',$query[0]->idSerie);
+                $this->load->view('gerirEpisodio',$this->data);
             }
 
-        }elseif(isset($_POST['Remover'])){
-            $this->main_model->delete('idEpisodio','episodio',$_POST['Remover']);
-            redirect();
-        }else{
-            $idTemporada = $this->uri->segment(3);
-            $this->data['idTemporada'] = $idTemporada;
-            $query = $this->main_model->get_main_where('temporadas','idTemporada',$idTemporada);
-            $querye = $this->main_model->get_main_where_array('episodio','idTemporada', $idTemporada);
-            $this->data['query'] = $query;
-            $this->data['querye'] = $querye;
-            print_r($query);
-            $this->data['querys'] = $this->main_model->get_main_where('series','idSerie',$query[0]->idSerie);
-            $this->load->view('gerirEpisodio',$this->data);
         }
-
     }
 
     public function addEps()
     {
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            $this->data['perms'] = $user['Permissoes'];
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
+        }
         if(isset($_POST['Criar'])){
             //$animeName = str_replace(' ', '%20' ,$_POST['animeName']);
             //$url = 'http://localhost:3000/getAnimeEpisode/' . $animeName . '/' . $_POST['animeEps'];
@@ -169,7 +185,6 @@ class Episodio extends CI_Controller {
                 else{}
                     redirect(base_url());
             }
-            break;
         }
         redirect(base_url());
     }
@@ -185,7 +200,6 @@ class Episodio extends CI_Controller {
                     redirect(base_url('/Episodio/watchepisode/' . $nextEpsId));
                 }
             }
-            break;
         }
         redirect(base_url());
     }

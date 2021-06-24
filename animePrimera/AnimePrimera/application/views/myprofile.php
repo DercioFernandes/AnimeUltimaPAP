@@ -6,8 +6,8 @@
     <div class="row mypfpbg">
         <div class="col">
             <img class="myprofilepfp text-center" src="<?php echo base_url('./resources/img/pfp/' . $fotoPerfil) ?>" title="userPFP" alt="userPFP"/>
-            <h3 class="mypusername">Username: <?php echo $username ?></h3>
-            <h3 class="mypemail">Email: <?php echo $email ?></h3>
+            <h3 class="mypusername"><b>Username: </b><small><?php echo $username ?></small></h3>
+            <h3 class="mypemail"><b>Email:</b><small> <?php echo $email ?></small></h3>
             <a class="btn-block text-center mypedit" href="<?php echo base_url('user/editUser/' . $idUser) ?>">Editar Perfil</a>
         </div>
     </div>
