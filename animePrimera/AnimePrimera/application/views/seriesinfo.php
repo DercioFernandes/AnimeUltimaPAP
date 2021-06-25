@@ -79,7 +79,7 @@
                     if(!empty($user)):
                         ?>
                         <?php if($perms == 1): ?>
-                            <a class="editTemp" href="#">Editar</a>
+                            <a class="editTemp" href="<?php echo base_url('temporada/editarTemp/'.$idSerie.'/'.$t['idTemporada']) ?>">Editar</a>
                             <a class="gerirTemp" href="<?php echo base_url('episodio/gerirEps/' . $t['idTemporada']); ?>">Gerir Episódios</a>
                             <a class="remTemp" href="<?php echo base_url('temporada/remover/' . $t['idTemporada']); ?>">Remover</a>
                         <?php endif; ?>
@@ -98,6 +98,9 @@
                                 <?php $contador += 1 ?>
                             </li>
                             <?php endfor; ?>
+                            <li class="text-center">
+                                <a class="btn-block text-center" href="<?php echo base_url('episodio/addEps/' . $t['idTemporada']); ?>"> Adicionar Episódio </a>
+                            </li>
                         </ul>
                     </div>
             </div>

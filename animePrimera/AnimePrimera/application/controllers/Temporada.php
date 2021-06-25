@@ -58,6 +58,39 @@ class Temporada extends CI_Controller {
         }
     }
 
+    public function editarTemp(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            if(isset($_POST['Editar'])){
+                $values = array(
+                    'Titulo' => $_POST['titulo'],
+                    'Status' => $_POST['status'],
+                    'DataRelease' => $_POST['dataRelease']
+                );
+                $uploadFile = $this->UploadFile('thumbnail');
+                if($uploadFile['error'] == 0){
+                    $e = $uploadFile['fileData'];
+                    $imgname = $e['file_name'];
+                    $valuesImg = array(
+                        'Thumbnail' => $imgname
+                    );
+                    $values = array_merge($values,$valuesImg);
+                }
+                $this->main_model->edit('idTemporada','temporadas',$_POST['idTemporada'],$values);
+                redirect('serie/seriesinfo/' . $_POST['idSerie']);
+            }else{
+                $idSerie = $this->uri->segment(3);
+                $idTemporada = $this->uri->segment(4);
+                $this->data['idSerie'] = $idSerie;
+                $this->data['idTemporada'] = $idTemporada;
+                $this->data['idUser'] = $user['idUser'];
+                $this->data['temporada'] = $this->main_model->get_main_where_array('temporadas','idTemporada',$idTemporada);
+                $this->load->view('editarTemporada',$this->data);
+            }
+        }
+    }
+
     public function remover(){
         $idTemporada = $this->uri->segment(3);
         $querye = $querye = $this->main_model->get_main_where_array('episodio','idTemporada', $idTemporada);

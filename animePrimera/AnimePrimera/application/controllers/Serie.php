@@ -68,9 +68,36 @@ class Serie extends CI_Controller {
     }
 
     public function editar(){
-        $idSerie = $this->uri->segment(3);
-
-        $this->load->view();
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            if(isset($_POST['Editar'])){
+                $values = array(
+                    'Titulo' => $_POST['titulo'],
+                    'Autor' => $_POST['autor'],
+                    'Descricao' => $_POST['descricao'],
+                    'Tipo' => $_POST['tipo'],
+                    'DataRelease' => $_POST['dataRelease']
+                );
+                $uploadFile = $this->UploadFile('thumbnail');
+                if($uploadFile['error'] == 0){
+                    $e = $uploadFile['fileData'];
+                    $imgname = $e['file_name'];
+                    $valuesImg = array(
+                        'Photo' => $imgname
+                    );
+                    $values = array_merge($values,$valuesImg);
+                }
+                $this->main_model->edit('idSerie','series',$_POST['idSerie'],$values);
+                redirect('serie/seriesinfo/' . $_POST['idSerie']);
+            }else{
+                $idSerie = $this->uri->segment(3);
+                $this->data['idSerie'] = $idSerie;
+                $this->data['idUser'] = $user['idUser'];
+                $this->data['serie'] = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
+                $this->load->view('editarSerie',$this->data);
+            }
+        }
     }
 
     public function remover(){

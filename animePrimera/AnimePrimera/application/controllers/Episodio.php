@@ -103,8 +103,9 @@ class Episodio extends CI_Controller {
             //print_r($infoeps);
             $video = $this->UploadVideo($_POST);
             $url = $video['video_path'] . $video['video_name'];
-            $videoname = $_POST['animeName'] . ' | ' . $_POST['animeEps'];
             $query = $this->main_model->get_main_where_array('temporadas','idTemporada',$_POST['idTemporada']);
+            $queryS = $this->main_model->get_main_where_array('series','idSerie',$query[0]['idSerie']);
+            $videoname = $queryS[0]['Titulo'] . ' ' . $query[0]['Titulo'] . ' | ' . $_POST['animeEps'];
             $valuest = array(
                 'nEpisodios' => $query[0]['nEpisodios'] + 1
             );

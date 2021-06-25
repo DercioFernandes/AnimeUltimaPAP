@@ -23,9 +23,6 @@
                             <img id="pfp" src="<?php echo base_url('./resources/img/pfp/' . $fotoPerfil) ?>" title="fotoDePerfil"  />
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <?php if($perms == 1): ?>
-                                <a class="dropdown-item" href="<?=base_url('serie')?>">Gerir</a>
-                            <?php endif; ?>
                             <a class="dropdown-item" href="<?=base_url('user/myprofile/' . $idUser)?>">Meu Perfil</a>
                             <a class="dropdown-item" href="#">Definições</a>
                             <a class="dropdown-item" href="<?=base_url('login/logout')?>">Logout</a>
