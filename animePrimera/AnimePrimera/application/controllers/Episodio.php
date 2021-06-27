@@ -18,28 +18,8 @@ class Episodio extends CI_Controller {
         }
     }
 
-	public function index()
-	{
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-        }
-        $this->data['titulo'] = 'AnimePrimera ADM';
-        $this->data['series'] = $this->main_model->get_table('series');
-
-        $this->load->view('animeprimeraadm',$this->data);
-	}
-
 	public function allEpisodio(){
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->data['idUser'] = $user['idUser'];
-        }
+        $this->checkLogin();
         $this->data['h3title'] = 'Adicionados Recentemente';
         $this->data['episodios'] = $this->main_model->get_table_limited('episodio',50,'idEpisodio');
         $this->load->view('allEps',$this->data);
@@ -51,6 +31,7 @@ class Episodio extends CI_Controller {
             $this->data['perms'] = $user['Permissoes'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $this->data['idUser'] = $user['idUser'];
+            $this->checkPerms(1,$this->data['perms']);
             if(isset($_POST['Editar'])){
                 if(isset($_POST['idEpisodio'])){
                     $values = array(
@@ -90,12 +71,8 @@ class Episodio extends CI_Controller {
 
     public function addEps()
     {
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            $this->data['perms'] = $user['Permissoes'];
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->data['idUser'] = $user['idUser'];
-        }
+        $this->checkLogin();
+        $this->checkPerms(1,$this->data['perms']);
         if(isset($_POST['Criar'])){
             //$animeName = str_replace(' ', '%20' ,$_POST['animeName']);
             //$url = 'http://localhost:3000/getAnimeEpisode/' . $animeName . '/' . $_POST['animeEps'];
@@ -114,9 +91,10 @@ class Episodio extends CI_Controller {
                 'idTemporada' => $_POST['idTemporada'],
                 'titulo' => $videoname
             );
-            $this->main_model->edit('idTemporada','temporadas',$_POST['idTemporada'],$valuest);
-            $this->main_model->add('episodio',$values);
-            redirect();
+            print_r($_POST);
+            //$this->main_model->edit('idTemporada','temporadas',$_POST['idTemporada'],$valuest);
+            //$this->main_model->add('episodio',$values);
+            //redirect();
         }else{
             $idTemporada = $this->uri->segment(3);
             $this->data['idTemporada'] = $idTemporada;
@@ -217,15 +195,7 @@ class Episodio extends CI_Controller {
         return $querymerged;
     }
 
-    //appends all error messages
-    private function handle_error($err) {
-        $this->error .= $err . "\r\n";
-    }
 
-    //appends all success messages
-    private function handle_success($succ) {
-        $this->success .= $succ . "\r\n";
-    }
 
 
     private function UploadVideo($inputFileName){
@@ -340,6 +310,25 @@ class Episodio extends CI_Controller {
 
         }
         return $data;
+    }
+
+    private function checkLogin(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            /*$perms = $this->getPerms($user['perms']);
+            $this->data['perms'] = $perms;*/
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
+            $this->data['perms'] = $user['Permissoes'];
+        }else{
+            redirect();
+        }
+    }
+
+    private function checkPerms($levelNeeded,$perms){
+        if($perms != $levelNeeded){
+            redirect();
+        }
     }
 
 

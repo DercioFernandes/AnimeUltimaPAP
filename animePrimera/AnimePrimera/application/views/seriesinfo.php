@@ -98,9 +98,15 @@
                                 <?php $contador += 1 ?>
                             </li>
                             <?php endfor; ?>
-                            <li class="text-center">
-                                <a class="btn-block text-center" href="<?php echo base_url('episodio/addEps/' . $t['idTemporada']); ?>"> Adicionar Episódio </a>
-                            </li>
+                            <?php
+                            if(!empty($user)):
+                                ?>
+                                <?php if($perms == 1): ?>
+                                    <li class="text-center">
+                                        <a class="btn-block text-center" href="<?php echo base_url('episodio/addEps/' . $t['idTemporada']); ?>"> Adicionar Episódio </a>
+                                    </li>
+                                <?php endif; ?>
+                            <?php endif; ?>
                         </ul>
                     </div>
             </div>

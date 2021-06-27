@@ -597,8 +597,81 @@ th{
     background-color: #0A2463 !important;
 }
 
+.staffPostCarousel{
+    max-height: 500px !important;
+    margin-right: 0 !important;
+}
 
-@media all and (max-width: 575px) {
+.staffPostCarousel a:hover{
+    text-decoration: none;
+}
+
+.spcHeader h3{
+    background-color: #cdc49b;
+    color: #1E1B18;
+    font-size: 30px;
+    margin-bottom: 0;
+}
+
+.spcHeader h3:hover{
+    background-color: #1E1B18;
+    color: #cdc49b;
+    text-decoration: none;
+}
+
+.spcBody{
+    max-height: 500px !important;
+    height: 500px;
+}
+
+.videoHub{
+    margin-bottom: 0 !important;
+}
+
+.compostimg{
+    width: 100%;
+    height: 100%;
+}
+
+.mlptitle{
+    width: 100%;
+    font-size: 30px;
+    background-color: #cdc49b;
+    color: #1E1B18;
+    margin-left: 0 !important;
+    font-family: "Good Times Rg";
+}
+
+.mlplist{
+    list-style-type:none;
+}
+
+.mlplistitem{
+    background-color: #1E1B18;
+    color: #cdc49b;
+    text-decoration: none;
+}
+
+.mlplistitem a{
+    text-decoration: none;
+    background-color: inherit;
+    color: inherit;
+    font-size: 20px;
+}
+
+.mlplistitem:hover{
+    background-color: #cdc49b;
+    color: #1E1B18;
+}
+
+.mlplistitem a:hover{
+    text-decoration: none;
+    width: 100%;
+    background-color: #cdc49b;
+    color: #1E1B18;
+}
+
+@media all and (max-width: 1000px) {
 
     .backgroundBodied{
         min-height: 610px;
@@ -744,8 +817,8 @@ th{
     .card{
         margin: 0 auto !important;
         padding: 0 !important;
-        height: 100% !important;
-        width: 70px !important;
+        height: 200px !important;
+        width: 100% !important;
     }
 
     #image{
@@ -754,6 +827,7 @@ th{
         height: inherit;
         width: inherit;
         /* Width Limite */
+        object-fit: cover;
         opacity: 1;
         display: block;
         transition: .5s ease;

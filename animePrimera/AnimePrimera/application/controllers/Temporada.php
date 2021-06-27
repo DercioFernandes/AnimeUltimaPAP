@@ -18,22 +18,9 @@ class Temporada extends CI_Controller {
         }
     }
 
-	public function index()
-	{
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-        }
-        $this->data['titulo'] = 'AnimePrimera ADM';
-        $this->data['series'] = $this->main_model->get_table('series');
-
-        $this->load->view('animeprimeraadm',$this->data);
-	}
-
-
     public function addTemp(){
+        $this->checkLogin();
+        $this->checkPerms(1,$this->data['perms']);
         if(isset($_POST['Criar'])){
             $query = $this->main_model->get_main_where('series','idSerie',$_POST['idSerie']);
             $uploadFile = $this->UploadFile('thumbnail');
@@ -62,6 +49,7 @@ class Temporada extends CI_Controller {
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->checkPerms(1,$this->data['perms']);
             if(isset($_POST['Editar'])){
                 $values = array(
                     'Titulo' => $_POST['titulo'],
@@ -92,6 +80,8 @@ class Temporada extends CI_Controller {
     }
 
     public function remover(){
+        $this->checkLogin();
+        $this->checkPerms(1,$this->data['perms']);
         $idTemporada = $this->uri->segment(3);
         $querye = $querye = $this->main_model->get_main_where_array('episodio','idTemporada', $idTemporada);
         foreach( $querye as $episodio ){
@@ -162,6 +152,25 @@ class Temporada extends CI_Controller {
 
         }
         return $data;
+    }
+
+    private function checkLogin(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            /*$perms = $this->getPerms($user['perms']);
+            $this->data['perms'] = $perms;*/
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
+            $this->data['perms'] = $user['Permissoes'];
+        }else{
+            redirect();
+        }
+    }
+
+    private function checkPerms($levelNeeded,$perms){
+        if($perms != $levelNeeded){
+            redirect();
+        }
     }
 
 

@@ -19,28 +19,8 @@ class Serie extends CI_Controller {
         }
     }
 
-	public function index()
-	{
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-        }
-        $this->data['titulo'] = 'AnimePrimera ADM';
-        $this->data['series'] = $this->main_model->get_table('series');
-
-        $this->load->view('animeprimeraadm',$this->data);
-	}
-
     public function allSeries(){
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->data['idUser'] = $user['idUser'];
-        }
+        $this->checkLogin();
         $this->data['h3title'] = 'Series Recentes';
         $this->data['series'] = $this->main_model->get_table_limited('series',50,'idSerie');
         $this->load->view('all',$this->data);
@@ -48,6 +28,8 @@ class Serie extends CI_Controller {
 
 	public function add()
     {
+        $this->checkLogin();
+        $this->checkPerms(1,$this->data['perms']);
         $this->data['titulo'] = 'Criar Série - AP';
         if(isset($_POST['Criar'])){
             $uploadFile = $this->UploadFile('thumbnail');
@@ -71,6 +53,7 @@ class Serie extends CI_Controller {
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->checkPerms(1,$this->data['perms']);
             if(isset($_POST['Editar'])){
                 $values = array(
                     'Titulo' => $_POST['titulo'],
@@ -101,6 +84,7 @@ class Serie extends CI_Controller {
     }
 
     public function remover(){
+        $this->checkPerms(1,$this->data['perms']);
         $idSerie = $this->uri->segment(3);
         $querye = $querye = $this->main_model->get_main_where_array('temporadas','idSerie', $idSerie);
         foreach( $querye as $temporada ){
@@ -347,6 +331,25 @@ class Serie extends CI_Controller {
 
         }
         return $data;
+    }
+
+    private function checkLogin(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            /*$perms = $this->getPerms($user['perms']);
+            $this->data['perms'] = $perms;*/
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
+            $this->data['perms'] = $user['Permissoes'];
+        }else{
+            redirect();
+        }
+    }
+
+    private function checkPerms($levelNeeded,$perms){
+        if($perms != $levelNeeded){
+            redirect();
+        }
     }
 
 
