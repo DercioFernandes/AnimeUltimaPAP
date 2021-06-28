@@ -37,6 +37,34 @@ class Hub extends CI_Controller {
         $this->load->view('hub',$this->data);
 	}
 
+	public function hubinfo(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            //$perms = $this->getPerms($user['Permissoes']);
+            //$this->data['perms'] = $perms;
+            $this->data['idUser'] = $user['idUser'];
+        }
+        $idCompost = $this->uri->segment(3);
+        $query = $this->main_model->get_main_where_array('compost','idCompost',$idCompost);
+        $this->data['titulo'] = $query[0]['titulo'];
+        $this->data['query'] = $query;
+        $this->data['idCompost'] = $idCompost;
+        $queryC = $this->main_model->get_main_where('comentariocompost','idCompost',$idCompost);
+        $queryA = $this->main_model->get_main_where_array('user','idUser',$query[0]['idUser']);
+        $this->data['username'] = $queryA[0]['Username'];
+        $this->data['pfp'] = $queryA[0]['FotoPerfil'];
+        if(!empty($queryC)){
+            $queryUserCom = $this->main_model->get_both_main_whereV2('comentariocompost','user','comentariocompost.idUser = user.idUser','comentariocompost.idCompost =',$idCompost);
+            //$queryUserCom = $this->db->query('SELECT * FROM user u INNER JOIN comentario c ON u.idUser = c.idUser WHERE u.idUser =' . $queryComentarios[0]->idUser);
+            $this->data['comentarios'] = $queryUserCom;
+        }else{
+            $this->data['comentarios'] = array();
+        }
+
+        $this->load->view('hubinfo',$this->data);
+    }
+
 	public function criarPost(){
         $this->checkLogin();
         if(isset($_POST['Criar'])){

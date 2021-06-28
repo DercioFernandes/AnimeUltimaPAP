@@ -66,6 +66,8 @@ $route['episodio/watchepisode'] = 'episodio/watchepisode';
 
 // HUB
 $route['Hub'] = 'Hub/index';
+$route['Hub/info'] = 'Hub/info';
+
 $route['episodio/watchepisode'] = 'episodio/watchepisode';
 
 // Comentairo

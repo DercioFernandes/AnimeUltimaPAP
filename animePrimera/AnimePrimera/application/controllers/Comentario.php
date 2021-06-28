@@ -34,6 +34,22 @@ class Comentario extends CI_Controller {
         }
     }
 
+    public function addCommentC(){
+        if(isset($_POST['Submeter'])){
+            if($this->login_model->isLoggedIn() == true) {
+                $values = array(
+                    'idUser' => $_POST['idUser'],
+                    'idCompost' => $_POST['idCompost'],
+                    'texto' => $_POST['coment']
+                );
+                $this->main_model->add('comentariocompost',$values);
+                redirect(base_url('Hub/hubinfo/'.$_POST['idCompost']));
+            }else{
+
+            }
+        }
+    }
+
     public function removeComment(){
         $idComentario = $this->uri->segment(3);
         $this->main_model->delete('idComentario','comentario',$idComentario);
@@ -48,6 +64,17 @@ class Comentario extends CI_Controller {
             'report' => $reports
         );
         $this->main_model->edit('idComentario','comentario',$idComentario,$values);
+        redirect();
+    }
+
+    public function reportCommentC(){
+        $idComentario = $this->uri->segment(3);
+        $query = $this->main_model->get_main_where_array('comentario','idComentario',$idComentario);
+        $reports = 1 + $query[0]['report'];
+        $values = array(
+            'reports' => $reports
+        );
+        $this->main_model->edit('idComentarioC','comentariocompost',$idComentario,$values);
         redirect();
     }
 

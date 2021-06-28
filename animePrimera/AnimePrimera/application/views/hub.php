@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col">
+        <div id="npm" class="col">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -45,7 +45,7 @@
                 </a>
             </div>
         </div>
-        <div class="col">
+        <div id="npm" class="col">
             <h4 class="mlptitle text-center">Favoritos da Comunidade</h4>
             <ul class="mlplist">
                 <?php foreach($comfav as $q): ?>

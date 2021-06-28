@@ -142,6 +142,14 @@ th{
     width: 100%;
 }
 
+.comentario-head{
+    color:white;
+}
+
+.comentario-body{
+    color: white;
+}
+
 .flag{
     height: 30px;
     float: right;
@@ -640,6 +648,7 @@ th{
     color: #1E1B18;
     margin-left: 0 !important;
     font-family: "Good Times Rg";
+    margin-bottom: 0;
 }
 
 .mlplist{
@@ -669,6 +678,35 @@ th{
     width: 100%;
     background-color: #cdc49b;
     color: #1E1B18;
+}
+
+.postbody{
+    padding: 2%;
+    margin-left: 0 !important;
+    background-color: #1E1B18;
+    color: #cdc49b;
+}
+
+.authorname{
+    background-color: #cdc49b;
+    color: #1E1B18;
+    width: 100%;
+    padding: 1%;
+    margin: 0;
+    display: inline-block;
+    font-size: 20px;
+}
+
+.pfpauthor{
+    padding: 0 !important;
+    height: 60px;
+    width: 60px;
+    margin: 0;
+    float: right;
+}
+
+.imgPost{
+    width: 100%;
 }
 
 @media all and (max-width: 1000px) {
@@ -888,5 +926,18 @@ th{
     .c{
         margin: 0 auto !important;
         padding: 0 !important;
+    }
+
+    .spcHeader h3{
+        background-color: #cdc49b;
+        color: #1E1B18;
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+
+    .spcBody{
+        max-height: 500px !important;
+        height: 100%;
+        width: 100%;
     }
 }
