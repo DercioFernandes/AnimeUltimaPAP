@@ -468,6 +468,7 @@ th{
     font-family: Helvetica;
     padding-top: 2%;
     padding-bottom: 2%;
+    margin-bottom: 0;
 }
 
 .btnEdit{
@@ -707,6 +708,61 @@ th{
 
 .imgPost{
     width: 100%;
+}
+
+.hubbtn{
+    margin-top: 0;
+    background-color: #cdc49b;
+    color: #1E1B18;
+    display: block;
+    padding: 1%;
+    font-size: 20px;
+}
+
+.hubbtn:hover{
+    text-decoration: none;
+    background-color: #1E1B18;
+    color: #cdc49b;
+}
+
+.smallPostHeader{
+    text-align: center;
+    margin-top: 1%;
+    background-color: #cdc49b;
+    color: #1E1B18;
+    display: block;
+    padding: 1%;
+}
+
+.smallPostBody{
+    text-align: center;
+    width: auto;
+    max-height: 200px !important;
+}
+
+.smallPostFooter{
+    background-color: #1E1B18;
+    color: #cdc49b;
+}
+
+.smallPostBody img{
+    width: auto;
+    max-height: 200px !important;
+}
+
+.smallPostBody video{
+    width: auto;
+    max-height: 200px !important;
+}
+
+.smallPost{
+    background-color: rgba(0,0,0,0.84);
+    margin: 0;
+    padding: 0;
+}
+
+.smallPost:hover{
+    text-decoration: none;
 }
 
 @media all and (max-width: 1000px) {

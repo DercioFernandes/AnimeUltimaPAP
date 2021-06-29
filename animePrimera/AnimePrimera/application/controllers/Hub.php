@@ -32,10 +32,24 @@ class Hub extends CI_Controller {
         $this->data['titulo'] = 'AP Hub';
 
         $this->data['staffpost'] = $this->main_model->get_main_where_array('compost','status',2);
-        $query = $this->main_model->get_table_orderby('compost','votes', 5);
+        $this->data['posts'] = $this->main_model->get_table_limited('compost',9,'idCompost');
+        $query = $this->main_model->get_table_orderby('compost','votes', 15);
         $this->data['comfav'] = $query;
         $this->load->view('hub',$this->data);
 	}
+
+    public function allPost(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            //$perms = $this->getPerms($user['Permissoes']);
+            //$this->data['perms'] = $perms;
+            $this->data['idUser'] = $user['idUser'];
+        }
+        $this->data['h3title'] = 'Posts Recentes';
+        $this->data['posts'] = $this->main_model->get_table_limited('compost',50,'idCompost');
+        $this->load->view('allPost',$this->data);
+    }
 
 	public function hubinfo(){
         if($this->login_model->isLoggedIn() == true){
@@ -54,6 +68,15 @@ class Hub extends CI_Controller {
         $queryA = $this->main_model->get_main_where_array('user','idUser',$query[0]['idUser']);
         $this->data['username'] = $queryA[0]['Username'];
         $this->data['pfp'] = $queryA[0]['FotoPerfil'];
+        $gquery = $this->main_model->get_main_where_array('compostvotes','idCompost',$idCompost);
+        $this->data['gostos'] = count($gquery);
+        $arrayC = array(
+            'idCompost' => $idCompost,
+            'idUser' => $this->data['idUser']
+        );
+        if($this->main_model->double_get_main_where_array('compostvotes',$arrayC)){
+            $this->data['ratingC'] = 'seguirDone';
+        }
         if(!empty($queryC)){
             $queryUserCom = $this->main_model->get_both_main_whereV2('comentariocompost','user','comentariocompost.idUser = user.idUser','comentariocompost.idCompost =',$idCompost);
             //$queryUserCom = $this->db->query('SELECT * FROM user u INNER JOIN comentario c ON u.idUser = c.idUser WHERE u.idUser =' . $queryComentarios[0]->idUser);
@@ -107,37 +130,71 @@ class Hub extends CI_Controller {
         $this->load->view('criarPost',$this->data);
     }
 
+    public function editarPost(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->checkPermsV2($_POST['idUser'],5,$this->data['perms']);
+            if(isset($_POST['Editar'])){
+                $values = array(
+                    'Titulo' => $_POST['titulo'],
+                    'Descricao' => $_POST['descricao']
+                );
+                $this->main_model->edit('idCompost','compost',$_POST['idCompost'],$values);
+                redirect('hub/hubinfo/' . $_POST['idCompost']);
+            }else{
+                $idCompost = $this->uri->segment(3);
+                $this->data['idCompost'] = $idCompost;
+                $this->data['idUser'] = $user['idUser'];
+                $this->data['compost'] = $this->main_model->get_main_where_array('compost','idCompost',$idCompost);
+                $this->load->view('editarPost',$this->data);
+            }
+        }
+    }
+
+    public function removerPost(){
+        $this->checkLogin();
+        $idCompost = $this->uri->segment(3);
+        $query = $this->main_model->get_main_where_array('compost','idCompost',$idCompost);
+        $this->checkPermsV2($query[0]['idUser'],1,$this->data['perms']);
+        //$query = $this->main_model->get_main_where_array('comentariocompost','id')
+        $this->main_model->delete('idCompost','comentariocompost',$idCompost);
+        $this->main_model->delete('idCompost','compostvotes',$idCompost);
+        $this->main_model->delete('idCompost','compost',$idCompost);
+        redirect('hub');
+    }
+
 
 
     public function likePost(){
         $this->checkLogin();
         $idCompost = $this->uri->segment(3);
         $query = $this->main_model->get_main_where_array('compost','idCompost',$idCompost);
-        $values = array(
-            'idUser' => $this->data['idUser'],
-            'idCompost' => $idCompost
-        );
-        $valuesc = array(
-            'votes' => $query[0]['votes'] + 1
-        );
-        $this->main_model->add('compostvotes',$values);
-        $this->main_model->edit('idCompost','compost',$idCompost,$valuesc);
-        redirect('hub/hubinfo/'.$idCompost);
-    }
-
-    public function dislikePost(){
-        $this->checkLogin();
-        $idCompost = $this->uri->segment(3);
-        $query = $this->main_model->get_main_where_array('compost','idCompost',$idCompost);
-        $valuesc = array(
-            'votes' => $query[0]['votes'] - 1
-        );
-        $where = array(
+        $arrayC = array(
             'idCompost' => $idCompost,
             'idUser' => $this->data['idUser']
         );
-        $this->main_model->deleteA('idCompost',$where);
-        $this->main_model->edit('idCompost','compost',$idCompost,$valuesc);
+        if(!$this->main_model->double_get_main_where_array('compostvotes',$arrayC)){
+            $values = array(
+                'idUser' => $this->data['idUser'],
+                'idCompost' => $idCompost
+            );
+            $valuesc = array(
+                'votes' => $query[0]['votes'] + 1
+            );
+            $this->main_model->add('compostvotes', $values);
+            $this->main_model->edit('idCompost', 'compost', $idCompost, $valuesc);
+        }else{
+            $where = array(
+                'idUser' => $this->data['idUser'],
+                'idCompost' => $idCompost
+            );
+            $valuesc = array(
+                'votes' => $query[0]['votes'] - 1
+            );
+            $this->main_model->deleteA('compostvotes',$where);
+            $this->main_model->edit('idCompost','compost',$idCompost,$valuesc);
+        }
         redirect('hub/hubinfo/'.$idCompost);
     }
 
@@ -280,6 +337,16 @@ class Hub extends CI_Controller {
 
     private function checkPerms($levelNeeded,$perms){
         if($perms != $levelNeeded){
+            redirect();
+        }
+    }
+
+    private function checkPermsV2($idUser,$levelNeeded,$perms){
+        if($idUser = $this->data['idUser']){
+
+        }elseif($perms == $levelNeeded){
+
+        }else{
             redirect();
         }
     }

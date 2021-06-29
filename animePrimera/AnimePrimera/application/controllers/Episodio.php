@@ -19,7 +19,13 @@ class Episodio extends CI_Controller {
     }
 
 	public function allEpisodio(){
-        $this->checkLogin();
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            //$perms = $this->getPerms($user['Permissoes']);
+            //$this->data['perms'] = $perms;
+            $this->data['idUser'] = $user['idUser'];
+        }
         $this->data['h3title'] = 'Adicionados Recentemente';
         $this->data['episodios'] = $this->main_model->get_table_limited('episodio',50,'idEpisodio');
         $this->load->view('allEps',$this->data);

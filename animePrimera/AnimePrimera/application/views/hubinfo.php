@@ -71,6 +71,8 @@
             </div>
             <div id="npm" class="col">
                 <div class="postbody">
+                    Gostos: <?php echo $gostos ?>
+                    <hr>
                     <?php echo $query[0]['descricao'] ?>
                 </div>
                 <div class="postfooter">
@@ -79,6 +81,11 @@
                         <img class="pfpauthor" src="<?php echo base_url('./resources/img/pfp/' . $pfp) ?>" title="fotoDePerfil"  />
                     </h6>
                 </div>
+                <?php if(!empty($ratingC)): ?>
+                    <a class="<?php echo $ratingC;?> btn-block text-center" href="<?php echo base_url('hub/likePost/'.$idCompost) ?>"> Downvote </a>
+                <?php else: ?>
+                    <a class="seguir btn-block text-center" href="<?php echo base_url('hub/likePost/'.$idCompost) ?>"> Upvote </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
