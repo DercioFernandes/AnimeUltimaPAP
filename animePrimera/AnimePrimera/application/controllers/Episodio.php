@@ -40,6 +40,14 @@ class Episodio extends CI_Controller {
             $this->checkPerms(1,$this->data['perms']);
             if(isset($_POST['Editar'])){
                 if(isset($_POST['idEpisodio'])){
+                    $queryml = $this->main_model->get_main_where_array('episodio','idEpisodio',$_POST['idEpisodio']);
+                    $msg = 'Editado ' . $queryml[0]['titulo'];
+                    $valuesml = array(
+                        'idUser' => $this->data['idUser'],
+                        'info' => $msg,
+                        'status' => 1
+                    );
+                    $this->main_model->add('modlogs',$valuesml);
                     $values = array(
                         'url' => $_POST['url'],
                         'titulo' => $_POST['titulo'],
@@ -54,12 +62,20 @@ class Episodio extends CI_Controller {
                 }
 
             }elseif(isset($_POST['Remover'])){
-                $this->main_model->delete('idEpisodio','episodio',$_POST['Remover']);
-                $query = $this->main_model->get_main_where_array('temporadas','idTemporada',$_POST['idTemporada']);
+                $queryml = $this->main_model->get_main_where_array('episodio','idEpisodio',$_POST['Remover']);
+                $msg = 'Removido ' . $queryml[0]['titulo'];
+                $valuesml = array(
+                    'idUser' => $this->data['idUser'],
+                    'info' => $msg,
+                    'status' => 1
+                );
+                $this->main_model->add('modlogs',$valuesml);
+                $query = $this->main_model->get_main_where_array('temporadas','idTemporada',$queryml[0]['idTemporada']);
                 $valuest = array(
                     'nEpisodios' => $query[0]['nEpisodios'] - 1
                 );
-                $this->main_model->edit('idTemporada','temporadas',$_POST['idTemporada'],$valuest);
+                $this->main_model->edit('idTemporada','temporadas',$queryml[0]['idTemporada'],$valuest);
+                $this->main_model->delete('idEpisodio','episodio',$_POST['Remover']);
                 redirect();
             }else{
                 $idTemporada = $this->uri->segment(3);
@@ -98,9 +114,16 @@ class Episodio extends CI_Controller {
                 'titulo' => $videoname
             );
             print_r($_POST);
-            //$this->main_model->edit('idTemporada','temporadas',$_POST['idTemporada'],$valuest);
-            //$this->main_model->add('episodio',$values);
-            //redirect();
+            $msg = 'Adicionado ' . $videoname;
+            $valuesml = array(
+                'idUser' => $this->data['idUser'],
+                'info' => $msg,
+                'status' => 1
+            );
+            $this->main_model->add('modlogs',$valuesml);
+            $this->main_model->edit('idTemporada','temporadas',$_POST['idTemporada'],$valuest);
+            $this->main_model->add('episodio',$values);
+            redirect();
         }else{
             $idTemporada = $this->uri->segment(3);
             $this->data['idTemporada'] = $idTemporada;
@@ -201,8 +224,15 @@ class Episodio extends CI_Controller {
         return $querymerged;
     }
 
+    //appends all error messages
+    private function handle_error($err) {
+        $this->error .= $err . "\r\n";
+    }
 
-
+    //appends all success messages
+    private function handle_success($succ) {
+        $this->success .= $succ . "\r\n";
+    }
 
     private function UploadVideo($inputFileName){
         if ($this->input->post('video_upload')) {

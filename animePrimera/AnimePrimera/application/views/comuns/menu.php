@@ -24,7 +24,9 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="<?=base_url('user/myprofile/' . $idUser)?>">Meu Perfil</a>
-                            <a class="dropdown-item" href="#">Definições</a>
+                            <?php if($perms == 1): ?>
+                                <a class="dropdown-item" href="<?=base_url('logs/general')?>">Gerir Logs</a>
+                            <?php endif; ?>
                             <a class="dropdown-item" href="<?=base_url('login/logout')?>">Logout</a>
                         </div>
                     </li>

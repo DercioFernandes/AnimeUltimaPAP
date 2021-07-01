@@ -86,7 +86,21 @@
                 <?php else: ?>
                     <a class="seguir btn-block text-center" href="<?php echo base_url('hub/likePost/'.$idCompost) ?>"> Upvote </a>
                 <?php endif; ?>
-            </div>
+                <?php
+                if(!empty($user)):
+                    ?>
+                    <?php if($perms == 1): ?>
+                        <?php if($idAuthor == $idUser): ?>
+                            <a class="editHub text-center" href="<?php echo base_url('hub/editarPost/' . $idCompost); ?>">Editar</a>
+                        <?php endif; ?>
+                    <a class="remHub text-center" href="<?php echo base_url('hub/removerPost/' . $idCompost); ?>">Remover</a>
+                <?php endif; ?>
+                <?php
+                endif;
+                ?>
+                <div class="col">
+
+                </div>
         </div>
     </div>
 

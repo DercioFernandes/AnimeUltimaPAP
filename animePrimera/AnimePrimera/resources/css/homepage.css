@@ -765,6 +765,50 @@ th{
     text-decoration: none;
 }
 
+.editHub{
+    color: #cdc49b !important;
+    background-color:#0A2463 !important;
+    margin-top: 0;
+    display: block;
+}
+
+.remHub{
+    margin-top: 0;
+    display: block;
+    color: #1E1B18 !important;
+    background-color: #D8315B !important;
+}
+
+.editHub:hover{
+    text-decoration: none;
+    color:#0A2463  !important;
+    background-color:#cdc49b !important;
+}
+
+.remHub:hover{
+    text-decoration: none;
+    color: #D8315B !important;
+    background-color:#1E1B18 !important;
+}
+
+.logButton{
+    margin-top: 1%;
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border-radius: 10px;
+    font-size: 30px;
+    background-color:  #1E1B18;
+    color:#cdc49b;
+}
+
+.logButton:hover{
+    text-decoration: none;
+    background-color:  #cdc49b;
+    color: #1E1B18;
+}
+
 @media all and (max-width: 1000px) {
 
     .backgroundBodied{

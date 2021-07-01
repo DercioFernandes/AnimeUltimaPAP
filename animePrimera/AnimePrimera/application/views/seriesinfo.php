@@ -54,7 +54,7 @@
                 <a class="<?php if(!empty($droppedC)){ echo $droppedC; }else{ echo 'seguir'; } ?> btn-block text-center" href="<?php echo base_url('Serie/dropped/' . $idSerie) ?>"> + Parado </a>
             </div>
             <div class="col">
-                <a class="<?php if(!empty($porverC)){ echo $porverC; }else{ echo 'seguir'; } ?> btn-block text-center" href="<?php echo base_url('Serie/porver/' . $idSerie) ?>"> + Por Ver </a>
+                <a class="<?php if(!empty($porverC)){ echo $porverC; }else{ echo 'seguir'; } ?> btn-block text-center" href="<?php echo base_url('Serie/completo/' . $idSerie) ?>"> + Completo </a>
             </div>
             <div class="col">
                 <a class="<?php if(!empty($favoritoC)){ echo $favoritoC; }else{ echo 'seguir'; } ?> btn-block text-center" href="<?php echo base_url('Serie/favorito/' . $idSerie) ?>"> + Favoritos </a>

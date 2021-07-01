@@ -29,6 +29,7 @@ class User extends CI_Controller {
             $this->data['serieFav'] = $this->main_model->get_both_main_where_limited('series', 'favorito', 'series.idSerie = favorito.idSerie', 'idUser', $user['idUser'],9);
             $this->data['serieSeg'] = $this->main_model->get_both_main_where_limited('series', 'seguir', 'series.idSerie = seguir.idSerie', 'idUser', $user['idUser'],9);
             $this->data['serieHol'] = $this->main_model->get_both_main_where_limited('series', 'onhold', 'series.idSerie = onhold.idSerie', 'idUser', $user['idUser'],9);
+            $this->data['serieCom'] = $this->main_model->get_both_main_where_limited('series', 'completo', 'series.idSerie = completo.idSerie', 'idUser', $user['idUser'],9);
             $this->data['serieDro'] = $this->main_model->get_both_main_where_limited('series', 'dropped', 'series.idSerie = dropped.idSerie', 'idUser', $user['idUser'],9);
             $this->data['serieAss'] = $this->main_model->get_both_main_where_limited('series', 'watching', 'series.idSerie = watching.idSerie', 'idUser', $user['idUser'],9);
             $this->load->view('myprofile', $this->data);
@@ -97,6 +98,16 @@ class User extends CI_Controller {
             $idUser = $this->uri->segment(3);
             $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'onhold', 'series.idSerie = onhold.idSerie', 'idUser', $user['idUser']);
             $this->data['h3title'] = 'Séries em Espera ';
+            $this->load->view('all',$this->data);
+        }
+    }
+
+    public function allSeriesCom(){
+        if($this->login_model->isLoggedIn() == true) {
+            $user = $this->data['user'];
+            $idUser = $this->uri->segment(3);
+            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'completo', 'series.idSerie = completo.idSerie', 'idUser', $user['idUser']);
+            $this->data['h3title'] = 'Séries Completas';
             $this->load->view('all',$this->data);
         }
     }

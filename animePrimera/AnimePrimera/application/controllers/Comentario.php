@@ -29,7 +29,7 @@ class Comentario extends CI_Controller {
                 $this->main_model->add('comentario',$values);
                 redirect(base_url('Episodio/watchepisode/'.$_POST['idEpisodio']));
             }else{
-                
+                redirect(base_url('Episodio/watchepisode/'.$_POST['idEpisodio']));
             }
         }
     }
@@ -45,7 +45,7 @@ class Comentario extends CI_Controller {
                 $this->main_model->add('comentariocompost',$values);
                 redirect(base_url('Hub/hubinfo/'.$_POST['idCompost']));
             }else{
-
+                redirect(base_url('Hub/hubinfo/'.$_POST['idCompost']));
             }
         }
     }

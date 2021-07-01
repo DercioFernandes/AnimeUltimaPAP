@@ -71,6 +71,13 @@ class Serie extends CI_Controller {
                     );
                     $values = array_merge($values,$valuesImg);
                 }
+                $msg = 'Editado ' . $_POST['titulo'];
+                $valuesml = array(
+                    'idUser' => $this->data['idUser'],
+                    'info' => $msg,
+                    'status' => 1
+                );
+                $this->main_model->add('modlogs',$valuesml);
                 $this->main_model->edit('idSerie','series',$_POST['idSerie'],$values);
                 redirect('serie/seriesinfo/' . $_POST['idSerie']);
             }else{
@@ -90,6 +97,14 @@ class Serie extends CI_Controller {
         foreach( $querye as $temporada ){
             $this->main_model->delete('idTemporada','temporadas',$temporada['idTemporada']);
         }
+        $queryml = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
+        $msg = 'Removido ' . $queryml[0]['Titulo'];
+        $valuesml = array(
+            'idUser' => $this->data['idUser'],
+            'info' => $msg,
+            'status' => 1
+        );
+        $this->main_model->add('modlogs',$valuesml);
         $this->main_model->delete('idSerie','series',$idSerie);
         redirect();
     }
@@ -116,7 +131,7 @@ class Serie extends CI_Controller {
             if($this->main_model->double_get_main_where_array('dropped',$arrayC)){
                 $this->data['droppedC'] = 'seguirDone';
             }
-            if($this->main_model->double_get_main_where_array('porver',$arrayC)){
+            if($this->main_model->double_get_main_where_array('completo',$arrayC)){
                 $this->data['porverC'] = 'seguirDone';
             }
             if($this->main_model->double_get_main_where_array('favorito',$arrayC)){
@@ -187,12 +202,12 @@ class Serie extends CI_Controller {
         }
     }
 
-    public function porver(){
+    public function completo(){
         $idSerie = $this->uri->segment(3);
         if($this->login_model->isLoggedIn()){
             $user = $this->data['user'];
             $idUser = $user['idUser'];
-            $this->abstrato('porver',$idSerie,$idUser);
+            $this->abstrato('completo',$idSerie,$idUser);
         }
     }
 

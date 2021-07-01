@@ -31,7 +31,7 @@ class Hub extends CI_Controller {
         }
         $this->data['titulo'] = 'AP Hub';
 
-        $this->data['staffpost'] = $this->main_model->get_main_where_array('compost','status',2);
+        $this->data['staffpost'] = $this->main_model->get_main_where_array('compost','isStaff',1);
         $this->data['posts'] = $this->main_model->get_table_limited('compost',9,'idCompost');
         $query = $this->main_model->get_table_orderby('compost','votes', 15);
         $this->data['comfav'] = $query;
@@ -52,14 +52,21 @@ class Hub extends CI_Controller {
     }
 
 	public function hubinfo(){
+        $idCompost = $this->uri->segment(3);
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             //$perms = $this->getPerms($user['Permissoes']);
             //$this->data['perms'] = $perms;
             $this->data['idUser'] = $user['idUser'];
+            $arrayC = array(
+                'idCompost' => $idCompost,
+                'idUser' => $this->data['idUser']
+            );
+            if($this->main_model->double_get_main_where_array('compostvotes',$arrayC)){
+                $this->data['ratingC'] = 'seguirDone';
+            }
         }
-        $idCompost = $this->uri->segment(3);
         $query = $this->main_model->get_main_where_array('compost','idCompost',$idCompost);
         $this->data['titulo'] = $query[0]['titulo'];
         $this->data['query'] = $query;
@@ -68,15 +75,9 @@ class Hub extends CI_Controller {
         $queryA = $this->main_model->get_main_where_array('user','idUser',$query[0]['idUser']);
         $this->data['username'] = $queryA[0]['Username'];
         $this->data['pfp'] = $queryA[0]['FotoPerfil'];
+        $this->data['idAuthor'] = $queryA[0]['idUser'];
         $gquery = $this->main_model->get_main_where_array('compostvotes','idCompost',$idCompost);
         $this->data['gostos'] = count($gquery);
-        $arrayC = array(
-            'idCompost' => $idCompost,
-            'idUser' => $this->data['idUser']
-        );
-        if($this->main_model->double_get_main_where_array('compostvotes',$arrayC)){
-            $this->data['ratingC'] = 'seguirDone';
-        }
         if(!empty($queryC)){
             $queryUserCom = $this->main_model->get_both_main_whereV2('comentariocompost','user','comentariocompost.idUser = user.idUser','comentariocompost.idCompost =',$idCompost);
             //$queryUserCom = $this->db->query('SELECT * FROM user u INNER JOIN comentario c ON u.idUser = c.idUser WHERE u.idUser =' . $queryComentarios[0]->idUser);
@@ -96,14 +97,15 @@ class Hub extends CI_Controller {
                 'titulo' => $_POST['titulo'],
                 'descricao' => $_POST['descricao'],
                 'idUser' => $this->data['idUser'],
+                'status' => 1
             );
             if(isset($_POST['staffpost'])){
                 $valuess = array(
-                    'status' => 2
+                    'isStaff' => 1
                 );
             }else{
                 $valuess = array(
-                    'status' => 0
+                    'isStaff' => 0
                 );
             }
             $values = array_merge($values,$valuess);
@@ -134,8 +136,8 @@ class Hub extends CI_Controller {
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->checkPermsV2($_POST['idUser'],5,$this->data['perms']);
             if(isset($_POST['Editar'])){
+                $this->checkPermsV2($_POST['idAuthor'],$user['idUser'],5,$this->data['perms']);
                 $values = array(
                     'Titulo' => $_POST['titulo'],
                     'Descricao' => $_POST['descricao']
@@ -156,7 +158,7 @@ class Hub extends CI_Controller {
         $this->checkLogin();
         $idCompost = $this->uri->segment(3);
         $query = $this->main_model->get_main_where_array('compost','idCompost',$idCompost);
-        $this->checkPermsV2($query[0]['idUser'],1,$this->data['perms']);
+        $this->checkPermsV2($_POST['idAuthor'],$user['idUser'],1,$this->data['perms']);
         //$query = $this->main_model->get_main_where_array('comentariocompost','id')
         $this->main_model->delete('idCompost','comentariocompost',$idCompost);
         $this->main_model->delete('idCompost','compostvotes',$idCompost);
@@ -341,8 +343,8 @@ class Hub extends CI_Controller {
         }
     }
 
-    private function checkPermsV2($idUser,$levelNeeded,$perms){
-        if($idUser = $this->data['idUser']){
+    private function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
+        if($idAuthor = $idUser){
 
         }elseif($perms == $levelNeeded){
 
