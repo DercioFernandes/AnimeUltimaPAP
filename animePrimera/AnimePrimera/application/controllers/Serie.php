@@ -42,6 +42,13 @@ class Serie extends CI_Controller {
                 'Descricao' => $_POST['descricao'],
                 'Tipo' => $_POST['tipo']
             );
+            $msg = 'Adicionado ' . $_POST['titulo'];
+            $valuesml = array(
+                'idUser' => $this->data['idUser'],
+                'info' => $msg,
+                'status' => 1
+            );
+            $this->main_model->add('modlogs',$valuesml);
             $this->main_model->add('series',$values);
             redirect();
         }else{

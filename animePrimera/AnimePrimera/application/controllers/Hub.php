@@ -158,8 +158,15 @@ class Hub extends CI_Controller {
         $this->checkLogin();
         $idCompost = $this->uri->segment(3);
         $query = $this->main_model->get_main_where_array('compost','idCompost',$idCompost);
-        $this->checkPermsV2($_POST['idAuthor'],$user['idUser'],1,$this->data['perms']);
+        $this->checkPermsV2($_POST['idAuthor'],$this->data['idUser'],1,$this->data['perms']);
         //$query = $this->main_model->get_main_where_array('comentariocompost','id')
+        $msg = 'Removido ' . $query[0]['titulo'];
+        $valuesml = array(
+            'idUser' => $this->data['idUser'],
+            'info' => $msg,
+            'status' => 1
+        );
+        $this->main_model->add('modlogs',$valuesml);
         $this->main_model->delete('idCompost','comentariocompost',$idCompost);
         $this->main_model->delete('idCompost','compostvotes',$idCompost);
         $this->main_model->delete('idCompost','compost',$idCompost);

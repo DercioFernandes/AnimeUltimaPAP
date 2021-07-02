@@ -44,14 +44,14 @@
                 </form>
                 <?php foreach ($comentarios as $comentario): ?>
                     <div class="comentario">
-                        <a href="<?php echo base_url('Comentario/reportComment/' . $comentario['idComentarioc']) ?>">
+                        <a href="<?php echo base_url('Comentario/reportCommentC/' . $comentario['idComentarioc']) ?>">
                             <img class="flag" src="<?php echo base_url('./resources/img/Icons/flag.png') ?>"/>
                         </a>
                         <?php
                         if(!empty($idUser)):
                             if($comentario['idUser'] == $idUser):
                                 ?>
-                                <a href="<?php echo base_url('Comentario/removeComment/' . $comentario['idComentarioc'] )?>">
+                                <a href="<?php echo base_url('Comentario/removeCommentC/' . $comentario['idComentarioc'] )?>">
                                     <img class="flag" src="<?php echo base_url('./resources/img/Icons/remove.png') ?>" alt ="" title="editIcon"/>
                                 </a>
                             <?php

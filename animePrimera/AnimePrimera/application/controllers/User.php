@@ -39,7 +39,6 @@ class User extends CI_Controller {
 	public function editUser(){
         if($this->login_model->isLoggedIn() == true) {
             if(isset($_POST['Editar'])){
-                print_r($_POST);
                 $values = array(
                     'Username' => $_POST['username'],
                     'Email' => $_POST['email']

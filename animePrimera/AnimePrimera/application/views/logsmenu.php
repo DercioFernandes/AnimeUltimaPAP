@@ -20,7 +20,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <a class="logButton text-center" href="<?php echo base_url('logs/geralLogs'); ?>">Gerir Logs Gerais</a>
+            <a class="logButton text-center" href="<?php echo base_url('logs/logMod'); ?>">Gerir Logs Gerais</a>
         </div>
     </div>
 </div>

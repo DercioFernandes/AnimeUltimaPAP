@@ -36,6 +36,14 @@ class Temporada extends CI_Controller {
             $valuesS = array(
                 'nTemporadas' => $query[0]->nTemporadas + 1
             );
+            $querymls = $this->main_model->get_main_where_array('series','idSerie',$_POST['idSerie']);
+            $msg = 'Adicionado ' . $querymls[0]['Titulo'] . ' ' . $_POST['tempTitle'];
+            $valuesml = array(
+                'idUser' => $this->data['idUser'],
+                'info' => $msg,
+                'status' => 1
+            );
+            $this->main_model->add('modlogs',$valuesml);
             $this->main_model->edit('idSerie','series',$_POST['idSerie'],$valuesS);
             redirect();
         }else{
@@ -46,36 +54,41 @@ class Temporada extends CI_Controller {
     }
 
     public function editarTemp(){
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->checkPerms(1,$this->data['perms']);
-            if(isset($_POST['Editar'])){
-                $values = array(
-                    'Titulo' => $_POST['titulo'],
-                    'Status' => $_POST['status'],
-                    'DataRelease' => $_POST['dataRelease']
+        $this->checkLogin();
+        $this->checkPerms(1,$this->data['perms']);
+        if(isset($_POST['Editar'])){
+            $values = array(
+                'Titulo' => $_POST['titulo'],
+                'Status' => $_POST['status'],
+                'DataRelease' => $_POST['dataRelease']
+            );
+            $uploadFile = $this->UploadFile('thumbnail');
+            if($uploadFile['error'] == 0){
+                $e = $uploadFile['fileData'];
+                $imgname = $e['file_name'];
+                $valuesImg = array(
+                    'Thumbnail' => $imgname
                 );
-                $uploadFile = $this->UploadFile('thumbnail');
-                if($uploadFile['error'] == 0){
-                    $e = $uploadFile['fileData'];
-                    $imgname = $e['file_name'];
-                    $valuesImg = array(
-                        'Thumbnail' => $imgname
-                    );
-                    $values = array_merge($values,$valuesImg);
-                }
-                $this->main_model->edit('idTemporada','temporadas',$_POST['idTemporada'],$values);
-                redirect('serie/seriesinfo/' . $_POST['idSerie']);
-            }else{
-                $idSerie = $this->uri->segment(3);
-                $idTemporada = $this->uri->segment(4);
-                $this->data['idSerie'] = $idSerie;
-                $this->data['idTemporada'] = $idTemporada;
-                $this->data['idUser'] = $user['idUser'];
-                $this->data['temporada'] = $this->main_model->get_main_where_array('temporadas','idTemporada',$idTemporada);
-                $this->load->view('editarTemporada',$this->data);
+                $values = array_merge($values,$valuesImg);
             }
+            $queryml = $this->main_model->get_main_where_array('temporadas','idTemporada',$_POST['idTemporada']);
+            $querymls = $this->main_model->get_main_where_array('series','idSerie',$queryml[0]['idSerie']);
+            $msg = 'Editado ' . $querymls[0]['Titulo'] . ' ' . $queryml[0]['Titulo'];
+            $valuesml = array(
+                'idUser' => $this->data['idUser'],
+                'info' => $msg,
+                'status' => 1
+            );
+            $this->main_model->add('modlogs',$valuesml);
+            $this->main_model->edit('idTemporada','temporadas',$_POST['idTemporada'],$values);
+            redirect('serie/seriesinfo/' . $_POST['idSerie']);
+        }else{
+            $idSerie = $this->uri->segment(3);
+            $idTemporada = $this->uri->segment(4);
+            $this->data['idSerie'] = $idSerie;
+            $this->data['idTemporada'] = $idTemporada;
+            $this->data['temporada'] = $this->main_model->get_main_where_array('temporadas','idTemporada',$idTemporada);
+            $this->load->view('editarTemporada',$this->data);
         }
     }
 
@@ -83,10 +96,19 @@ class Temporada extends CI_Controller {
         $this->checkLogin();
         $this->checkPerms(1,$this->data['perms']);
         $idTemporada = $this->uri->segment(3);
-        $querye = $querye = $this->main_model->get_main_where_array('episodio','idTemporada', $idTemporada);
+        $querye = $this->main_model->get_main_where_array('episodio','idTemporada', $idTemporada);
         foreach( $querye as $episodio ){
             $this->main_model->delete('idEpisodio','episodio',$episodio['idEpisodio']);
         }
+        $queryml = $this->main_model->get_main_where_array('temporadas','idTemporada',$idTemporada);
+        $querymls = $this->main_model->get_main_where_array('series','idSerie',$queryml[0]['idSerie']);
+        $msg = 'Removido ' . $querymls[0]['Titulo'] . ' ' . $queryml[0]['Titulo'];
+        $valuesml = array(
+            'idUser' => $this->data['idUser'],
+            'info' => $msg,
+            'status' => 1
+        );
+        $this->main_model->add('modlogs',$valuesml);
         $this->main_model->delete('idTemporada','temporadas',$idTemporada);
         redirect();
     }

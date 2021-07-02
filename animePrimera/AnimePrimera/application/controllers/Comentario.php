@@ -51,8 +51,36 @@ class Comentario extends CI_Controller {
     }
 
     public function removeComment(){
+        $this->checkLogin();
         $idComentario = $this->uri->segment(3);
+        $queryml = $this->main_model->get_main_where_array('comentario','idComentario',$idComentario);
+        $querymls = $this->main_model->get_main_where_array('user','idUser',$queryml[0]['idUser']);
+        $this->checkPermsV2($queryml[0]['idUser'],$this->data['idUser'],1,$this->data['perms']);
+        $msg = 'Removido Comentário de ' . $querymls[0]['Username'] . ' com texto: ' . $queryml[0]['texto'];
+        $valuesml = array(
+            'idUser' => $this->data['idUser'],
+            'info' => $msg,
+            'status' => 1
+        );
+        $this->main_model->add('modlogs',$valuesml);
         $this->main_model->delete('idComentario','comentario',$idComentario);
+        redirect();
+    }
+
+    public function removeCommentC(){
+        $this->checkLogin();
+        $idComentarioc = $this->uri->segment(3);
+        $queryml = $this->main_model->get_main_where_array('comentariocompost','idComentarioc',$idComentarioc);
+        $querymls = $this->main_model->get_main_where_array('user','idUser',$queryml[0]['idUser']);
+        $this->checkPermsV2($queryml[0]['idUser'],$this->data['idUser'],1,$this->data['perms']);
+        $msg = 'Removido Comentário de ' . $querymls[0]['Username'] . ' com texto: ' . $queryml[0]['texto'];
+        $valuesml = array(
+            'idUser' => $this->data['idUser'],
+            'info' => $msg,
+            'status' => 1
+        );
+        $this->main_model->add('modlogs',$valuesml);
+        $this->main_model->delete('idComentarioc','comentariocompost',$idComentarioc);
         redirect();
     }
 
@@ -76,6 +104,29 @@ class Comentario extends CI_Controller {
         );
         $this->main_model->edit('idComentarioC','comentariocompost',$idComentario,$values);
         redirect();
+    }
+
+    private function checkLogin(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            /*$perms = $this->getPerms($user['perms']);
+            $this->data['perms'] = $perms;*/
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
+            $this->data['perms'] = $user['Permissoes'];
+        }else{
+            redirect();
+        }
+    }
+
+    private function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
+        if($idAuthor = $idUser){
+
+        }elseif($perms == $levelNeeded){
+
+        }else{
+            redirect();
+        }
     }
 
 }

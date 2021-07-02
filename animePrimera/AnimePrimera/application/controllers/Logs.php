@@ -60,6 +60,10 @@ class Logs extends CI_Controller {
         $this->logsAbstract(1,'compost','status','idCompost','user','compost.idUser = user.idUser','compost.idCompost =','logCompost');
     }
 
+    public function logMod(){
+        $this->logsAbstract(1,'modlogs','status','idModLog','user','modlogs.idUser = user.idUser','modlogs.idModLog =','logMod');
+    }
+
     public function manterLogComentario(){
         $this->manterLog(1,'report','comentario','idComentario','logs/comentsLogs',0);
     }
@@ -68,12 +72,20 @@ class Logs extends CI_Controller {
         $this->manterLog(1,'status','compost','idCompost','logs/compostLogs',0);
     }
 
+    public function manterModLog(){
+        $this->manterLog(1,'status','modlogs','idModLog','logs/logMod',0);
+    }
+
     public function removerLogComentario(){
         $this->removerLog(1,'comentario','idComentario','logs/comentLogs');
     }
 
     public function removerLogCompost(){
         $this->removerLog(1,'compost','idCompost','logs/compostLogs');
+    }
+
+    public function removerModLog(){
+        $this->removerLog(1,'modlogs','idModLog','logs/logMod');
     }
 
     public function manterLogComentarioc(){
