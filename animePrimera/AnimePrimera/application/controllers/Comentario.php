@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Comentario extends CI_Controller {
-
     public function __construct(){
         parent::__construct();
         $this->load->library(array('session','parser','image_lib'));
@@ -55,7 +54,11 @@ class Comentario extends CI_Controller {
         $idComentario = $this->uri->segment(3);
         $queryml = $this->main_model->get_main_where_array('comentario','idComentario',$idComentario);
         $querymls = $this->main_model->get_main_where_array('user','idUser',$queryml[0]['idUser']);
-        $this->checkPermsV2($queryml[0]['idUser'],$this->data['idUser'],1,$this->data['perms']);
+        $levelsNeeded = array(
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPermsV2($queryml[0]['idUser'],$this->data['idUser'],$levelsNeeded,$this->data['perms']);
         $msg = 'Removido Comentário de ' . $querymls[0]['Username'] . ' com texto: ' . $queryml[0]['texto'];
         $valuesml = array(
             'idUser' => $this->data['idUser'],
@@ -72,7 +75,11 @@ class Comentario extends CI_Controller {
         $idComentarioc = $this->uri->segment(3);
         $queryml = $this->main_model->get_main_where_array('comentariocompost','idComentarioc',$idComentarioc);
         $querymls = $this->main_model->get_main_where_array('user','idUser',$queryml[0]['idUser']);
-        $this->checkPermsV2($queryml[0]['idUser'],$this->data['idUser'],1,$this->data['perms']);
+        $levelsNeeded = array(
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPermsV2($queryml[0]['idUser'],$this->data['idUser'],$levelsNeeded,$this->data['perms']);
         $msg = 'Removido Comentário de ' . $querymls[0]['Username'] . ' com texto: ' . $queryml[0]['texto'];
         $valuesml = array(
             'idUser' => $this->data['idUser'],
@@ -122,7 +129,7 @@ class Comentario extends CI_Controller {
     private function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
         if($idAuthor = $idUser){
 
-        }elseif($perms == $levelNeeded){
+        }elseif(in_array($perms,$levelNeeded)){
 
         }else{
             redirect();
