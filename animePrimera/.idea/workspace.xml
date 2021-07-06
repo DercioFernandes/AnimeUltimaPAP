@@ -19,16 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Logs.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Logs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Temporada.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Temporada.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/hubinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/hubinfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/seriesinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/seriesinfo.php" afterDir="false" />
-    </list>
+    <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,7 +132,7 @@
       <workItem from="1625145887609" duration="10789000" />
       <workItem from="1625237706711" duration="4064000" />
       <workItem from="1625326476389" duration="2278000" />
-      <workItem from="1625562558095" duration="3533000" />
+      <workItem from="1625562558095" duration="3592000" />
     </task>
     <servers />
   </component>
