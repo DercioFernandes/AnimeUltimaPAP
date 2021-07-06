@@ -12,7 +12,7 @@
                 <?php
                     if(!empty($user)):
                 ?>
-                        <?php if($perms == 1): ?>
+                        <?php if($perms == 3 || $perms == 4 || $perms == 5): ?>
                             <a class="editTemp" href="<?php echo base_url('serie/editar/' . $idSerie); ?>">Editar</a>
                             <a class="remTemp" href="<?php echo base_url('serie/remover/' . $idSerie); ?>">Remover</a>
                         <?php endif; ?>
@@ -78,7 +78,7 @@
                     <?php
                     if(!empty($user)):
                         ?>
-                        <?php if($perms == 1): ?>
+                        <?php if($perms == 3 || $perms == 4 || $perms == 5): ?>
                             <a class="editTemp" href="<?php echo base_url('temporada/editarTemp/'.$idSerie.'/'.$t['idTemporada']) ?>">Editar</a>
                             <a class="gerirTemp" href="<?php echo base_url('episodio/gerirEps/' . $t['idTemporada']); ?>">Gerir Episódios</a>
                             <a class="remTemp" href="<?php echo base_url('temporada/remover/' . $t['idTemporada']); ?>">Remover</a>
@@ -101,7 +101,7 @@
                             <?php
                             if(!empty($user)):
                                 ?>
-                                <?php if($perms == 1): ?>
+                                <?php if($perms == 3 || $perms == 4 || $perms == 5): ?>
                                     <li class="text-center">
                                         <a class="btn-block text-center" href="<?php echo base_url('episodio/addEps/' . $t['idTemporada']); ?>"> Adicionar Episódio </a>
                                     </li>

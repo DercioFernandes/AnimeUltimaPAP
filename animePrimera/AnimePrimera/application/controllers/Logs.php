@@ -23,7 +23,11 @@ class Logs extends CI_Controller {
 	public function general()
 	{
         $this->checkLogin();
-        $this->checkPerms(1,$this->data['perms']);
+        $levelsNeeded = array(
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPerms($levelsNeeded,$this->data['perms']);
 
         $this->load->view('logsmenu',$this->data);
 	}
@@ -98,7 +102,11 @@ class Logs extends CI_Controller {
 
     private function logsAbstract($permslevel,$table,$report,$idTable,$table2,$whereCondition,$idName,$viewName){
         $this->checkLogin();
-        $this->checkPerms($permslevel,$this->data['perms']);
+        $levelsNeeded = array(
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPerms($levelsNeeded,$this->data['perms']);
         $query = $this->main_model->get_table($table);
         $coments = array();
         $count = 0;
@@ -119,7 +127,11 @@ class Logs extends CI_Controller {
 
     private function manterLog($permslevel,$report,$table,$idTable,$viewName,$is){
         $this->checkLogin();
-        $this->checkPerms($permslevel,$this->data['perms']);
+        $levelsNeeded = array(
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPerms($levelsNeeded,$this->data['perms']);
         $id = $this->uri->segment(3);
         $values = array(
             $report => $is
@@ -130,7 +142,11 @@ class Logs extends CI_Controller {
 
     private function removerLog($permsLevel,$table,$idTable,$viewName){
         $this->checkLogin();
-        $this->checkPerms($permsLevel,$this->data['perms']);
+        $levelsNeeded = array(
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPerms($levelsNeeded,$this->data['perms']);
         $id = $this->uri->segment(3);
         $this->main_model->delete($idTable,$table,$id);
         redirect($viewName);
@@ -150,8 +166,8 @@ class Logs extends CI_Controller {
     }
 
     private function checkPerms($levelNeeded,$perms){
-        if($perms != $levelNeeded){
-            redirect();
+        if(!in_array($perms,$levelNeeded)){
+            //redirect();
         }
     }
 }

@@ -20,7 +20,12 @@ class Temporada extends CI_Controller {
 
     public function addTemp(){
         $this->checkLogin();
-        $this->checkPerms(1,$this->data['perms']);
+        $levelsNeeded = array(
+            UPLPERM,
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPerms($levelsNeeded,$this->data['perms']);
         if(isset($_POST['Criar'])){
             $query = $this->main_model->get_main_where('series','idSerie',$_POST['idSerie']);
             $uploadFile = $this->UploadFile('thumbnail');
@@ -55,7 +60,13 @@ class Temporada extends CI_Controller {
 
     public function editarTemp(){
         $this->checkLogin();
-        $this->checkPerms(1,$this->data['perms']);
+        $idSerie = $this->uri->segment(3);
+        $querys = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
+        $levelsNeeded = array(
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPermsV2($querys[0]['idUser'],$this->data['idUser'],$levelsNeeded,$this->data['perms']);
         if(isset($_POST['Editar'])){
             $values = array(
                 'Titulo' => $_POST['titulo'],
@@ -94,14 +105,18 @@ class Temporada extends CI_Controller {
 
     public function remover(){
         $this->checkLogin();
-        $this->checkPerms(1,$this->data['perms']);
         $idTemporada = $this->uri->segment(3);
+        $queryml = $this->main_model->get_main_where_array('temporadas','idTemporada',$idTemporada);
+        $querymls = $this->main_model->get_main_where_array('series','idSerie',$queryml[0]['idSerie']);
+        $levelsNeeded = array(
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPermsV2($querymls[0]['idUser'],$this->data['idUser'],$levelsNeeded,$this->data['perms']);
         $querye = $this->main_model->get_main_where_array('episodio','idTemporada', $idTemporada);
         foreach( $querye as $episodio ){
             $this->main_model->delete('idEpisodio','episodio',$episodio['idEpisodio']);
         }
-        $queryml = $this->main_model->get_main_where_array('temporadas','idTemporada',$idTemporada);
-        $querymls = $this->main_model->get_main_where_array('series','idSerie',$queryml[0]['idSerie']);
         $msg = 'Removido ' . $querymls[0]['Titulo'] . ' ' . $queryml[0]['Titulo'];
         $valuesml = array(
             'idUser' => $this->data['idUser'],
@@ -189,9 +204,19 @@ class Temporada extends CI_Controller {
         }
     }
 
-    private function checkPerms($levelNeeded,$perms){
-        if($perms != $levelNeeded){
+    private function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
+        if($perms == 4 || $perms == 5){
+
+        }elseif(($idAuthor == $idUser) && $perms == 3){
+
+        }else{
             redirect();
+        }
+    }
+
+    private function checkPerms($levelNeeded,$perms){
+        if(!in_array($perms,$levelNeeded)){
+            //redirect();
         }
     }
 

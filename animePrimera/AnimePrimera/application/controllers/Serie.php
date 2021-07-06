@@ -40,7 +40,8 @@ class Serie extends CI_Controller {
                 'Photo' => $imgname,
                 'Autor' => $_POST['autor'],
                 'Descricao' => $_POST['descricao'],
-                'Tipo' => $_POST['tipo']
+                'Tipo' => $_POST['tipo'],
+                'idUser' => $this->data['idUser']
             );
             $msg = 'Adicionado ' . $_POST['titulo'];
             $valuesml = array(

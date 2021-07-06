@@ -37,7 +37,14 @@ class Episodio extends CI_Controller {
             $this->data['perms'] = $user['Permissoes'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $this->data['idUser'] = $user['idUser'];
-            $this->checkPerms(1,$this->data['perms']);
+            $idTemporada = $this->uri->segment(3);
+            $queryt = $this->main_model->get_main_where_array('temporadas','idTemporada',$idTemporada);
+            $querys = $this->main_model->get_main_where_array('series','idSerie',$queryt[0]['idSerie']);
+            $levelsNeeded = array(
+                MODPERM,
+                ADMPERM
+            );
+            $this->checkPermsV2($querys[0]['idUser'],$this->data['idUser'],$levelsNeeded,$this->data['perms']);
             if(isset($_POST['Editar'])){
                 if(isset($_POST['idEpisodio'])){
                     $queryml = $this->main_model->get_main_where_array('episodio','idEpisodio',$_POST['idEpisodio']);
@@ -94,7 +101,12 @@ class Episodio extends CI_Controller {
     public function addEps()
     {
         $this->checkLogin();
-        $this->checkPerms(1,$this->data['perms']);
+        $levelsNeeded = array(
+            UPLPERM,
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPerms($levelsNeeded,$this->data['perms']);
         if(isset($_POST['Criar'])){
             //$animeName = str_replace(' ', '%20' ,$_POST['animeName']);
             //$url = 'http://localhost:3000/getAnimeEpisode/' . $animeName . '/' . $_POST['animeEps'];
@@ -361,8 +373,18 @@ class Episodio extends CI_Controller {
         }
     }
 
+    private function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
+        if($perms == 4 || $perms == 5){
+
+        }elseif(($idAuthor == $idUser) && $perms == 3){
+
+        }else{
+            redirect();
+        }
+    }
+
     private function checkPerms($levelNeeded,$perms){
-        if($perms != $levelNeeded){
+        if(in_array($perms,$levelNeeded)){
             redirect();
         }
     }
