@@ -25,6 +25,7 @@ class Episodio extends CI_Controller {
             //$perms = $this->getPerms($user['Permissoes']);
             //$this->data['perms'] = $perms;
             $this->data['idUser'] = $user['idUser'];
+            $this->data['perms'] = $user['Permissoes'];
         }
         $this->data['h3title'] = 'Adicionados Recentemente';
         $this->data['episodios'] = $this->main_model->get_table_limited('episodio',50,'idEpisodio');
@@ -38,6 +39,9 @@ class Episodio extends CI_Controller {
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $this->data['idUser'] = $user['idUser'];
             $idTemporada = $this->uri->segment(3);
+            if(empty($idTemporada)){
+                $idTemporada = $_POST['idTemporada'];
+            }
             $queryt = $this->main_model->get_main_where_array('temporadas','idTemporada',$idTemporada);
             $querys = $this->main_model->get_main_where_array('series','idSerie',$queryt[0]['idSerie']);
             $levelsNeeded = array(
@@ -45,6 +49,7 @@ class Episodio extends CI_Controller {
                 ADMPERM
             );
             $this->checkPermsV2($querys[0]['idUser'],$this->data['idUser'],$levelsNeeded,$this->data['perms']);
+            $this->data['idTemporada'] = $idTemporada;
             if(isset($_POST['Editar'])){
                 if(isset($_POST['idEpisodio'])){
                     $queryml = $this->main_model->get_main_where_array('episodio','idEpisodio',$_POST['idEpisodio']);
@@ -56,7 +61,6 @@ class Episodio extends CI_Controller {
                     );
                     $this->main_model->add('modlogs',$valuesml);
                     $values = array(
-                        'url' => $_POST['url'],
                         'titulo' => $_POST['titulo'],
                         'dataRelease' => $_POST['dataRelease']
                     );
@@ -67,7 +71,6 @@ class Episodio extends CI_Controller {
                     $this->data['idEpisodio'] = $_POST['Editar'];
                     $this->load->view('editarEpisodio',$this->data);
                 }
-
             }elseif(isset($_POST['Remover'])){
                 $queryml = $this->main_model->get_main_where_array('episodio','idEpisodio',$_POST['Remover']);
                 $msg = 'Removido ' . $queryml[0]['titulo'];
@@ -146,8 +149,7 @@ class Episodio extends CI_Controller {
     public function watchepisode(){
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
+            $this->data['perms'] = $user['Permissoes'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $this->data['idUser'] = $user['idUser'];
         }

@@ -92,7 +92,6 @@ class Hub extends CI_Controller {
 	public function criarPost(){
         $this->checkLogin();
         if(isset($_POST['Criar'])){
-            print_r($_POST);
             $values = array(
                 'titulo' => $_POST['titulo'],
                 'descricao' => $_POST['descricao'],

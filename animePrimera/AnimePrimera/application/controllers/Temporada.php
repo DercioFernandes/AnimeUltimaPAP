@@ -216,7 +216,7 @@ class Temporada extends CI_Controller {
 
     private function checkPerms($levelNeeded,$perms){
         if(!in_array($perms,$levelNeeded)){
-            //redirect();
+            redirect();
         }
     }
 

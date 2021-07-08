@@ -29,7 +29,12 @@ class Serie extends CI_Controller {
 	public function add()
     {
         $this->checkLogin();
-        $this->checkPerms(1,$this->data['perms']);
+        $levelsNeeded = array(
+            UPLPERM,
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPerms($levelsNeeded,$this->data['perms']);
         $this->data['titulo'] = 'Criar Série - AP';
         if(isset($_POST['Criar'])){
             $uploadFile = $this->UploadFile('thumbnail');
@@ -61,7 +66,6 @@ class Serie extends CI_Controller {
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->checkPerms(1,$this->data['perms']);
             if(isset($_POST['Editar'])){
                 $values = array(
                     'Titulo' => $_POST['titulo'],
@@ -95,12 +99,24 @@ class Serie extends CI_Controller {
                 $this->data['serie'] = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
                 $this->load->view('editarSerie',$this->data);
             }
+            $querys = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
+            $levelsNeeded = array(
+                MODPERM,
+                ADMPERM
+            );
+            $this->checkPermsV2($querys[0]['idUser'],$this->data['idUser'],$levelsNeeded,$this->data['perms']);
         }
     }
 
     public function remover(){
-        $this->checkPerms(1,$this->data['perms']);
         $idSerie = $this->uri->segment(3);
+        $this->checkLogin();
+        $querys = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
+        $levelsNeeded = array(
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPermsV2($querys[0]['idUser'],$this->data['idUser'],$levelsNeeded,$this->data['perms']);
         $querye = $querye = $this->main_model->get_main_where_array('temporadas','idSerie', $idSerie);
         foreach( $querye as $temporada ){
             $this->main_model->delete('idTemporada','temporadas',$temporada['idTemporada']);
@@ -369,8 +385,18 @@ class Serie extends CI_Controller {
         }
     }
 
+    private function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
+        if($perms == 4 || $perms == 5){
+
+        }elseif(($idAuthor == $idUser) && $perms == 3){
+
+        }else{
+            redirect();
+        }
+    }
+
     private function checkPerms($levelNeeded,$perms){
-        if($perms != $levelNeeded){
+        if(!in_array($perms,$levelNeeded)){
             redirect();
         }
     }

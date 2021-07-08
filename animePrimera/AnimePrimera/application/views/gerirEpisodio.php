@@ -32,6 +32,7 @@
                         </tbody>
                     <?php endforeach; ?>
                 </table>
+                <input type="hidden" name="idTemporada" value="<?php echo $idTemporada; ?>">
             </form>
         </div>
     </div>
