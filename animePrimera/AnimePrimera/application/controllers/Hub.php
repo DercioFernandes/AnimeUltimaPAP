@@ -207,6 +207,37 @@ class Hub extends CI_Controller {
         redirect('hub/hubinfo/'.$idCompost);
     }
 
+    public function search(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            //$perms = $this->getPerms($user['Permissoes']);
+            //$this->data['perms'] = $perms;
+            $this->data['idUser'] = $user['idUser'];
+        }
+        $query = $this->main_model->get_table('compost');
+        $searchitem = $_POST['animename'];
+        $cont = 0;
+        $results = array();
+        $seriesres = array();
+        foreach ($query as $serie){
+            //print_r($serie);
+            //$results = array_search($searchitem,$serie);
+            if(strpos($serie['titulo'], $searchitem) !== false){
+                $results[$cont] = $serie['idCompost'];
+                $cont += 1;
+            }
+        }
+        if(!empty($results)){
+            for($i = 0; $i <= $cont - 1; $i++){
+                $seriesres = array_merge($seriesres,$this->main_model->get_main_where_array('compost','idCompost',$results[$i]));
+            }
+        }
+        $this->data['n'] = $cont;
+        $this->data['posts'] = $seriesres;
+        $this->load->view('searchCompost',$this->data);
+    }
+
     private function UploadVideo($inputFileName){
         if ($this->input->post('video_upload')) {
             //set preferences
