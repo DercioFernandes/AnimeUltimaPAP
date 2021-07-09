@@ -15,6 +15,7 @@ class Comentario extends CI_Controller {
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
         }
+        $this->data['contSearch'] = 'Serie/search';
     }
 
     public function addComment(){

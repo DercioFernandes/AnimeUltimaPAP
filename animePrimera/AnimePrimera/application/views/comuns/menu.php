@@ -8,9 +8,23 @@
         </button>
 
         <div class="collapse navbar-collapse" id="nav">
-            <form class="form-inline ml-auto">
-                <input class="form-control ml-auto " type="search" placeholder="Search" aria-label="Search">
-            </form>
+            <!--<form class="form-inline ml-auto">
+                <input class="form-control ml-auto" type="search" placeholder="Search" aria-label="Search">
+            </form>-->
+            <div class="input-group searchdiv">
+                <!--<form class="input-group searchdiv" method="post" enctype="multipart/form-data">
+                    <input type="text" class="form-control" placeholder="Search (Ex: Kimetsu no Yaiba)" name="animename" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <a class="btn searchbtn" id="button-addon2" href="<?php echo base_url($contSearch) ?>">Search</a>
+                    </div>
+                </form>-->
+                <form class="input-group searchdiv" action="<?= base_url($contSearch)?>" method="post" enctype="multipart/form-data">
+                    <input type="text" class="form-control" placeholder="Search (Ex: Kimetsu no Yaiba)" name="animename" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <input class="form-control btn searchbtn" type="submit" class="btn btn-primary" name="Search" value="Search">
+                    </div>
+                </form>
+            </div>
             <ul class="navbar-nav ml-auto ">
                 <li class="nav-item active">
                     <a class="nav-link" href="<?=base_url('Hub')?>"> HUB </a>

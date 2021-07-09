@@ -125,7 +125,7 @@
                 <?php
                 if(!empty($user)):
                 ?>
-                    <?php if($perms == 1): ?>
+                    <?php if($perms == 3 || $perms == 4 || $perms == 5): ?>
                     <a style="margin-bottom: 5px; margin-top: 5px; margin-left: 5px; margin-right: 5px" class="btn btn-success btn-lg btn-block" href="<?php echo base_url('serie/add') ?>">Adicionar Série</a>
                     <?php endif; ?>
                 <?php endif; ?>

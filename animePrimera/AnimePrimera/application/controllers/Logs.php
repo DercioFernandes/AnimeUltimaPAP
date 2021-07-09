@@ -69,7 +69,7 @@ class Logs extends CI_Controller {
     }
 
     public function manterLogComentario(){
-        $this->manterLog(1,'report','comentario','idComentario','logs/comentsLogs',0);
+        $this->manterLog(1,'report','comentario','idComentario','logs/commentsLogs',0);
     }
 
     public function manterLogCompost(){

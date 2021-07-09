@@ -809,7 +809,25 @@ th{
     color: #1E1B18;
 }
 
+.searchdiv{
+}
+
+.searchbtn{
+    background-color: #1E1B18 !important;
+    color:#cdc49b !important;
+}
+
+.searchbtn:hover{
+    text-decoration: none !important;
+    background-color:  #cdc49b !important;
+    color: #1E1B18 !important;
+}
+
 @media all and (max-width: 1000px) {
+
+    .searchdiv{
+
+    }
 
     .backgroundBodied{
         min-height: 610px;

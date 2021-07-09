@@ -10,6 +10,7 @@ class Register extends CI_Controller {
         $this->load->helper(array('text','string','url'));
         $this->load->library(array('form_validation','session','parser'));
         $this->load->model('login_model');
+        $this->data['contSearch'] = 'Serie/search';
     }
 
     public function registrar(){
