@@ -48,11 +48,22 @@ class Comentario extends CI_Controller {
     public function addCommentC(){
         if(isset($_POST['Submeter'])){
             if($this->login_model->isLoggedIn() == true) {
-                $values = array(
-                    'idUser' => $_POST['idUser'],
-                    'idCompost' => $_POST['idCompost'],
-                    'texto' => $_POST['coment']
-                );
+                if(isset($_POST['commentComment'])){
+                    echo $_POST['commentComment'];
+                    $q = $this->main_model->get_main_where_array('comentariocompost','idComentarioC',$_POST['commentComment']);
+                    $values = array(
+                        'idUser' => $_POST['idUser'],
+                        'idCC' => $_POST['commentComment'],
+                        'texto' => $_POST['coment'],
+                        'idCompost' => $_POST['idCompost']
+                    );
+                }else{
+                    $values = array(
+                        'idUser' => $_POST['idUser'],
+                        'idCompost' => $_POST['idCompost'],
+                        'texto' => $_POST['coment']
+                    );
+                }
                 $this->main_model->add('comentariocompost',$values);
                 redirect(base_url('Hub/hubinfo/'.$_POST['idCompost']));
             }else{

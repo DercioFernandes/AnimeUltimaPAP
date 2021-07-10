@@ -42,7 +42,6 @@
                 <?php foreach ($comentarios as $comentario):
                     if($comentario['isAnswer'] == 1):
                     ?>
-
                     <?php
                     else:
                     ?>

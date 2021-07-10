@@ -22,9 +22,8 @@
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/hubinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/hubinfo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,7 +144,7 @@
       <workItem from="1625859601222" duration="319000" />
       <workItem from="1625860148907" duration="186000" />
       <workItem from="1625923709528" duration="599000" />
-      <workItem from="1625937322253" duration="4155000" />
+      <workItem from="1625937322253" duration="5587000" />
     </task>
     <servers />
   </component>
