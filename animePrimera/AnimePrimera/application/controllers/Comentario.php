@@ -21,11 +21,22 @@ class Comentario extends CI_Controller {
     public function addComment(){
         if(isset($_POST['Submeter'])){
             if($this->login_model->isLoggedIn() == true) {
-                $values = array(
-                    'idUser' => $_POST['idUser'],
-                    'idEpisodio' => $_POST['idEpisodio'],
-                    'texto' => $_POST['coment']
-                );
+                if(isset($_POST['commentComment'])){
+                    echo $_POST['commentComment'];
+                    $q = $this->main_model->get_main_where_array('comentario','idComentario',$_POST['commentComment']);
+                    $values = array(
+                        'idUser' => $_POST['idUser'],
+                        'idCC' => $_POST['commentComment'],
+                        'texto' => $_POST['coment'],
+                        'idEpisodio' => $_POST['idEpisodio']
+                    );
+                }else{
+                    $values = array(
+                        'idUser' => $_POST['idUser'],
+                        'idEpisodio' => $_POST['idEpisodio'],
+                        'texto' => $_POST['coment']
+                    );
+                }
                 $this->main_model->add('comentario',$values);
                 redirect(base_url('Episodio/watchepisode/'.$_POST['idEpisodio']));
             }else{
@@ -68,7 +79,7 @@ class Comentario extends CI_Controller {
         );
         $this->main_model->add('modlogs',$valuesml);
         $this->main_model->delete('idComentario','comentario',$idComentario);
-        redirect();
+        redirect('Episodio/watchepisode/' . $queryml[0]['idEpisodio']);
     }
 
     public function removeCommentC(){

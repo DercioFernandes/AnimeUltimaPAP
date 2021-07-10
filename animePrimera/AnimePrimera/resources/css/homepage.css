@@ -823,6 +823,33 @@ th{
     color: #1E1B18 !important;
 }
 
+.comentariocomment{
+    background: transparent;
+    color: white;
+    border: none;
+    width: 100%;
+}
+
+.commentcommentbtn{
+    background-color: #1E1B18 !important;
+    color: #cdc49b !important;
+    width: 100%;
+    height: 30px !important;
+    font-size: 12px !important;
+}
+
+.commentofcomment{
+    background-color: rgba(12,11,9,0.2);
+    color: rgba(255, 255, 255,0.8);
+    font-size: 12px;
+    margin-left: 1%;
+}
+
+.commentcommentbtn:hover{
+    background-color:  #cdc49b !important;
+    color: #1E1B18 !important;
+}
+
 @media all and (max-width: 1000px) {
 
     .searchdiv{

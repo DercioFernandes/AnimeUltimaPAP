@@ -20,9 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AnimePrimera/application/views/searchCompost.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Hub.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Hub.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +50,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/AnimePrimera/application/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ProjetoFinal_php" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -140,7 +142,10 @@
       <workItem from="1625562558095" duration="3592000" />
       <workItem from="1625772998285" duration="4678000" />
       <workItem from="1625840268483" duration="8983000" />
-      <workItem from="1625859601222" duration="135000" />
+      <workItem from="1625859601222" duration="319000" />
+      <workItem from="1625860148907" duration="186000" />
+      <workItem from="1625923709528" duration="599000" />
+      <workItem from="1625937322253" duration="4155000" />
     </task>
     <servers />
   </component>
@@ -164,9 +169,10 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="509" y="198" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.816@0.0.1536.816" timestamp="1625155198664" />
-    <state x="549" y="202" key="FileChooserDialogImpl" timestamp="1624442290646">
-      <screen x="0" y="30" width="1536" height="834" />
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1625860165787">
+      <screen x="0" y="0" width="1536" height="816" />
     </state>
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1625860165787" />
     <state x="549" y="202" key="FileChooserDialogImpl/0.30.1536.834@0.30.1536.834" timestamp="1624442290646" />
     <state x="475" y="154" key="NewPhpClassDialog" timestamp="1622993505394">
       <screen x="0" y="30" width="1536" height="834" />
@@ -181,10 +187,10 @@
     </state>
     <state x="425" y="170" key="run.anything.popup/0.0.1536.816@0.0.1536.816" timestamp="1625846902447" />
     <state x="425" y="204" key="run.anything.popup/0.30.1536.834@0.30.1536.834" timestamp="1624265129601" />
-    <state x="431" y="153" width="672" height="664" key="search.everywhere.popup" timestamp="1625840505982">
+    <state x="431" y="153" width="672" height="664" key="search.everywhere.popup" timestamp="1625938463487">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="431" y="153" width="672" height="664" key="search.everywhere.popup/0.0.1536.816@0.0.1536.816" timestamp="1625840505982" />
+    <state x="431" y="153" width="672" height="664" key="search.everywhere.popup/0.0.1536.816@0.0.1536.816" timestamp="1625938463487" />
     <state x="431" y="186" width="672" height="678" key="search.everywhere.popup/0.30.1536.834@0.30.1536.834" timestamp="1625045465878" />
   </component>
 </project>

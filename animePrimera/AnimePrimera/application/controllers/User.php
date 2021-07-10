@@ -20,6 +20,7 @@ class User extends CI_Controller {
             $this->data['idUser'] = $user['idUser'];
             $this->data['perms'] = $user['Permissoes'];
         }
+        $this->data['contSearch'] = 'Serie/search';
     }
 
 	public function myprofile()
