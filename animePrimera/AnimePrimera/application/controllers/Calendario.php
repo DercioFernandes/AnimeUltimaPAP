@@ -20,6 +20,14 @@ class Calendario extends CI_Controller {
     }
 
     public function index(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            /*$perms = $this->getPerms($user['perms']);
+            $this->data['perms'] = $perms;*/
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
+            $this->data['perms'] = $user['Permissoes'];
+        }
         $query = $this->main_model->get_table('calendario');
         $this->data['calendario'] = $query;
         $this->load->view('calendario',$this->data);

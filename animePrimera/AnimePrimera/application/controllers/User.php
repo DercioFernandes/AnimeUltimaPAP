@@ -20,7 +20,7 @@ class User extends CI_Controller {
             $this->data['idUser'] = $user['idUser'];
             $this->data['perms'] = $user['Permissoes'];
         }
-        $this->data['contSearch'] = 'Serie/search';
+        $this->data['contSearch'] = 'User/search';
     }
 
 	public function myprofile()
@@ -33,17 +33,36 @@ class User extends CI_Controller {
             $this->data['serieCom'] = $this->main_model->get_both_main_where_limited('series', 'completo', 'series.idSerie = completo.idSerie', 'series.idUser', $user['idUser'],9);
             $this->data['serieDro'] = $this->main_model->get_both_main_where_limited('series', 'dropped', 'series.idSerie = dropped.idSerie', 'series.idUser', $user['idUser'],9);
             $this->data['serieAss'] = $this->main_model->get_both_main_where_limited('series', 'watching', 'series.idSerie = watching.idSerie', 'series.idUser', $user['idUser'],9);
+            $this->data['myPosts'] = $this->main_model->get_main_where_array('compost','idUser',$user['idUser']);
+            $this->data['likedPosts'] = $this->main_model->get_both_main_where_limited('compost', 'compostvotes', 'compost.idCompost = compostvotes.idCompost', 'compost.idUser', $user['idUser'],9);
             $this->load->view('myprofile', $this->data);
         }
 	}
+
+	public function gerirUser(){
+        $this->checkLogin();
+        $levelsNeeded = array(
+            ADMPERM
+        );
+        $this->checkPerms($levelsNeeded,$this->data['perms']);
+
+        $this->data['users'] = $this->main_model->get_table('user');
+
+        $this->load->view('gerirUser',$this->data);
+    }
 
 	public function editUser(){
         if($this->login_model->isLoggedIn() == true) {
             if(isset($_POST['Editar'])){
                 $values = array(
-                    'Username' => $_POST['username'],
-                    'Email' => $_POST['email']
+                    'Username' => $_POST['username']
                 );
+                if(isset($_POST['email'])){
+                    $valuesemail = array(
+                        'Email' => $_POST['email']
+                    );
+                    $values = array_merge($values,$valuesemail);
+                }
                 if(!isset($_POST['manterImagem'])){
                     $uploadFile = $this->UploadFile('fotoperfil');
                     $e = $uploadFile['fileData'];
@@ -60,13 +79,25 @@ class User extends CI_Controller {
                     );
                     $values = array_merge($values,$valuespass);
                 }
+                if(isset($_POST['permissoes'])){
+                    $valuesperm = array(
+                        'Permissoes' => $_POST['permissoes']
+                    );
+                    $values = array_merge($values,$valuesperm);
+                }
                 $this->main_model->edit('idUser','user',$_POST['idUser'],$values);
                 redirect('User/myprofile/' . $_POST['idUser']);
             }else{
                 $user = $this->data['user'];
                 $idUser = $this->uri->segment(3);
+                $query = $this->main_model->get_main_where_array('user','idUser',$idUser);
                 $this->data['idUser'] = $idUser;
-                $this->data['query'] = $user;
+                if($user['idUser'] == $query[0]['idUser']){
+                    $this->data['isUser'] = 1;
+                }else if($user['Permissoes'] == 5){
+                    $this->data['isAdmin'] = 1;
+                }
+                $this->data['query'] = $query[0];
                 $this->load->view('myprofileedit', $this->data);
             }
         }
@@ -132,6 +163,16 @@ class User extends CI_Controller {
         }
     }
 
+    public function allMyPosts(){
+        if($this->login_model->isLoggedIn() == true) {
+            $user = $this->data['user'];
+            $idUser = $this->uri->segment(3);
+            $this->data['posts'] = $this->main_model->get_main_where_array('compost','idUser',$user['idUser']);
+            $this->data['h3title'] = 'Meus Posts ';
+            $this->load->view('allPost',$this->data);
+        }
+    }
+
     private function UploadFile($inputFileName)
     {
         /*
@@ -188,5 +229,33 @@ class User extends CI_Controller {
         return $data;
     }
 
+    private function checkLogin(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            /*$perms = $this->getPerms($user['perms']);
+            $this->data['perms'] = $perms;*/
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
+            $this->data['perms'] = $user['Permissoes'];
+        }else{
+            redirect();
+        }
+    }
+
+    private function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
+        if($perms == 4 || $perms == 5){
+
+        }elseif(($idAuthor == $idUser) && $perms == 3){
+
+        }else{
+            redirect();
+        }
+    }
+
+    private function checkPerms($levelNeeded,$perms){
+        if(!in_array($perms,$levelNeeded)){
+            redirect();
+        }
+    }
 
 }

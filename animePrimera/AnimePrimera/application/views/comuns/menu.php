@@ -43,6 +43,9 @@
                             <a class="dropdown-item" href="<?=base_url('user/myprofile/' . $idUser)?>">Meu Perfil</a>
                             <?php if($perms == 4 || $perms == 5): ?>
                                 <a class="dropdown-item" href="<?=base_url('logs/general')?>">Gerir Logs</a>
+                                <?php if($perms == 5): ?>
+                                    <a class="dropdown-item" href="<?=base_url('user/gerirUser')?>">Gerir Users</a>
+                                <?php endif; ?>
                             <?php endif; ?>
                             <a class="dropdown-item" href="<?=base_url('login/logout')?>">Logout</a>
                         </div>

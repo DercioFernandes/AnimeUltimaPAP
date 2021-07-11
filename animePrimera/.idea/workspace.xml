@@ -20,15 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Calendario.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AnimePrimera/application/views/calendario.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AnimePrimera/application/views/gerirUser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/config/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Logs.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Logs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Calendario.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Calendario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/calendario.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/calendario.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/seriesinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/seriesinfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/myprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/myprofile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/myprofileedit.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/myprofileedit.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,15 +58,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\views" />
       <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\controllers" />
       <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\resources\js" />
       <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\models" />
       <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -150,7 +149,8 @@
       <workItem from="1625860148907" duration="186000" />
       <workItem from="1625923709528" duration="599000" />
       <workItem from="1625937322253" duration="5587000" />
-      <workItem from="1626008730698" duration="3265000" />
+      <workItem from="1626008730698" duration="4493000" />
+      <workItem from="1626017142619" duration="4687000" />
     </task>
     <servers />
   </component>
@@ -192,10 +192,10 @@
     </state>
     <state x="425" y="170" key="run.anything.popup/0.0.1536.816@0.0.1536.816" timestamp="1625846902447" />
     <state x="425" y="204" key="run.anything.popup/0.30.1536.834@0.30.1536.834" timestamp="1624265129601" />
-    <state x="431" y="153" width="672" height="664" key="search.everywhere.popup" timestamp="1625938463487">
+    <state x="431" y="153" width="672" height="664" key="search.everywhere.popup" timestamp="1626023433085">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="431" y="153" width="672" height="664" key="search.everywhere.popup/0.0.1536.816@0.0.1536.816" timestamp="1625938463487" />
+    <state x="431" y="153" width="672" height="664" key="search.everywhere.popup/0.0.1536.816@0.0.1536.816" timestamp="1626023433085" />
     <state x="431" y="186" width="672" height="678" key="search.everywhere.popup/0.30.1536.834@0.30.1536.834" timestamp="1625045465878" />
   </component>
 </project>

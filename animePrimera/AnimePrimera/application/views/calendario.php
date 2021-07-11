@@ -23,21 +23,51 @@
                         <tr class="descfm">
                             <td>
                                 <?php if($calendar['dayOfWeek'] == 0): ?>
-                                    <?php ?>
+                                    <?php $query = $this->main_model->get_main_where_array('series','idSerie',$calendar['idSerie']); ?>
+                                    <p><?php echo $query[0]['Titulo'] ?></p>
                                 <?php endif ?>
                             </td>
-                            <td><?php echo $episodio['titulo'] ?></td>
-                            <td><?php echo $episodio['url'] ?></td>
-                            <td><?php echo $episodio['dataRelease'] ?></td>
-                            <td><?php echo $episodio['dataRelease'] ?></td>
-                            <td><?php echo $episodio['dataRelease'] ?></td>
-                            <td><?php echo $episodio['dataRelease'] ?></td>
+                            <td>
+                                <?php if($calendar['dayOfWeek'] == 1): ?>
+                                    <?php $query = $this->main_model->get_main_where_array('series','idSerie',$calendar['idSerie']); ?>
+                                    <p><?php echo $query[0]['Titulo'] ?></p>
+                                <?php endif ?>
+                            </td>
+                            <td>
+                                <?php if($calendar['dayOfWeek'] == 2): ?>
+                                    <?php $query = $this->main_model->get_main_where_array('series','idSerie',$calendar['idSerie']); ?>
+                                    <p><?php echo $query[0]['Titulo'] ?></p>
+                                <?php endif ?>
+                            </td>
+                            <td>
+                                <?php if($calendar['dayOfWeek'] == 3): ?>
+                                    <?php $query = $this->main_model->get_main_where_array('series','idSerie',$calendar['idSerie']); ?>
+                                    <p><?php echo $query[0]['Titulo'] ?></p>
+                                <?php endif ?>
+                            </td>
+                            <td>
+                                <?php if($calendar['dayOfWeek'] == 4): ?>
+                                    <?php $query = $this->main_model->get_main_where_array('series','idSerie',$calendar['idSerie']); ?>
+                                    <p><?php echo $query[0]['Titulo'] ?></p>
+                                <?php endif ?>
+                            </td>
+                            <td>
+                                <?php if($calendar['dayOfWeek'] == 5): ?>
+                                    <?php $query = $this->main_model->get_main_where_array('series','idSerie',$calendar['idSerie']); ?>
+                                    <p><?php echo $query[0]['Titulo'] ?></p>
+                                <?php endif ?>
+                            </td>
+                            <td>
+                                <?php if($calendar['dayOfWeek'] == 6): ?>
+                                    <?php $query = $this->main_model->get_main_where_array('series','idSerie',$calendar['idSerie']); ?>
+                                    <p><?php echo $query[0]['Titulo'] ?></p>
+                                <?php endif ?>
+                            </td>
                         </tr>
 
                         </tbody>
                     <?php endforeach; ?>
                 </table>
-                <input type="hidden" name="idTemporada" value="<?php echo $idTemporada; ?>">
             </form>
         </div>
     </div>
