@@ -29,6 +29,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="<?=base_url('Hub')?>"> HUB </a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="<?=base_url('Calendario')?>"> CALENDÁRIO </a>
+                </li>
                 <?php
                     if(!empty($user)):
                 ?>

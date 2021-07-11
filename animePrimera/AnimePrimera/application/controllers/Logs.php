@@ -18,6 +18,7 @@ class Logs extends CI_Controller {
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $this->data['perms'] = $user['Permissoes'];
         }
+        $this->data['contSearch'] = 'Serie/search';
     }
 
 	public function general()

@@ -106,11 +106,15 @@ class Episodio extends CI_Controller {
     {
         $this->checkLogin();
         $levelsNeeded = array(
-            UPLPERM,
             MODPERM,
             ADMPERM
         );
-        $this->checkPerms($levelsNeeded,$this->data['perms']);
+        $idTemporada = $this->uri->segment(3);
+        if(isset($_POST['idTemporada'])){
+            $queryt = $this->main_model->get_main_where_array('temporadas','idTemporada',$_POST['idTemporada']);
+            $querys = $this->main_model->get_main_where_array('series','idSerie',$queryt[0]['idSerie']);
+            $this->checkPermsV2($querys[0]['idUser'],$this->data['idUser'],$levelsNeeded,$this->data['perms']);
+        }
         if(isset($_POST['Criar'])){
             //$animeName = str_replace(' ', '%20' ,$_POST['animeName']);
             //$url = 'http://localhost:3000/getAnimeEpisode/' . $animeName . '/' . $_POST['animeEps'];

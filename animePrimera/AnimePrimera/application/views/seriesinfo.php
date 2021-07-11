@@ -63,7 +63,7 @@
         <?php
         if(!empty($user)):
             ?>
-            <?php if($perms == 1): ?>
+            <?php if($perms == 3 || $perms = 4 || $perms = 5): ?>
                 <a class="addTemp" href="<?php echo base_url('temporada/addTemp/' . $idSerie); ?>">Adicionar Temporada</a>
             <?php endif; ?>
         <?php endif; ?>
@@ -112,6 +112,15 @@
             </div>
         </div>
         <?php endforeach; ?>
+        <?php
+        if(!empty($user)):
+            if($perms == 3 || $perms == 4 || $perms == 5): ?>
+        <div class="col ">
+            <button class="<?php if(!empty($ratingC)){ echo $ratingC; }else{ echo 'seguir'; } ?> btn-block text-center" data-toggle="modal" data-target="#calendario"> Adicionar ao Calendário </button>
+        </div>
+        <?php
+            endif;
+        endif;?>
     </div>
 
     <!-- Modal -->
@@ -136,6 +145,35 @@
                             <option value="5">5</option>
                         </select>
                         <input class=" seguir btn-block" type="submit" class="btn btn-primary" name="ratesubmited" value="Submeter">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="calendario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6>Adiconar ao Calendário</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p> Dia da Semana: </p>
+                    <form action="<?php echo base_url('Calendario/addCalendario/' . $idSerie)?>" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="idUser" value="<?php if(isset($idUser)){ echo $idUser; } ?>">
+                        <select class="btn-block text-center" name="dataDaSemana">
+                            <option value="0">Domingo</option>
+                            <option value="1">Segunda-Feira</option>
+                            <option value="2">Terça-Feira</option>
+                            <option value="3">Quarta-Feira</option>
+                            <option value="4">Quinta-Feira</option>
+                            <option value="5">Sexta-Feira</option>
+                            <option value="6">Sabado</option>
+                        </select>
+                        <input class=" seguir btn-block" type="submit" class="btn btn-primary" name="submitcalendar" value="Submeter">
                     </form>
                 </div>
             </div>

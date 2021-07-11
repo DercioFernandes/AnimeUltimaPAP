@@ -120,8 +120,27 @@ class Serie extends CI_Controller {
         $this->checkPermsV2($querys[0]['idUser'],$this->data['idUser'],$levelsNeeded,$this->data['perms']);
         $querye = $querye = $this->main_model->get_main_where_array('temporadas','idSerie', $idSerie);
         foreach( $querye as $temporada ){
+            $eps = $this->main_model->get_main_where_array('episodio','idTemporada',$temporada['idTemporada']);
+            foreach ($eps as $episodio){
+                $comments = $this->main_model->get_main_where_array('comentario','idEpisodio',$episodio['idEpisodio']);
+                foreach($comments as $comment){
+                    $this->main_model->delete('idComentario','comentario',$comment['idComentario']);
+                }
+                $this->main_model->delete('idEpisodio','episodio',$episodio['idEpisodio']);
+            }
             $this->main_model->delete('idTemporada','temporadas',$temporada['idTemporada']);
         }
+        $calendario = $this->main_model->get_main_where_array('calendario','idSerie',$idSerie);
+        if(!empty($calendario))
+            $this->main_model->delete('idCalendario','calendario',$calendario[0]['idCalendario']);
+        //----Extas----//
+        $this->deleteAr('rating','idRating',$idSerie);
+        $this->deleteAr('seguir','idSeguir',$idSerie);
+        $this->deleteAr('onhold','idOnHold',$idSerie);
+        $this->deleteAr('favorito','idFavorito',$idSerie);
+        $this->deleteAr('dropped','idDropped',$idSerie);
+        $this->deleteAr('completo','idCompleto',$idSerie);
+        //-------------//
         $queryml = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
         $msg = 'Removido ' . $queryml[0]['Titulo'];
         $valuesml = array(
@@ -132,6 +151,13 @@ class Serie extends CI_Controller {
         $this->main_model->add('modlogs',$valuesml);
         $this->main_model->delete('idSerie','series',$idSerie);
         redirect();
+    }
+
+    private function deleteAr($table,$idName,$idSerie){
+        $todel = $this->main_model->get_main_where_array($table,'idSerie',$idSerie);
+        foreach($todel as $r){
+            $this->main_model->delete($idName,$table,$r[$idName]);
+        }
     }
 
 
