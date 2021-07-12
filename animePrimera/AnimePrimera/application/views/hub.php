@@ -72,6 +72,7 @@
 
     <div class="row">
         <?php foreach($posts as $p): ?>
+        <?php if($p['status'] == 0): ?>
         <div class="col-sm-4 md-4 lg-4">
             <a class="smallPost" href="<?php echo base_url('hub/hubinfo/' . $p['idCompost']) ?>">
                 <div class="smallPost">
@@ -99,6 +100,7 @@
                 </div>
             </a>
         </div>
+        <?php endif; ?>
         <?php endforeach; ?>
     </div>
     <div class="row">

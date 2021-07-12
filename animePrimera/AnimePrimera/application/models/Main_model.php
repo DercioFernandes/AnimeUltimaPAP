@@ -55,6 +55,14 @@ class Main_model extends CI_Model
         return $query->result(); //Retorna array de objetos quando se usa o Result
     }
 
+    public function get_main_where_limited($table,$whereName,$equalsName,$limit){
+        $this->db->limit($limit,0);
+        $this->db->where($whereName, $equalsName);
+        $query = $this->db->get($table);
+        //print_r($writeQuery);
+        return $query->result_array(); //Retorna array de objetos quando se usa o Result
+    }
+
     public function double_get_main_where_array($table,$array){
         $this->db->where($array);
         $query = $this->db->get($table);
@@ -92,6 +100,16 @@ class Main_model extends CI_Model
         $this->db->select('*');
         $this->db->from($table);
         $this->db->join($table2,$whereCondition);
+        $this->db->where($idName,$id);
+        $result = $this->db->get();
+        return $result->result_array();
+    }
+
+    public function get_both_main_whereV3($table,$table2,$table3,$whereCondition,$whereCondition2,$idName,$id){
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->join($table2,$whereCondition);
+        $this->db->join($table3,$whereCondition2);
         $this->db->where($idName,$id);
         $result = $this->db->get();
         return $result->result_array();

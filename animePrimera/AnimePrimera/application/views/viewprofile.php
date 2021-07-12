@@ -5,15 +5,19 @@
 <div class="container-fluid">
     <div class="row mypfpbg">
         <div class="col">
-            <img class="myprofilepfp text-center" src="<?php echo base_url('./resources/img/pfp/' . $fotoPerfil) ?>" title="userPFP" alt="userPFP"/>
-            <h3 class="mypusername"><b>Username: </b><small><?php echo $username ?></small></h3>
-            <h3 class="mypemail"><b>Email:</b><small> <?php echo $email ?></small></h3>
-            <a class="btn-block text-center mypedit" href="<?php echo base_url('user/editUser/' . $idUser) ?>">Editar Perfil</a>
+            <img class="myprofilepfp text-center" src="<?php echo base_url('./resources/img/pfp/' . $userinfo[0]['FotoPerfil']) ?>" title="userPFP" alt="userPFP"/>
+            <h3 class="mypusername"><b>Username: </b><small><?php echo $userinfo[0]['Username'] ?></small></h3>
+            <?php if($perms == 5): ?>
+            <a class="btn-block text-center mypedit" href="<?php echo base_url('user/editUser/' . $userinfo[0]['idUser']) ?>">Editar Perfil</a>
+            <?php endif; ?>
+            <?php if($perms == 4 || $perms == 5): ?>
+            <button class="btn-block text-center myban" data-toggle="modal" data-target="#ban"> Banir </button>
+            <?php endif; ?>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h3 id="centered" class="text-center"> Meus Favoritos </h3>
+            <h3 id="centered" class="text-center"> Favoritos de <?php echo $userinfo[0]['Username'] ?> </h3>
         </div>
     </div>
     <div class="row">
@@ -29,7 +33,7 @@
                         </div>
                     </a>
                 <?php endforeach; ?>
-                <a href="<?php echo base_url('user/allSeriesFav/' . $idUser)?>">
+                <a href="<?php echo base_url('user/allSeriesFav/' . $userinfo[0]['idUser'])?>">
                     <div class="card text-white bg-dark mb-3">
                         <img id="image" class="card-img-top" src="<?php echo base_url('/resources/img/seriesthumb/+.png')?>" alt="Thumbnail">
                         <div id="middle" class="card-body">
@@ -42,7 +46,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h3 id="centered" class="text-center"> Séries que Segues </h3>
+            <h3 id="centered" class="text-center"> Séries que <?php echo $userinfo[0]['Username']?> segue </h3>
         </div>
     </div>
     <div class="row">
@@ -58,7 +62,7 @@
                         </div>
                     </a>
                 <?php endforeach; ?>
-                <a href="<?php echo base_url('user/allSeriesSeg/' . $idUser)?>">
+                <a href="<?php echo base_url('user/allSeriesSeg/' . $userinfo[0]['idUser'])?>">
                     <div class="card text-white bg-dark mb-3">
                         <img id="image" class="card-img-top" src="<?php echo base_url('/resources/img/seriesthumb/+.png')?>" alt="Thumbnail">
                         <div id="middle" class="card-body">
@@ -72,7 +76,7 @@
 
     <div class="row">
         <div class="col">
-            <h3 id="centered" class="text-center"> Séries que estás a ver </h3>
+            <h3 id="centered" class="text-center"> Séries que <?php echo $userinfo[0]['Username'] ?> está a ver </h3>
         </div>
     </div>
     <div class="row">
@@ -88,7 +92,7 @@
                         </div>
                     </a>
                 <?php endforeach; ?>
-                <a href="<?php echo base_url('user/allSeriesAss/' . $idUser)?>">
+                <a href="<?php echo base_url('user/allSeriesAss/' . $userinfo[0]['idUser'])?>">
                     <div class="card text-white bg-dark mb-3">
                         <img id="image" class="card-img-top" src="<?php echo base_url('/resources/img/seriesthumb/+.png')?>" alt="Thumbnail">
                         <div id="middle" class="card-body">
@@ -118,7 +122,7 @@
                         </div>
                     </a>
                 <?php endforeach; ?>
-                <a href="<?php echo base_url('user/allSeriesHol/' . $idUser)?>">
+                <a href="<?php echo base_url('user/allSeriesHol/' . $userinfo[0]['idUser'])?>">
                     <div class="card text-white bg-dark mb-3">
                         <img id="image" class="card-img-top" src="<?php echo base_url('/resources/img/seriesthumb/+.png')?>" alt="Thumbnail">
                         <div id="middle" class="card-body">
@@ -148,7 +152,7 @@
                         </div>
                     </a>
                 <?php endforeach; ?>
-                <a href="<?php echo base_url('user/allSeriesCom/' . $idUser)?>">
+                <a href="<?php echo base_url('user/allSeriesCom/' . $userinfo[0]['idUser'])?>">
                     <div class="card text-white bg-dark mb-3">
                         <img id="image" class="card-img-top" src="<?php echo base_url('/resources/img/seriesthumb/+.png')?>" alt="Thumbnail">
                         <div id="middle" class="card-body">
@@ -178,7 +182,7 @@
                         </div>
                     </a>
                 <?php endforeach; ?>
-                <a href="<?php echo base_url('user/allSeriesDro/' . $idUser)?>">
+                <a href="<?php echo base_url('user/allSeriesDro/' . $userinfo[0]['idUser'])?>">
                     <div class="card text-white bg-dark mb-3">
                         <img id="image" class="card-img-top" src="<?php echo base_url('/resources/img/seriesthumb/+.png')?>" alt="Thumbnail">
                         <div id="middle" class="card-body">
@@ -191,7 +195,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <h3 id="centered" class="text-center"> Meus Posts </h3>
+            <h3 id="centered" class="text-center"> Posts de <?php echo $userinfo[0]['Username'] ?></h3>
         </div>
     </div>
     <div class="row">
@@ -227,14 +231,14 @@
     </div>
     <div class="row">
         <div class="col">
-            <a href="<?php echo base_url('User/allMyPosts/'.$idUser)?>">
+            <a href="<?php echo base_url('User/allMyPosts/'. $userinfo[0]['idUser'])?>">
                 <h6 class="hubbtn text-center"> Ver Todos</h6>
             </a>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h3 id="centered" class="text-center"> Meus Posts Curtidos </h3>
+            <h3 id="centered" class="text-center"> Posts Curtidos por <?php echo $userinfo[0]['Username'] ?></h3>
         </div>
     </div>
     <div class="row">
@@ -270,9 +274,30 @@
     </div>
     <div class="row">
         <div class="col">
-            <a href="<?php echo base_url('User/allMyLikedPosts/'.$idUser)?>">
+            <a href="<?php echo base_url('User/allMyLikedPosts/' . $userinfo[0]['idUser'])?>">
                 <h6 class="hubbtn text-center"> Ver Todos</h6>
             </a>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="ban" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6>Rate</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?php echo base_url('User/banUser/' . $userinfo[0]['idUser'])?>" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="idUser" value="<?php if(isset($idUser)){ echo $idUser; } ?>">
+                        <h6>Razão:</h6>
+                        <textarea class="reason" name="reason" required="required"></textarea>
+                        <input class=" seguir btn-block" type="submit" class="btn btn-primary" name="ratesubmited" value="Submeter">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

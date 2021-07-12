@@ -115,9 +115,12 @@
         <?php
         if(!empty($user)):
             if($perms == 3 || $perms == 4 || $perms == 5): ?>
-        <div class="col ">
-            <button class="<?php if(!empty($ratingC)){ echo $ratingC; }else{ echo 'seguir'; } ?> btn-block text-center" data-toggle="modal" data-target="#calendario"> Adicionar ao Calendário </button>
-        </div>
+            <div class="col ">
+                <button class="addCal btn-block text-center" data-toggle="modal" data-target="#calendario"> Adicionar ao Calendário </button>
+            </div>
+            <div class="col">
+                <a href="<?php echo base_url('Calendario/removerCalendario/' . $idSerie) ?>" class="remCal btn-block text-center"> Remover do Calendário </a>
+            </div>
         <?php
             endif;
         endif;?>

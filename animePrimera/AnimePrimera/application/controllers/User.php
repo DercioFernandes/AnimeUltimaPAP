@@ -27,17 +27,31 @@ class User extends CI_Controller {
 	{
         if($this->login_model->isLoggedIn() == true) {
             $user = $this->data['user'];
-            $this->data['serieFav'] = $this->main_model->get_both_main_where_limited('series', 'favorito', 'series.idSerie = favorito.idSerie', 'series.idUser', $user['idUser'],9);
-            $this->data['serieSeg'] = $this->main_model->get_both_main_where_limited('series', 'seguir', 'series.idSerie = seguir.idSerie', 'series.idUser', $user['idUser'],9);
-            $this->data['serieHol'] = $this->main_model->get_both_main_where_limited('series', 'onhold', 'series.idSerie = onhold.idSerie', 'series.idUser', $user['idUser'],9);
-            $this->data['serieCom'] = $this->main_model->get_both_main_where_limited('series', 'completo', 'series.idSerie = completo.idSerie', 'series.idUser', $user['idUser'],9);
-            $this->data['serieDro'] = $this->main_model->get_both_main_where_limited('series', 'dropped', 'series.idSerie = dropped.idSerie', 'series.idUser', $user['idUser'],9);
-            $this->data['serieAss'] = $this->main_model->get_both_main_where_limited('series', 'watching', 'series.idSerie = watching.idSerie', 'series.idUser', $user['idUser'],9);
-            $this->data['myPosts'] = $this->main_model->get_main_where_array('compost','idUser',$user['idUser']);
-            $this->data['likedPosts'] = $this->main_model->get_both_main_where_limited('compost', 'compostvotes', 'compost.idCompost = compostvotes.idCompost', 'compost.idUser', $user['idUser'],9);
+            $this->data['serieFav'] = $this->main_model->get_both_main_where_limited('series', 'favorito', 'series.idSerie = favorito.idSerie', 'favorito.idUser', $user['idUser'],9);
+            $this->data['serieSeg'] = $this->main_model->get_both_main_where_limited('series', 'seguir', 'series.idSerie = seguir.idSerie', 'seguir.idUser', $user['idUser'],9);
+            $this->data['serieHol'] = $this->main_model->get_both_main_where_limited('series', 'onhold', 'series.idSerie = onhold.idSerie', 'onhold.idUser', $user['idUser'],9);
+            $this->data['serieCom'] = $this->main_model->get_both_main_where_limited('series', 'completo', 'series.idSerie = completo.idSerie', 'completo.idUser', $user['idUser'],9);
+            $this->data['serieDro'] = $this->main_model->get_both_main_where_limited('series', 'dropped', 'series.idSerie = dropped.idSerie', 'dropped.idUser', $user['idUser'],9);
+            $this->data['serieAss'] = $this->main_model->get_both_main_where_limited('series', 'watching', 'series.idSerie = watching.idSerie', 'watching.idUser', $user['idUser'],9);
+            $this->data['myPosts'] = $this->main_model->get_main_where_limited('compost','idUser',$user['idUser'],3);
+            $this->data['likedPosts'] = $this->main_model->get_both_main_where_limited('compost', 'compostvotes', 'compost.idCompost = compostvotes.idCompost', 'compostvotes.idUser', $user['idUser'],3);
             $this->load->view('myprofile', $this->data);
         }
 	}
+
+	public function viewProfile(){
+        $idUser = $this->uri->segment(3);
+        $this->data['serieFav'] = $this->main_model->get_both_main_where_limited('series', 'favorito', 'series.idSerie = favorito.idSerie', 'favorito.idUser', $idUser,9);
+        $this->data['serieSeg'] = $this->main_model->get_both_main_where_limited('series', 'seguir', 'series.idSerie = seguir.idSerie', 'seguir.idUser', $idUser,9);
+        $this->data['serieHol'] = $this->main_model->get_both_main_where_limited('series', 'onhold', 'series.idSerie = onhold.idSerie', 'onhold.idUser', $idUser,9);
+        $this->data['serieCom'] = $this->main_model->get_both_main_where_limited('series', 'completo', 'series.idSerie = completo.idSerie', 'completo.idUser', $idUser,9);
+        $this->data['serieDro'] = $this->main_model->get_both_main_where_limited('series', 'dropped', 'series.idSerie = dropped.idSerie', 'dropped.idUser', $idUser,9);
+        $this->data['serieAss'] = $this->main_model->get_both_main_where_limited('series', 'watching', 'series.idSerie = watching.idSerie', 'watching.idUser', $idUser,9);
+        $this->data['myPosts'] = $this->main_model->get_main_where_limited('compost','idUser',$idUser,3);
+        $this->data['likedPosts'] = $this->main_model->get_both_main_where_limited('compost', 'compostvotes', 'compost.idCompost = compostvotes.idCompost', 'compostvotes.idUser', $idUser,3);
+        $this->data['userinfo'] = $this->main_model->get_main_where_array('user','idUser',$idUser);
+        $this->load->view('viewprofile', $this->data);
+    }
 
 	public function gerirUser(){
         $this->checkLogin();
@@ -45,10 +59,38 @@ class User extends CI_Controller {
             ADMPERM
         );
         $this->checkPerms($levelsNeeded,$this->data['perms']);
-
+        $cont = 0;
         $this->data['users'] = $this->main_model->get_table('user');
-
+        foreach ($this->data['users'] as $user){
+            $this->data['users'][$cont]['Permissoes'] = $this->getPermissionsName($user['Permissoes']);
+            $cont += 1;
+        }
         $this->load->view('gerirUser',$this->data);
+    }
+
+    private function getPermissionsName($perms){
+        switch ($perms){
+            case 0:
+                return 'Banido';
+                break;
+            case 1:
+                return 'Normal';
+                break;
+            case 2:
+                return 'Premium';
+                break;
+            case 3:
+                return 'Uploader';
+                break;
+            case 4:
+                return 'Moderador';
+                break;
+            case 5:
+                return 'Administrador';
+                break;
+            default:
+                return 'Não Definido';
+        }
     }
 
 	public function editUser(){
@@ -72,7 +114,7 @@ class User extends CI_Controller {
                     );
                     $values = array_merge($values,$valuepfp);
                 }
-                if(!isset($_POST['password'])){
+                if(isset($_POST['password'])){
                     $password = hash('sha256',$_POST['password']);
                     $valuespass = array(
                         'Password' => $password
@@ -107,7 +149,7 @@ class User extends CI_Controller {
         if($this->login_model->isLoggedIn() == true) {
             $user = $this->data['user'];
             $idUser = $this->uri->segment(3);
-            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'favorito', 'series.idSerie = favorito.idSerie', 'series.idUser', $user['idUser']);
+            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'favorito', 'series.idSerie = favorito.idSerie', 'series.idUser', $idUser);
             $this->data['h3title'] = 'Meus Favoritos';
             $this->load->view('all',$this->data);
         }
@@ -117,7 +159,7 @@ class User extends CI_Controller {
         if($this->login_model->isLoggedIn() == true) {
             $user = $this->data['user'];
             $idUser = $this->uri->segment(3);
-            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'seguir', 'series.idSerie = seguir.idSerie', 'series.idUser', $user['idUser']);
+            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'seguir', 'series.idSerie = seguir.idSerie', 'series.idUser', $idUser);
             $this->data['h3title'] = 'Séries que Segues';
             $this->load->view('all',$this->data);
         }
@@ -127,7 +169,7 @@ class User extends CI_Controller {
         if($this->login_model->isLoggedIn() == true) {
             $user = $this->data['user'];
             $idUser = $this->uri->segment(3);
-            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'onhold', 'series.idSerie = onhold.idSerie', 'series.idUser', $user['idUser']);
+            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'onhold', 'series.idSerie = onhold.idSerie', 'series.idUser', $idUser);
             $this->data['h3title'] = 'Séries em Espera ';
             $this->load->view('all',$this->data);
         }
@@ -137,7 +179,7 @@ class User extends CI_Controller {
         if($this->login_model->isLoggedIn() == true) {
             $user = $this->data['user'];
             $idUser = $this->uri->segment(3);
-            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'completo', 'series.idSerie = completo.idSerie', 'series.idUser', $user['idUser']);
+            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'completo', 'series.idSerie = completo.idSerie', 'series.idUser', $idUser);
             $this->data['h3title'] = 'Séries Completas';
             $this->load->view('all',$this->data);
         }
@@ -147,7 +189,7 @@ class User extends CI_Controller {
         if($this->login_model->isLoggedIn() == true) {
             $user = $this->data['user'];
             $idUser = $this->uri->segment(3);
-            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'watching', 'series.idSerie = watching.idSerie', 'series.idUser', $user['idUser']);
+            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'watching', 'series.idSerie = watching.idSerie', 'series.idUser', $idUser);
             $this->data['h3title'] = 'Séries que estás a ver ';
             $this->load->view('all',$this->data);
         }
@@ -157,7 +199,7 @@ class User extends CI_Controller {
         if($this->login_model->isLoggedIn() == true) {
             $user = $this->data['user'];
             $idUser = $this->uri->segment(3);
-            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'dropped', 'series.idSerie = dropped.idSerie', 'series.idUser', $user['idUser']);
+            $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'dropped', 'series.idSerie = dropped.idSerie', 'series.idUser', $idUser);
             $this->data['h3title'] = 'Séries Dropadas ';
             $this->load->view('all',$this->data);
         }
@@ -167,11 +209,93 @@ class User extends CI_Controller {
         if($this->login_model->isLoggedIn() == true) {
             $user = $this->data['user'];
             $idUser = $this->uri->segment(3);
-            $this->data['posts'] = $this->main_model->get_main_where_array('compost','idUser',$user['idUser']);
-            $this->data['h3title'] = 'Meus Posts ';
+            $this->data['posts'] = $this->main_model->get_main_where_array('compost','idUser',$idUser);
+            $this->data['h3title'] = 'Posts';
             $this->load->view('allPost',$this->data);
         }
     }
+
+    public function allMyLikedPosts(){
+        if($this->login_model->isLoggedIn() == true) {
+            $user = $this->data['user'];
+            $idUser = $this->uri->segment(3);
+            $this->data['posts'] = $this->main_model->get_both_main_whereV2('compost', 'compostvotes', 'compost.idCompost = compostvotes.idCompost' , 'compostvotes.idUser', $idUser);
+            $this->data['h3title'] = 'Posts Curtidos';
+            $this->load->view('allPost',$this->data);
+        }
+    }
+
+    public function banUser(){
+        $this->checkLogin();
+        $levelsNeeded = array(
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPerms($levelsNeeded,$this->data['perms']);
+        $idUser = $this->uri->segment(3);
+        $query = $this->main_model->get_main_where_array('user','idUser',$idUser);
+        if(($query[0]['Permissoes'] != 5) && ($this->data['perms'] > $query[0]['Permissoes'])){
+            $msg = 'User ' . $query[0]['Username'] . ' banido pela razão: ' . $_POST['reason'];
+            $valuesml = array(
+                'idUser' => $this->data['idUser'],
+                'info' => $msg,
+                'status' => 1
+            );
+            $this->main_model->add('modlogs',$valuesml);
+            $values = array(
+                'Permissoes' => 0
+            );
+            $this->main_model->edit('idUser','user',$idUser,$values);
+            redirect();
+        }else{
+            $msg = 'User ' . $query[0]['Username'] . ' ia ser banido pela razão: ' . $_POST['reason'] ;
+            $valuesml = array(
+                'idUser' => $this->data['idUser'],
+                'info' => $msg,
+                'status' => 1
+            );
+            $this->main_model->add('modlogs',$valuesml);
+            redirect();
+        }
+
+    }
+
+    public function search(){
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            //$perms = $this->getPerms($user['Permissoes']);
+            //$this->data['perms'] = $perms;
+            $this->data['idUser'] = $user['idUser'];
+        }
+        $query = $this->main_model->get_table('user');
+        if(!empty($_POST['animename'])){
+            $searchitem = $_POST['animename'];
+            $cont = 0;
+            $results = array();
+            $seriesres = array();
+            foreach ($query as $serie){
+                //print_r($serie);
+                //$results = array_search($searchitem,$serie);
+                if(strpos($serie['Username'], $searchitem) !== false){
+                    $results[$cont] = $serie['idUser'];
+                    $cont += 1;
+                }
+            }
+            if(!empty($results)){
+                for($i = 0; $i <= $cont - 1; $i++){
+                    $seriesres = array_merge($seriesres,$this->main_model->get_main_where_array('user','idUser',$results[$i]));
+                }
+            }
+            $this->data['n'] = $cont;
+            $this->data['users'] = $seriesres;
+            $this->load->view('searchUsers',$this->data);
+        }else{
+            redirect();
+        }
+    }
+
+
 
     private function UploadFile($inputFileName)
     {

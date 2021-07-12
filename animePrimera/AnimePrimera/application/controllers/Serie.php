@@ -336,26 +336,30 @@ class Serie extends CI_Controller {
             $this->data['idUser'] = $user['idUser'];
         }
         $query = $this->main_model->get_table('series');
-        $searchitem = $_POST['animename'];
-        $cont = 0;
-        $results = array();
-        $seriesres = array();
-        foreach ($query as $serie){
-            //print_r($serie);
-            //$results = array_search($searchitem,$serie);
-            if(strpos($serie['Titulo'], $searchitem) !== false){
-                $results[$cont] = $serie['idSerie'];
-                $cont += 1;
+        if(!empty($_POST['animename'])){
+            $searchitem = $_POST['animename'];
+            $cont = 0;
+            $results = array();
+            $seriesres = array();
+            foreach ($query as $serie){
+                //print_r($serie);
+                //$results = array_search($searchitem,$serie);
+                if(strpos($serie['Titulo'], $searchitem) !== false){
+                    $results[$cont] = $serie['idSerie'];
+                    $cont += 1;
+                }
             }
-        }
-        if(!empty($results)){
-            for($i = 0; $i <= $cont - 1; $i++){
-                $seriesres = array_merge($seriesres,$this->main_model->get_main_where_array('series','idSerie',$results[$i]));
+            if(!empty($results)){
+                for($i = 0; $i <= $cont - 1; $i++){
+                    $seriesres = array_merge($seriesres,$this->main_model->get_main_where_array('series','idSerie',$results[$i]));
+                }
             }
+            $this->data['n'] = $cont;
+            $this->data['series'] = $seriesres;
+            $this->load->view('searchSeries',$this->data);
+        }else{
+            redirect();
         }
-        $this->data['n'] = $cont;
-        $this->data['series'] = $seriesres;
-        $this->load->view('searchSeries',$this->data);
     }
 
     /*private function checkStates($array,$idUser){

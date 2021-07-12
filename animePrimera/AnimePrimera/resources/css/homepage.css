@@ -444,11 +444,34 @@ th{
     font-size: 25px;
     text-decoration: none;
     font-family: "Good Times Rg";
+    margin-bottom: 0;
 }
 
 .mypedit:hover{
     color: #1E1B18 !important;
     background-color: #cdc49b !important;
+    text-decoration: none;
+
+}
+
+.reason{
+    width: 100%;
+}
+
+.myban{
+    margin-top: 0;
+    color: #1E1B18;
+    background-color: #D8315B;
+    font-size: 25px;
+    text-decoration: none;
+    font-family: "Good Times Rg";
+    border: none;
+    margin-bottom: 0;
+}
+
+.myban:hover{
+    color: #D8315B !important;
+    background-color: #1E1B18 !important;
     text-decoration: none;
 
 }
@@ -850,6 +873,40 @@ th{
     color: #1E1B18 !important;
 }
 
+.addCal{
+    font-family: "Good Times Rg";
+    font-size: 15px;
+    width: 100%;
+    color: #cdc49b;
+    background-color: #1E1B18 !important;
+    display: block;
+    text-align: center;
+    margin-bottom: 0;
+    border: none;
+}
+
+.addCal:hover{
+    background-color:  #cdc49b !important;
+    color: #1E1B18 !important;
+}
+
+.remCal{
+    margin-top: 0;
+    font-family: "Good Times Rg";
+    font-size: 15px;
+    width: 100%;
+    color: #1E1B18;
+    background-color: #D8315B;
+    display: block;
+    text-align: center;
+}
+
+.remCal:hover{
+    text-decoration: none;
+    background-color:  #1E1B18 !important;
+    color: #D8315B  !important;
+}
+
 @media all and (max-width: 1000px) {
 
     .searchdiv{
@@ -925,6 +982,16 @@ th{
     #image{
         height: inherit;
         width: inherit;
+        /* Width Limite */
+        opacity: 1;
+        display: inline-block;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    #image-user{
+        height: 100px;
+        width: 100px;
         /* Width Limite */
         opacity: 1;
         display: inline-block;

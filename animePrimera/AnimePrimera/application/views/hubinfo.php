@@ -66,13 +66,17 @@
                                 if(!empty($q2)):
                                     ?>
                                     <div class="comentario-head">
-                                        <img id="pfp" src="<?php echo base_url('./resources/img/pfp/' . $comentario['FotoPerfil']) ?>">
+                                        <a href="<?php echo base_url('User/viewProfile/'.$comentario['idUser'])?>">
+                                            <img id="pfp" src="<?php echo base_url('./resources/img/pfp/' . $comentario['FotoPerfil']) ?>">
+                                        </a>
                                         <h6><?php echo $comentario['Username'] ?></h6>
                                         <p class="commentofcomment">Respondendo a: @<?php echo $q2[0]['Username'] ?> - <?php echo $q2[0]['texto'] ?></p>
                                     </div>
                                 <?php else: ?>
                                     <div class="comentario-head">
-                                        <img id="pfp" src="<?php echo base_url('./resources/img/pfp/' . $comentario['FotoPerfil']) ?>">
+                                        <a href="<?php echo base_url('User/viewProfile/'.$comentario['idUser'])?>">
+                                            <img id="pfp" src="<?php echo base_url('./resources/img/pfp/' . $comentario['FotoPerfil']) ?>">
+                                        </a>
                                         <h6><?php echo $comentario['Username'] ?></h6>
                                     </div>
                                 <?php endif; ?>

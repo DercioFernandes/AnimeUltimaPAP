@@ -76,6 +76,22 @@ class Calendario extends CI_Controller {
         }
     }
 
+    public function removerCalendario(){
+        $this->checkLogin();
+        $levelsNeeded = array(
+            UPLPERM,
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPerms($levelsNeeded,$this->data['perms']);
+        $idSerie = $this->uri->segment(3);
+        $query = $this->main_model->get_main_where_array('calendario','idSerie',$idSerie);
+        if(!empty($query)){
+            $this->main_model->delete('idCalendario','calendario',$query[0]['idCalendario']);
+        }
+        redirect('Serie/seriesinfo/'.$idSerie);
+    }
+
     private function checkLogin(){
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];

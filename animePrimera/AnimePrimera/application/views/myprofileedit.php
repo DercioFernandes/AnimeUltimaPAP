@@ -36,7 +36,14 @@
         <?php if(isset($isAdmin)): ?>
             <div class="form-group">
                 <h6 class="labelEdit text-center">Nível de Permissão</h6>
-                <input class="form-control" id="permissoes" name="permissoes" type="text" value="<?php echo $query['Permissoes']; ?>">
+                <select class="form-control" name="permissoes">
+                    <option value="0">Banido</option>
+                    <option value="1">Normal</option>
+                    <option value="2">Premium</option>
+                    <option value="3">Uploader</option>
+                    <option value="4">Moderador</option>
+                    <option value="5">Administrador</option>
+                </select>
             </div>
         <?php endif; ?>
         <input type="hidden" name="idUser" value="<?php echo $idUser; ?>">

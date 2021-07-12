@@ -24,7 +24,6 @@
                         <td><?php echo $user['Permissoes'] ?></td>
                         <td>
                             <a href="<?php echo base_url('User/editUser/' . $user['idUser']) ?>" class="btn btn-outline-dark btn-sm" type="submit" name="Editar"> Editar </a>
-                            <a href="<?php echo base_url('User/banUser/' . $user['idUser']) ?>" class="btn btn-outline-dark btn-sm" type="submit" name="Remover"> Banir </a>
                         </td>
                     </tr>
 
