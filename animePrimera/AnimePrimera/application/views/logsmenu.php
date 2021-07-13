@@ -3,6 +3,7 @@
 <body>
 
 <div class="container-fluid">
+    <?php if($perms == 4 || $perms == 5): ?>
     <div class="row">
         <div class="col">
             <a class="logButton text-center" href="<?php echo base_url('logs/commentLogs'); ?>">Gerir Logs dos Comentários (Séries)</a>
@@ -21,6 +22,12 @@
     <div class="row">
         <div class="col">
             <a class="logButton text-center" href="<?php echo base_url('logs/logMod'); ?>">Gerir Logs Gerais</a>
+        </div>
+    </div>
+    <?php endif; ?>
+    <div class="row">
+        <div class="col">
+            <a class="logButton text-center" href="<?php echo base_url('RequestAnime/animesRequested'); ?>">Gerir Séries Solicitadas</a>
         </div>
     </div>
 </div>

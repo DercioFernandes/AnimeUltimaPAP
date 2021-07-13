@@ -86,6 +86,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 //PERMS CONFIG
 define('BANNED',0);
+define('NORPERM',1);
 define('PREPERM',2);
 define('UPLPERM',3);
 define('MODPERM',4);

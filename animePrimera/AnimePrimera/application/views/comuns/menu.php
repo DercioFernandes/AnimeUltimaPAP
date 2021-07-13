@@ -41,12 +41,13 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="<?=base_url('user/myprofile/' . $idUser)?>">Meu Perfil</a>
-                            <?php if($perms == 4 || $perms == 5): ?>
+                            <?php if($perms == 3 || $perms == 4 || $perms == 5): ?>
                                 <a class="dropdown-item" href="<?=base_url('logs/general')?>">Gerir Logs</a>
                                 <?php if($perms == 5): ?>
                                     <a class="dropdown-item" href="<?=base_url('user/gerirUser')?>">Gerir Users</a>
                                 <?php endif; ?>
                             <?php endif; ?>
+                            <button class="dropdown-item" data-toggle="modal" data-target="#request"> Solicitar Nova Série </button>
                             <a class="dropdown-item" href="<?=base_url('login/logout')?>">Logout</a>
                         </div>
                     </li>
@@ -65,3 +66,28 @@
         </div>
     </div>
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="request" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6>Solicitar Série</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?php echo base_url('RequestAnime/addRequest')?>" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="idUser" value="<?php if(isset($idUser)){ echo $idUser; } ?>">
+                    <h6>Nome da Série: </h6>
+                    <input class="form-control" type="text" name="titulo" placeholder="Nome da Série" required="required">
+                    <br>
+                    <h6>Link (Opcional): </h6>
+                    <input class="form-control" type="text" name="link" placeholder="Link Informativo" >
+                    <input class=" seguir btn-block" type="submit" class="btn btn-primary" name="ratesubmited" value="Submeter">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

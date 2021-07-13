@@ -105,11 +105,11 @@ class Main_model extends CI_Model
         return $result->result_array();
     }
 
-    public function get_both_main_whereV3($table,$table2,$table3,$whereCondition,$whereCondition2,$idName,$id){
+    public function get_both_main_where_orderby($table,$table2,$whereCondition,$idName,$id,$orderby){
         $this->db->select('*');
         $this->db->from($table);
         $this->db->join($table2,$whereCondition);
-        $this->db->join($table3,$whereCondition2);
+        $this->db->order_by($orderby,'desc');
         $this->db->where($idName,$id);
         $result = $this->db->get();
         return $result->result_array();
