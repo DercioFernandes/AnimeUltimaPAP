@@ -63,7 +63,7 @@
         <?php
         if(!empty($user)):
             ?>
-            <?php if($perms == 3 || $perms = 4 || $perms = 5): ?>
+            <?php if($perms == 3 || $perms == 4 || $perms == 5): ?>
                 <a class="addTemp" href="<?php echo base_url('temporada/addTemp/' . $idSerie); ?>">Adicionar Temporada</a>
             <?php endif; ?>
         <?php endif; ?>
