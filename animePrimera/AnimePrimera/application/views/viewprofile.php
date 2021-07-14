@@ -7,11 +7,13 @@
         <div class="col">
             <img class="myprofilepfp text-center" src="<?php echo base_url('./resources/img/pfp/' . $userinfo[0]['FotoPerfil']) ?>" title="userPFP" alt="userPFP"/>
             <h3 class="mypusername"><b>Username: </b><small><?php echo $userinfo[0]['Username'] ?></small></h3>
-            <?php if($perms == 5): ?>
-            <a class="btn-block text-center mypedit" href="<?php echo base_url('user/editUser/' . $userinfo[0]['idUser']) ?>">Editar Perfil</a>
-            <?php endif; ?>
-            <?php if($perms == 4 || $perms == 5): ?>
-            <button class="btn-block text-center myban" data-toggle="modal" data-target="#ban"> Banir </button>
+            <?php if(isset($perms)): ?>
+                <?php if($perms == 5): ?>
+                <a class="btn-block text-center mypedit" href="<?php echo base_url('user/editUser/' . $userinfo[0]['idUser']) ?>">Editar Perfil</a>
+                <?php endif; ?>
+                <?php if($perms == 4 || $perms == 5): ?>
+                <button class="btn-block text-center myban" data-toggle="modal" data-target="#ban"> Banir </button>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
     </div>

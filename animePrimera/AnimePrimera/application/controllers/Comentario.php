@@ -1,5 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require 'vendor/autoload.php';
+require ''
 
 class Comentario extends CI_Controller {
     public function __construct(){
@@ -163,7 +165,7 @@ class Comentario extends CI_Controller {
             $this->data['idUser'] = $user['idUser'];
             $this->data['perms'] = $user['Permissoes'];
         }else{
-            redirect();
+
         }
     }
 

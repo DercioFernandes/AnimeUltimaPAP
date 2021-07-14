@@ -847,9 +847,10 @@ th{
 }
 
 .comentariocomment{
-    background: transparent;
-    color: white;
+    background: white;
+    color: black;
     border: none;
+    border-radius: 10px;
     width: 100%;
 }
 
@@ -925,6 +926,10 @@ th{
     font-size: 30px;
     width: 100%;
     background-color: #cdc49b;
+}
+
+.premium li{
+
 }
 
 @media all and (max-width: 1000px) {

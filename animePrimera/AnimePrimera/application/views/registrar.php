@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-group">
                     <h6 class="labelEdit text-center">Email</h6>
-                    <input type="text" class="form-control" name="email" placeholder="Email" >
+                    <input type="email" class="form-control" name="email" placeholder="Email" >
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btnSubmitEdit btn-block" type="submit">Registrar</button>

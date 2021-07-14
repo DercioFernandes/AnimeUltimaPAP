@@ -47,6 +47,7 @@ class Serie extends CI_Controller {
                 'Autor' => $_POST['autor'],
                 'Descricao' => $_POST['descricao'],
                 'Tipo' => $_POST['tipo'],
+                'DataRelease' => getdate(),
                 'idUser' => $this->data['idUser']
             );
             $msg = 'Adicionado ' . $_POST['titulo'];
@@ -246,47 +247,42 @@ class Serie extends CI_Controller {
 
     public function seguir(){
         $idSerie = $this->uri->segment(3);
-        if($this->login_model->isLoggedIn()){
-            $user = $this->data['user'];
-            $idUser = $user['idUser'];
-            $this->abstrato('seguir',$idSerie,$idUser);
-        }
+        $this->checkLogin();
+        $user = $this->data['user'];
+        $idUser = $user['idUser'];
+        $this->abstrato('seguir',$idSerie,$idUser);
     }
 
     public function completo(){
         $idSerie = $this->uri->segment(3);
-        if($this->login_model->isLoggedIn()){
-            $user = $this->data['user'];
-            $idUser = $user['idUser'];
-            $this->abstrato('completo',$idSerie,$idUser);
-        }
+        $this->checkLogin();
+        $user = $this->data['user'];
+        $idUser = $user['idUser'];
+        $this->abstrato('completo',$idSerie,$idUser);
     }
 
     public function dropped(){
         $idSerie = $this->uri->segment(3);
-        if($this->login_model->isLoggedIn()){
-            $user = $this->data['user'];
-            $idUser = $user['idUser'];
-            $this->abstrato('dropped',$idSerie,$idUser);
-        }
+        $this->checkLogin();
+        $user = $this->data['user'];
+        $idUser = $user['idUser'];
+        $this->abstrato('dropped',$idSerie,$idUser);
     }
 
     public function favorito(){
         $idSerie = $this->uri->segment(3);
-        if($this->login_model->isLoggedIn()){
-            $user = $this->data['user'];
-            $idUser = $user['idUser'];
-            $this->abstrato('favorito',$idSerie,$idUser);
-        }
+        $this->checkLogin();
+        $user = $this->data['user'];
+        $idUser = $user['idUser'];
+        $this->abstrato('favorito',$idSerie,$idUser);
     }
 
     public function vendo(){
         $idSerie = $this->uri->segment(3);
-        if($this->login_model->isLoggedIn()){
-            $user = $this->data['user'];
-            $idUser = $user['idUser'];
-            $this->abstrato('watching',$idSerie,$idUser);
-        }
+        $this->checkLogin();
+        $user = $this->data['user'];
+        $idUser = $user['idUser'];
+        $this->abstrato('watching',$idSerie,$idUser);
     }
 
     private function abstrato($table,$idSerie,$idUser){

@@ -48,18 +48,20 @@
                                 <?php endif; ?>
                             <?php endif; ?>
                             <button class="dropdown-item" data-toggle="modal" data-target="#request"> Solicitar Nova Série </button>
+                            <?php if($perms < 3): ?>
                             <a class="dropdown-item" href="<?=base_url('User/goPremium')?>">Go Premium</a>
-                            <a class="dropdown-item" href="<?=base_url('login/logout')?>">Logout</a>
+                            <?php endif; ?>
+                            <a class="dropdown-item" href="<?=base_url('login/logout')?>">LOGOUT</a>
                         </div>
                     </li>
                 <?php
                     else:
                 ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=base_url('register')?>">Registrar</a>
+                        <a class="nav-link" href="<?=base_url('register')?>">REGISTRAR</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="<?=base_url('login')?>">Login</a>
+                        <a class="nav-link" href="<?=base_url('login')?>">LOGIN</a>
                     </li>
                 <?php
                     endif;
