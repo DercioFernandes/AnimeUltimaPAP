@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH.'controllers/ControladorAbstrato.php';
 
-class Logs extends CI_Controller {
+class Logs extends ControladorAbstrato {
 
     public function __construct(){
         parent::__construct();
@@ -32,26 +33,6 @@ class Logs extends CI_Controller {
 
         $this->load->view('logsmenu',$this->data);
 	}
-
-	/*public function commentLogs(){
-        $this->checkLogin();
-        $this->checkPerms(1,$this->data['perms']);
-        $query = $this->main_model->get_table('comentario');
-        $coments = array();
-        $count = 0;
-        foreach ($query as $comentario){
-            if($comentario['report'] > 0){
-                $coments[$count] = $comentario['idComentario'] ;
-                $count += 1;
-            }
-        }
-        $query2 = array();
-        for($i = 0; $i < count($coments); $i++){
-            $query2 = array_merge($query2,$this->main_model->get_main_where_array('comentario','idComentario',$coments[$i]));
-        }
-        $this->data['tolog'] = $query2;
-        $this->load->view('logComentarios',$this->data);
-    }*/
 
     public function commentLogs(){
         $this->logsAbstract(1,'comentario','report','idComentario','user','comentario.idUser = user.idUser','comentario.idComentario =','logComentarios');
@@ -102,7 +83,7 @@ class Logs extends CI_Controller {
     }
 
     private function logsAbstract($permslevel,$table,$report,$idTable,$table2,$whereCondition,$idName,$viewName){
-        $this->checkLogin();
+        $this->checkLogin('','');
         $levelsNeeded = array(
             MODPERM,
             ADMPERM
@@ -142,7 +123,7 @@ class Logs extends CI_Controller {
     }
 
     private function removerLog($permsLevel,$table,$idTable,$viewName){
-        $this->checkLogin();
+        $this->checkLogin('','');
         $levelsNeeded = array(
             MODPERM,
             ADMPERM
@@ -151,24 +132,5 @@ class Logs extends CI_Controller {
         $id = $this->uri->segment(3);
         $this->main_model->delete($idTable,$table,$id);
         redirect($viewName);
-    }
-
-    private function checkLogin(){
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->data['idUser'] = $user['idUser'];
-            $this->data['perms'] = $user['Permissoes'];
-        }else{
-            redirect();
-        }
-    }
-
-    private function checkPerms($levelNeeded,$perms){
-        if(!in_array($perms,$levelNeeded)){
-            //redirect();
-        }
     }
 }

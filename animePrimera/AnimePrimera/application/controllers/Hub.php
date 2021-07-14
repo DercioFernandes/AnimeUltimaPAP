@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH.'controllers/ControladorAbstrato.php';
 
-class Hub extends CI_Controller {
+class Hub extends ControladorAbstrato {
 
     public function __construct(){
         parent::__construct();
@@ -91,7 +92,7 @@ class Hub extends CI_Controller {
     }
 
 	public function criarPost(){
-        $this->checkLogin();
+        $this->checkLogin('hub','Faça Login primeiro.');
         if(isset($_POST['Criar'])){
             $values = array(
                 'titulo' => $_POST['titulo'],
@@ -155,7 +156,7 @@ class Hub extends CI_Controller {
     }
 
     public function removerPost(){
-        $this->checkLogin();
+        $this->checkLogin('hub','Faça Login primeiro');
         $idCompost = $this->uri->segment(3);
         $query = $this->main_model->get_main_where_array('compost','idCompost',$idCompost);
         $this->checkPermsV2($_POST['idAuthor'],$this->data['idUser'],1,$this->data['perms']);
@@ -176,8 +177,8 @@ class Hub extends CI_Controller {
 
 
     public function likePost(){
-        $this->checkLogin();
         $idCompost = $this->uri->segment(3);
+        $this->checkLogin('hub/hubinfo/'.$idCompost,'Faça Login primeiro.');
         $query = $this->main_model->get_main_where_array('compost','idCompost',$idCompost);
         $arrayC = array(
             'idCompost' => $idCompost,
@@ -356,19 +357,6 @@ class Hub extends CI_Controller {
         return $data;
     }
 
-    private function checkLogin(){
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->data['idUser'] = $user['idUser'];
-            $this->data['perms'] = $user['Permissoes'];
-        }else{
-            redirect();
-        }
-    }
-
     //appends all error messages
     private function handle_error($err) {
         $this->error .= $err . "\r\n";
@@ -377,22 +365,6 @@ class Hub extends CI_Controller {
     //appends all success messages
     private function handle_success($succ) {
         $this->success .= $succ . "\r\n";
-    }
-
-    private function checkPerms($levelNeeded,$perms){
-        if($perms != $levelNeeded){
-            redirect();
-        }
-    }
-
-    private function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
-        if($idAuthor = $idUser){
-
-        }elseif($perms == $levelNeeded){
-
-        }else{
-            redirect();
-        }
     }
 
 }

@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH.'controllers/ControladorAbstrato.php';
 
-class Calendario extends CI_Controller {
+class Calendario extends ControladorAbstrato {
 
     public function __construct(){
         parent::__construct();
@@ -34,15 +35,15 @@ class Calendario extends CI_Controller {
     }
 
     public function addCalendario(){
-        $this->checkLogin();
-        $levelsNeeded = array(
-            UPLPERM,
-            MODPERM,
-            ADMPERM
-        );
-        $this->checkPerms($levelsNeeded,$this->data['perms']);
         if(isset($_POST['submitcalendar'])){
             $idSerie = $this->uri->segment(3);
+            $this->checkLogin('Serie/seriesinfo/' . $idSerie,"Faça Login primeiro.");
+            $levelsNeeded = array(
+                UPLPERM,
+                MODPERM,
+                ADMPERM
+            );
+            $this->checkPerms($levelsNeeded,$this->data['perms']);
             $serie = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
             $check = $this->main_model->get_main_where_array('calendario','idSerie',$idSerie);
             if(!empty($check)){
@@ -77,48 +78,19 @@ class Calendario extends CI_Controller {
     }
 
     public function removerCalendario(){
-        $this->checkLogin();
+        $idSerie = $this->uri->segment(3);
+        $this->checkLogin('Serie/seriesinfo/'.$idSerie,"Faça Login com sucesso.");
         $levelsNeeded = array(
             UPLPERM,
             MODPERM,
             ADMPERM
         );
         $this->checkPerms($levelsNeeded,$this->data['perms']);
-        $idSerie = $this->uri->segment(3);
         $query = $this->main_model->get_main_where_array('calendario','idSerie',$idSerie);
         if(!empty($query)){
             $this->main_model->delete('idCalendario','calendario',$query[0]['idCalendario']);
         }
         redirect('Serie/seriesinfo/'.$idSerie);
-    }
-
-    private function checkLogin(){
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->data['idUser'] = $user['idUser'];
-            $this->data['perms'] = $user['Permissoes'];
-        }else{
-            redirect();
-        }
-    }
-
-    private function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
-        if($perms == 4 || $perms == 5){
-
-        }elseif(($idAuthor == $idUser) && $perms == 3){
-
-        }else{
-            redirect();
-        }
-    }
-
-    private function checkPerms($levelNeeded,$perms){
-        if(!in_array($perms,$levelNeeded)){
-            redirect();
-        }
     }
 
 

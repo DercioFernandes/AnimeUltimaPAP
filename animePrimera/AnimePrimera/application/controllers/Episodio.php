@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH.'controllers/ControladorAbstrato.php';
 
-class Episodio extends CI_Controller {
+class Episodio extends ControladorAbstrato {
 
     public function __construct(){
         parent::__construct();
@@ -365,35 +366,6 @@ class Episodio extends CI_Controller {
 
         }
         return $data;
-    }
-
-    private function checkLogin(){
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->data['idUser'] = $user['idUser'];
-            $this->data['perms'] = $user['Permissoes'];
-        }else{
-            redirect();
-        }
-    }
-
-    private function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
-        if($perms == 4 || $perms == 5){
-
-        }elseif(($idAuthor == $idUser) && $perms == 3){
-
-        }else{
-            redirect();
-        }
-    }
-
-    private function checkPerms($levelNeeded,$perms){
-        if(in_array($perms,$levelNeeded)){
-            redirect();
-        }
     }
 
 

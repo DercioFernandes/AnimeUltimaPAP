@@ -140,6 +140,7 @@ th{
 
 .comentario{
     width: 100%;
+    resize: none !important;
 }
 
 .comentario-head{
@@ -852,6 +853,7 @@ th{
     border: none;
     border-radius: 10px;
     width: 100%;
+    resize: none !important;
 }
 
 .comentario-text{

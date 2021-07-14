@@ -46,7 +46,7 @@
                     else:
                     ?>
                     <div class="comentario">
-                        <a href="<?php echo base_url('Comentario/reportComment/' . $comentario['idComentario']) ?>">
+                        <a href="<?php echo base_url('Comentario/reportComment/' . $comentario['idComentario'] . '/' . $idEpisodio) ?>">
                             <img class="flag" src="<?php echo base_url('./resources/img/Icons/flag.png') ?>"/>
                         </a>
                         <?php
@@ -74,7 +74,6 @@
                                 <a href="<?php echo base_url('User/viewProfile/'.$comentario['idUser'])?>">
                                     <img id="pfp" src="<?php echo base_url('./resources/img/pfp/' . $comentario['FotoPerfil']) ?>">
                                 </a>
-
                                 <h6><?php echo $comentario['Username'] ?></h6>
                             </div>
                         <?php endif; ?>

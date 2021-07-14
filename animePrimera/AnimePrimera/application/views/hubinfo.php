@@ -49,7 +49,7 @@
                         else:
                             ?>
                             <div class="comentario">
-                                <a href="<?php echo base_url('Comentario/reportCommentC/' . $comentario['idComentarioc']) ?>">
+                                <a href="<?php echo base_url('Comentario/reportCommentC/' . $comentario['idComentarioc'] . '/' . $idCompost) ?>">
                                     <img class="flag" src="<?php echo base_url('./resources/img/Icons/flag.png') ?>"/>
                                 </a>
                                 <?php

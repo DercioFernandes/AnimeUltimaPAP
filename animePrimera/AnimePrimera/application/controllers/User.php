@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH.'controllers/ControladorAbstrato.php';
 
-class User extends CI_Controller {
+class User extends ControladorAbstrato {
 
     public function __construct(){
         parent::__construct();
@@ -54,7 +55,7 @@ class User extends CI_Controller {
     }
 
 	public function gerirUser(){
-        $this->checkLogin();
+        $this->checkLogin('','Faça Login primeiro.');
         $levelsNeeded = array(
             ADMPERM
         );
@@ -226,7 +227,7 @@ class User extends CI_Controller {
     }
 
     public function banUser(){
-        $this->checkLogin();
+        $this->checkLogin('','Faça Login primeiro');
         $levelsNeeded = array(
             MODPERM,
             ADMPERM
@@ -296,12 +297,19 @@ class User extends CI_Controller {
     }
 
     public function goPremium(){
-        $this->checkLogin();
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            /*$perms = $this->getPerms($user['perms']);
+            $this->data['perms'] = $perms;*/
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
+            $this->data['perms'] = $user['Permissoes'];
+        }
         $this->load->view('goPrem',$this->data);
     }
 
     public function confirmPrem(){
-        $this->checkLogin();
+        $this->checkLogin('','Faça Login primeiro');
         $values = array(
             'Permissoes' => 2
         );
@@ -365,35 +373,6 @@ class User extends CI_Controller {
 
         }
         return $data;
-    }
-
-    private function checkLogin(){
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->data['idUser'] = $user['idUser'];
-            $this->data['perms'] = $user['Permissoes'];
-        }else{
-            redirect();
-        }
-    }
-
-    private function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
-        if($perms == 4 || $perms == 5){
-
-        }elseif(($idAuthor == $idUser) && $perms == 3){
-
-        }else{
-            redirect();
-        }
-    }
-
-    private function checkPerms($levelNeeded,$perms){
-        if(!in_array($perms,$levelNeeded)){
-            redirect();
-        }
     }
 
 }

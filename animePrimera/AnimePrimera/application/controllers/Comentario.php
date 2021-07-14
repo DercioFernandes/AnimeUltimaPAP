@@ -1,9 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require 'vendor/autoload.php';
-require ''
+require_once APPPATH.'controllers/ControladorAbstrato.php';
 
-class Comentario extends CI_Controller {
+class Comentario extends ControladorAbstrato {
     public function __construct(){
         parent::__construct();
         $this->load->library(array('session','parser','image_lib'));
@@ -22,7 +21,7 @@ class Comentario extends CI_Controller {
 
     public function addComment(){
         if(isset($_POST['Submeter'])){
-            $this->checkLogin();
+            $this->checkLogin('Episodio/watchepisode/'.$_POST['idEpisodio'],"Faça login primeiro.");
             if($this->login_model->isLoggedIn() == true) {
                 if($this->data['perms'] >= 2){
                     $maximumchar = 400;
@@ -59,7 +58,7 @@ class Comentario extends CI_Controller {
     public function addCommentC()
     {
         if (isset($_POST['Submeter'])) {
-            $this->checkLogin();
+            $this->checkLogin('Hub/hubinfo/' . $_POST['idCompost'],"Faça Login primeiro.");
             if ($this->login_model->isLoggedIn() == true) {
                 if ($this->data['perms'] >= 2) {
                     $maximumchar = 400;
@@ -93,7 +92,7 @@ class Comentario extends CI_Controller {
     }
 
     public function removeComment(){
-        $this->checkLogin();
+        $this->checkLogin('Episodio/watchepisode/'.$_POST['idEpisodio'],"Faça login primeiro.");
         $idComentario = $this->uri->segment(3);
         $queryml = $this->main_model->get_main_where_array('comentario','idComentario',$idComentario);
         $querymls = $this->main_model->get_main_where_array('user','idUser',$queryml[0]['idUser']);
@@ -114,9 +113,9 @@ class Comentario extends CI_Controller {
     }
 
     public function removeCommentC(){
-        $this->checkLogin();
         $idComentarioc = $this->uri->segment(3);
         $queryml = $this->main_model->get_main_where_array('comentariocompost','idComentarioc',$idComentarioc);
+        $this->checkLogin('Hub/hubinfo/' . $queryml[0]['idCompost'],"Faça Login primeiro.");
         $querymls = $this->main_model->get_main_where_array('user','idUser',$queryml[0]['idUser']);
         $levelsNeeded = array(
             MODPERM,
@@ -131,52 +130,33 @@ class Comentario extends CI_Controller {
         );
         $this->main_model->add('modlogs',$valuesml);
         $this->main_model->delete('idComentarioc','comentariocompost',$idComentarioc);
-        redirect();
+        redirect('Hub/hubinfo/' . $queryml[0]['idCompost']);
     }
 
     public function reportComment(){
         $idComentario = $this->uri->segment(3);
+        $idEpisodio = $this->uri->segment(4);
+        $this->checkLogin('Episodio/watchepisode/'.$idEpisodio,"Faça login primeiro.");
         $query = $this->main_model->get_main_where_array('comentario','idComentario',$idComentario);
         $reports = 1 + $query[0]['report'];
         $values = array(
             'report' => $reports
         );
         $this->main_model->edit('idComentario','comentario',$idComentario,$values);
-        redirect();
+        redirect('Episodio/watcheps/'.$query[0]['idEpisodio']);
     }
 
     public function reportCommentC(){
         $idComentario = $this->uri->segment(3);
+        $idCompost = $this->uri->segment(4);
+        $this->checkLogin('Hub/hubinfo/'.$idCompost,"Faça login primeiro.");
         $query = $this->main_model->get_main_where_array('comentario','idComentario',$idComentario);
         $reports = 1 + $query[0]['report'];
         $values = array(
             'reports' => $reports
         );
         $this->main_model->edit('idComentarioC','comentariocompost',$idComentario,$values);
-        redirect();
-    }
-
-    private function checkLogin(){
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->data['idUser'] = $user['idUser'];
-            $this->data['perms'] = $user['Permissoes'];
-        }else{
-
-        }
-    }
-
-    private function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
-        if($idAuthor = $idUser){
-
-        }elseif(in_array($perms,$levelNeeded)){
-
-        }else{
-            redirect();
-        }
+        redirect('Hub/hubinfo/'.$query[0]['idCompost']);
     }
 
 }

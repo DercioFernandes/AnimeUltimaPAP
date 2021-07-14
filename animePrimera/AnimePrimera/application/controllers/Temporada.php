@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH.'controllers/ControladorAbstrato.php';
 
-class Temporada extends CI_Controller {
+class Temporada extends ControladorAbstrato {
 
     public function __construct(){
         parent::__construct();
@@ -20,14 +21,14 @@ class Temporada extends CI_Controller {
     }
 
     public function addTemp(){
-        $this->checkLogin();
-        $levelsNeeded = array(
-            UPLPERM,
-            MODPERM,
-            ADMPERM
-        );
-        $this->checkPerms($levelsNeeded,$this->data['perms']);
         if(isset($_POST['Criar'])){
+            $this->checkLogin('serie/seriesinfo/'.$_POST['idSerie'],"Faça Login primeiro.");
+            $levelsNeeded = array(
+                UPLPERM,
+                MODPERM,
+                ADMPERM
+            );
+            $this->checkPerms($levelsNeeded,$this->data['perms']);
             $query = $this->main_model->get_main_where('series','idSerie',$_POST['idSerie']);
             $uploadFile = $this->UploadFile('thumbnail');
             $e = $uploadFile['fileData'];
@@ -51,17 +52,24 @@ class Temporada extends CI_Controller {
             );
             $this->main_model->add('modlogs',$valuesml);
             $this->main_model->edit('idSerie','series',$_POST['idSerie'],$valuesS);
-            redirect();
+            redirect('serie/seriesinfo/'.$_POST['idSerie']);
         }else{
             $idSerie = $this->uri->segment(3);
+            $this->checkLogin('serie/seriesinfo/'.$idSerie,"Faça Login primeiro.");
+            $levelsNeeded = array(
+                UPLPERM,
+                MODPERM,
+                ADMPERM
+            );
+            $this->checkPerms($levelsNeeded,$this->data['perms']);
             $this->data['idSerie'] = $idSerie;
             $this->load->view('addTemporada',$this->data);
         }
     }
 
     public function editarTemp(){
-        $this->checkLogin();
         $idSerie = $this->uri->segment(3);
+        $this->checkLogin('serie/seriesinfo/'.$idSerie,'Faça Login primeiro.');
         $querys = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
         $levelsNeeded = array(
             MODPERM,
@@ -105,9 +113,9 @@ class Temporada extends CI_Controller {
     }
 
     public function remover(){
-        $this->checkLogin();
         $idTemporada = $this->uri->segment(3);
         $queryml = $this->main_model->get_main_where_array('temporadas','idTemporada',$idTemporada);
+        $this->checkLogin('serie/seriesinfo/'.$queryml[0]['idSerie'],'Faça Login primeiro.');
         $querymls = $this->main_model->get_main_where_array('series','idSerie',$queryml[0]['idSerie']);
         $levelsNeeded = array(
             MODPERM,
@@ -190,35 +198,6 @@ class Temporada extends CI_Controller {
 
         }
         return $data;
-    }
-
-    private function checkLogin(){
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->data['idUser'] = $user['idUser'];
-            $this->data['perms'] = $user['Permissoes'];
-        }else{
-            redirect();
-        }
-    }
-
-    private function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
-        if($perms == 4 || $perms == 5){
-
-        }elseif(($idAuthor == $idUser) && $perms == 3){
-
-        }else{
-            redirect();
-        }
-    }
-
-    private function checkPerms($levelNeeded,$perms){
-        if(!in_array($perms,$levelNeeded)){
-            redirect();
-        }
     }
 
 

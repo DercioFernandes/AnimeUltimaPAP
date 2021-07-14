@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH.'controllers/ControladorAbstrato.php';
 
-class Serie extends CI_Controller {
+class Serie extends ControladorAbstrato {
 
     public function __construct(){
         parent::__construct();
@@ -21,7 +22,14 @@ class Serie extends CI_Controller {
     }
 
     public function allSeries(){
-        $this->checkLogin();
+        if($this->login_model->isLoggedIn() == true){
+            $user = $this->data['user'];
+            /*$perms = $this->getPerms($user['perms']);
+            $this->data['perms'] = $perms;*/
+            $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $this->data['idUser'] = $user['idUser'];
+            $this->data['perms'] = $user['Permissoes'];
+        }
         $this->data['h3title'] = 'Series Recentes';
         $this->data['series'] = $this->main_model->get_table_limited('series',50,'idSerie');
         $this->load->view('all',$this->data);
@@ -29,7 +37,7 @@ class Serie extends CI_Controller {
 
 	public function add()
     {
-        $this->checkLogin();
+        $this->checkLogin('','Faça Login primeiro.');
         $levelsNeeded = array(
             UPLPERM,
             MODPERM,
@@ -112,7 +120,7 @@ class Serie extends CI_Controller {
 
     public function remover(){
         $idSerie = $this->uri->segment(3);
-        $this->checkLogin();
+        $this->checkLogin('','Faça Login primeiro.');
         $querys = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
         $levelsNeeded = array(
             MODPERM,
@@ -210,6 +218,7 @@ class Serie extends CI_Controller {
 
     public function rate(){
         $idSerie = $this->uri->segment(3);
+        $this->checkLogin('serie/seriesinfo/' . $idSerie,'Faça Login primeiro.');
         if($this->login_model->isLoggedIn()){
             $comparison = array(
                 'idUser' => $_POST['idUser'],
@@ -247,7 +256,7 @@ class Serie extends CI_Controller {
 
     public function seguir(){
         $idSerie = $this->uri->segment(3);
-        $this->checkLogin();
+        $this->checkLogin('serie/seriesinfo/'.$idSerie,'Faça Login primeiro.');
         $user = $this->data['user'];
         $idUser = $user['idUser'];
         $this->abstrato('seguir',$idSerie,$idUser);
@@ -255,7 +264,7 @@ class Serie extends CI_Controller {
 
     public function completo(){
         $idSerie = $this->uri->segment(3);
-        $this->checkLogin();
+        $this->checkLogin('serie/seriesinfo/'.$idSerie,'Faça Login primeiro.');
         $user = $this->data['user'];
         $idUser = $user['idUser'];
         $this->abstrato('completo',$idSerie,$idUser);
@@ -263,7 +272,7 @@ class Serie extends CI_Controller {
 
     public function dropped(){
         $idSerie = $this->uri->segment(3);
-        $this->checkLogin();
+        $this->checkLogin('serie/seriesinfo/'.$idSerie,'Faça Login primeiro.');
         $user = $this->data['user'];
         $idUser = $user['idUser'];
         $this->abstrato('dropped',$idSerie,$idUser);
@@ -271,7 +280,7 @@ class Serie extends CI_Controller {
 
     public function favorito(){
         $idSerie = $this->uri->segment(3);
-        $this->checkLogin();
+        $this->checkLogin('serie/seriesinfo/'.$idSerie,'Faça Login primeiro.');
         $user = $this->data['user'];
         $idUser = $user['idUser'];
         $this->abstrato('favorito',$idSerie,$idUser);
@@ -279,7 +288,7 @@ class Serie extends CI_Controller {
 
     public function vendo(){
         $idSerie = $this->uri->segment(3);
-        $this->checkLogin();
+        $this->checkLogin('serie/seriesinfo/'.$idSerie,'Faça Login primeiro.');
         $user = $this->data['user'];
         $idUser = $user['idUser'];
         $this->abstrato('watching',$idSerie,$idUser);
@@ -428,35 +437,6 @@ class Serie extends CI_Controller {
 
         }
         return $data;
-    }
-
-    private function checkLogin(){
-        if($this->login_model->isLoggedIn() == true){
-            $user = $this->data['user'];
-            /*$perms = $this->getPerms($user['perms']);
-            $this->data['perms'] = $perms;*/
-            $this->data['fotoPerfil'] = $user['FotoPerfil'];
-            $this->data['idUser'] = $user['idUser'];
-            $this->data['perms'] = $user['Permissoes'];
-        }else{
-            redirect();
-        }
-    }
-
-    private function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
-        if($perms == 4 || $perms == 5){
-
-        }elseif(($idAuthor == $idUser) && $perms == 3){
-
-        }else{
-            redirect();
-        }
-    }
-
-    private function checkPerms($levelNeeded,$perms){
-        if(!in_array($perms,$levelNeeded)){
-            redirect();
-        }
     }
 
 
