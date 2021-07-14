@@ -295,6 +295,20 @@ class User extends CI_Controller {
         }
     }
 
+    public function goPremium(){
+        $this->checkLogin();
+        $this->load->view('goPrem',$this->data);
+    }
+
+    public function confirmPrem(){
+        $this->checkLogin();
+        $values = array(
+            'Permissoes' => 2
+        );
+        $this->main_model->edit('idUser','user',$this->data['idUser'],$values);
+        redirect();
+    }
+
 
 
     private function UploadFile($inputFileName)

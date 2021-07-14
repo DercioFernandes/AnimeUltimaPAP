@@ -20,8 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/AnimePrimera/application/views/goPrem.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/seriesinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/seriesinfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/hubinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/hubinfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,15 +59,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\views" />
       <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\controllers" />
       <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\resources\js" />
       <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\models" />
       <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower\resources" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -148,6 +155,7 @@
       <workItem from="1626105210858" duration="12009000" />
       <workItem from="1626167438460" duration="3627000" />
       <workItem from="1626181286007" duration="564000" />
+      <workItem from="1626254568535" duration="3376000" />
     </task>
     <servers />
   </component>

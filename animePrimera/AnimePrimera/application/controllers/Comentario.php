@@ -20,54 +20,72 @@ class Comentario extends CI_Controller {
 
     public function addComment(){
         if(isset($_POST['Submeter'])){
+            $this->checkLogin();
             if($this->login_model->isLoggedIn() == true) {
-                if(isset($_POST['commentComment'])){
-                    echo $_POST['commentComment'];
-                    $q = $this->main_model->get_main_where_array('comentario','idComentario',$_POST['commentComment']);
-                    $values = array(
-                        'idUser' => $_POST['idUser'],
-                        'idCC' => $_POST['commentComment'],
-                        'texto' => $_POST['coment'],
-                        'idEpisodio' => $_POST['idEpisodio']
-                    );
+                if($this->data['perms'] >= 2){
+                    $maximumchar = 400;
                 }else{
-                    $values = array(
-                        'idUser' => $_POST['idUser'],
-                        'idEpisodio' => $_POST['idEpisodio'],
-                        'texto' => $_POST['coment']
-                    );
+                    $maximumchar = 280;
                 }
-                $this->main_model->add('comentario',$values);
-                redirect(base_url('Episodio/watchepisode/'.$_POST['idEpisodio']));
+                if(strlen($_POST['coment']) < $maximumchar){
+                    if(isset($_POST['commentComment'])){
+                        $q = $this->main_model->get_main_where_array('comentario','idComentario',$_POST['commentComment']);
+                        $values = array(
+                            'idUser' => $_POST['idUser'],
+                            'idCC' => $_POST['commentComment'],
+                            'texto' => $_POST['coment'],
+                            'idEpisodio' => $_POST['idEpisodio']
+                        );
+                    }else{
+                        $values = array(
+                            'idUser' => $_POST['idUser'],
+                            'idEpisodio' => $_POST['idEpisodio'],
+                            'texto' => $_POST['coment']
+                        );
+                    }
+                    $this->main_model->add('comentario',$values);
+                    redirect(base_url('Episodio/watchepisode/'.$_POST['idEpisodio']));
+                }else{
+                    redirect(base_url('Episodio/watchepisode/'.$_POST['idEpisodio']));
+                }
             }else{
                 redirect(base_url('Episodio/watchepisode/'.$_POST['idEpisodio']));
             }
         }
     }
 
-    public function addCommentC(){
-        if(isset($_POST['Submeter'])){
-            if($this->login_model->isLoggedIn() == true) {
-                if(isset($_POST['commentComment'])){
-                    echo $_POST['commentComment'];
-                    $q = $this->main_model->get_main_where_array('comentariocompost','idComentarioC',$_POST['commentComment']);
-                    $values = array(
-                        'idUser' => $_POST['idUser'],
-                        'idCC' => $_POST['commentComment'],
-                        'texto' => $_POST['coment'],
-                        'idCompost' => $_POST['idCompost']
-                    );
-                }else{
-                    $values = array(
-                        'idUser' => $_POST['idUser'],
-                        'idCompost' => $_POST['idCompost'],
-                        'texto' => $_POST['coment']
-                    );
+    public function addCommentC()
+    {
+        if (isset($_POST['Submeter'])) {
+            $this->checkLogin();
+            if ($this->login_model->isLoggedIn() == true) {
+                if ($this->data['perms'] >= 2) {
+                    $maximumchar = 400;
+                } else {
+                    $maximumchar = 280;
                 }
-                $this->main_model->add('comentariocompost',$values);
-                redirect(base_url('Hub/hubinfo/'.$_POST['idCompost']));
-            }else{
-                redirect(base_url('Hub/hubinfo/'.$_POST['idCompost']));
+                if (strlen($_POST['coment']) < $maximumchar) {
+                    if (isset($_POST['commentComment'])) {
+                        echo $_POST['commentComment'];
+                        $q = $this->main_model->get_main_where_array('comentariocompost', 'idComentarioC', $_POST['commentComment']);
+                        $values = array(
+                            'idUser' => $_POST['idUser'],
+                            'idCC' => $_POST['commentComment'],
+                            'texto' => $_POST['coment'],
+                            'idCompost' => $_POST['idCompost']
+                        );
+                    } else {
+                        $values = array(
+                            'idUser' => $_POST['idUser'],
+                            'idCompost' => $_POST['idCompost'],
+                            'texto' => $_POST['coment']
+                        );
+                    }
+                    $this->main_model->add('comentariocompost', $values);
+                    redirect(base_url('Hub/hubinfo/' . $_POST['idCompost']));
+                } else {
+                    redirect(base_url('Hub/hubinfo/' . $_POST['idCompost']));
+                }
             }
         }
     }

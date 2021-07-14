@@ -853,6 +853,11 @@ th{
     width: 100%;
 }
 
+.comentario-text{
+    word-break: break-all;
+    white-space: normal;
+}
+
 .commentcommentbtn{
     background-color: #1E1B18 !important;
     color: #cdc49b !important;
@@ -905,6 +910,21 @@ th{
     text-decoration: none;
     background-color:  #1E1B18 !important;
     color: #D8315B  !important;
+}
+
+.premium{
+    margin: 10%;
+    margin-top: 0;
+    background-color: #1E1B18 !important;
+    color: #cdc49b;
+}
+
+.titleprem{
+    font-family: "Good Times Rg";
+    color: #1E1B18;
+    font-size: 30px;
+    width: 100%;
+    background-color: #cdc49b;
 }
 
 @media all and (max-width: 1000px) {

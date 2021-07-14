@@ -70,7 +70,7 @@
                                             <img id="pfp" src="<?php echo base_url('./resources/img/pfp/' . $comentario['FotoPerfil']) ?>">
                                         </a>
                                         <h6><?php echo $comentario['Username'] ?></h6>
-                                        <p class="commentofcomment">Respondendo a: @<?php echo $q2[0]['Username'] ?> - <?php echo $q2[0]['texto'] ?></p>
+                                        <p class="commentofcomment comentario-text">Respondendo a: @<?php echo $q2[0]['Username'] ?> - <?php echo $q2[0]['texto'] ?></p>
                                     </div>
                                 <?php else: ?>
                                     <div class="comentario-head">
@@ -81,7 +81,7 @@
                                     </div>
                                 <?php endif; ?>
                                 <div class="comentario-body">
-                                    <p><?php echo $comentario['texto'] ?></p>
+                                    <p class="comentario-text"><?php echo $comentario['texto'] ?></p>
                                     <form action="<?= base_url('Comentario/addCommentC')?>" method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="idUser" value="<?php if(isset($idUser)){ echo $idUser; } ?>">
                                         <input type="hidden" name="idCompost" value="<?php echo $idCompost; ?>">

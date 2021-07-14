@@ -48,6 +48,7 @@
                                 <?php endif; ?>
                             <?php endif; ?>
                             <button class="dropdown-item" data-toggle="modal" data-target="#request"> Solicitar Nova Série </button>
+                            <a class="dropdown-item" href="<?=base_url('User/goPremium')?>">Go Premium</a>
                             <a class="dropdown-item" href="<?=base_url('login/logout')?>">Logout</a>
                         </div>
                     </li>

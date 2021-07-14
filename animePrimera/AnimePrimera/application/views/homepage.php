@@ -13,7 +13,9 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="<?=base_url('/resources/img/Carrousel/PremiumAdd.png')?>" alt="First slide">
+                        <a href="<?=base_url('User/goPremium')?>">
+                            <img class="d-block w-100" src="<?=base_url('/resources/img/Carrousel/PremiumAdd.png')?>" alt="First slide">
+                        </a>
                     </div>
                     <div class="carousel-item">
                         <img class="d-block w-100" src="<?=base_url('/resources/img/Carrousel/kmaad.png')?>" alt="Second slide">
