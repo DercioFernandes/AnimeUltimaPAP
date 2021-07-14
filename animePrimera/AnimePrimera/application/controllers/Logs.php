@@ -24,7 +24,7 @@ class Logs extends ControladorAbstrato {
 
 	public function general()
 	{
-        $this->checkLogin();
+        $this->checkLogin('','');
         $levelsNeeded = array(
             MODPERM,
             ADMPERM
@@ -51,7 +51,7 @@ class Logs extends ControladorAbstrato {
     }
 
     public function manterLogComentario(){
-        $this->manterLog(1,'report','comentario','idComentario','logs/commentsLogs',0);
+        $this->manterLog(1,'report','comentario','idComentario','logs/commentLogs',0);
     }
 
     public function manterLogCompost(){
@@ -63,7 +63,7 @@ class Logs extends ControladorAbstrato {
     }
 
     public function removerLogComentario(){
-        $this->removerLog(1,'comentario','idComentario','logs/comentLogs');
+        $this->removerLog(1,'comentario','idComentario','logs/commentLogs');
     }
 
     public function removerLogCompost(){
@@ -75,11 +75,11 @@ class Logs extends ControladorAbstrato {
     }
 
     public function manterLogComentarioc(){
-        $this->manterLog(1,'reports','comentariocompost','idComentarioc','logs/comentsCLogs',0);
+        $this->manterLog(1,'reports','comentariocompost','idComentarioc','logs/commentCLogs',0);
     }
 
     public function removerLogComentarioc(){
-        $this->removerLog(1,'comentariocompost','idComentarioc','logs/comentCLogs');
+        $this->removerLog(1,'comentariocompost','idComentarioc','logs/commentCLogs');
     }
 
     private function logsAbstract($permslevel,$table,$report,$idTable,$table2,$whereCondition,$idName,$viewName){
@@ -108,7 +108,7 @@ class Logs extends ControladorAbstrato {
     }
 
     private function manterLog($permslevel,$report,$table,$idTable,$viewName,$is){
-        $this->checkLogin();
+        $this->checkLogin('','');
         $levelsNeeded = array(
             MODPERM,
             ADMPERM

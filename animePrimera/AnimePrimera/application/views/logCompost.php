@@ -5,6 +5,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
+            <h2 class="logtitle text-center">Logs de Posts</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             <?php foreach($tolog as $p): ?>
                 <div class="col-sm-4 md-4 lg-4">
                     <a class="smallPost" href="<?php echo base_url('hub/hubinfo/' . $p['idCompost']) ?>">

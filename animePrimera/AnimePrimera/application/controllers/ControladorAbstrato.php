@@ -20,7 +20,7 @@ abstract class ControladorAbstrato extends CI_Controller {
     protected function checkPermsV2($idAuthor,$idUser,$levelNeeded,$perms){
         if($perms == 4 || $perms == 5){
 
-        }elseif(($idAuthor == $idUser) && $perms == 3){
+        }elseif(($idAuthor == $idUser) || $perms == 3){
 
         }else{
             redirect();

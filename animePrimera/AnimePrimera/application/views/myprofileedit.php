@@ -37,12 +37,12 @@
             <div class="form-group">
                 <h6 class="labelEdit text-center">Nível de Permissão</h6>
                 <select class="form-control" name="permissoes">
-                    <option value="0">Banido</option>
-                    <option value="1">Normal</option>
-                    <option value="2">Premium</option>
-                    <option value="3">Uploader</option>
-                    <option value="4">Moderador</option>
-                    <option value="5">Administrador</option>
+                    <option value="0" <?php if($query['Permissoes'] == 0){echo $selected;} ?>>Banido</option>
+                    <option value="1" <?php if($query['Permissoes'] == 1){echo $selected;} ?>>Normal</option>
+                    <option value="2" <?php if($query['Permissoes'] == 2){echo $selected;} ?>>Premium</option>
+                    <option value="3" <?php if($query['Permissoes'] == 3){echo $selected;} ?>>Uploader</option>
+                    <option value="4" <?php if($query['Permissoes'] == 4){echo $selected;} ?>>Moderador</option>
+                    <option value="5" <?php if($query['Permissoes'] == 5){echo $selected;} ?>>Administrador</option>
                 </select>
             </div>
         <?php endif; ?>

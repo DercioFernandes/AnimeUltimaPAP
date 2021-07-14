@@ -5,6 +5,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
+            <h2 class="logtitle text-center">Logs Gerais</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
             <?php foreach($tolog as $p): ?>
                 <div class="comentario-head">
                     <img id="pfp" src="<?php echo base_url('./resources/img/pfp/' . $p['FotoPerfil']) ?>">

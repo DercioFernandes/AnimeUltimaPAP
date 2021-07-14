@@ -119,12 +119,10 @@
                 <?php
                 if(!empty($user)):
                     ?>
-                    <?php if($perms == 3 || $perms == 4 || $perms == 5): ?>
-                        <?php if($idAuthor == $idUser): ?>
+                        <?php if($idAuthor == $idUser || $perms >= 4): ?>
                             <a class="editHub text-center" href="<?php echo base_url('hub/editarPost/' . $idCompost); ?>">Editar</a>
+                            <a class="remHub text-center" href="<?php echo base_url('hub/removerPost/' . $idCompost); ?>">Remover</a>
                         <?php endif; ?>
-                    <a class="remHub text-center" href="<?php echo base_url('hub/removerPost/' . $idCompost); ?>">Remover</a>
-                <?php endif; ?>
                 <?php
                 endif;
                 ?>

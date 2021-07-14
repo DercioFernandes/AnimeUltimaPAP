@@ -143,7 +143,7 @@ class Comentario extends ControladorAbstrato {
             'report' => $reports
         );
         $this->main_model->edit('idComentario','comentario',$idComentario,$values);
-        redirect('Episodio/watcheps/'.$query[0]['idEpisodio']);
+        redirect('Episodio/watchepisode/'.$query[0]['idEpisodio']);
     }
 
     public function reportCommentC(){
@@ -156,7 +156,7 @@ class Comentario extends ControladorAbstrato {
             'reports' => $reports
         );
         $this->main_model->edit('idComentarioC','comentariocompost',$idComentario,$values);
-        redirect('Hub/hubinfo/'.$query[0]['idCompost']);
+        redirect('Hub/hubinfo/'.$idCompost);
     }
 
 }

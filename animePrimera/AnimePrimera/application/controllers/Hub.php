@@ -138,7 +138,11 @@ class Hub extends ControladorAbstrato {
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             if(isset($_POST['Editar'])){
-                $this->checkPermsV2($_POST['idAuthor'],$user['idUser'],5,$this->data['perms']);
+                $levelsNeeded = array(
+                    MODPERM,
+                    ADMPERM
+                );
+                $this->checkPermsV2($_POST['idAuthor'],$user['idUser'],$levelsNeeded,$this->data['perms']);
                 $values = array(
                     'Titulo' => $_POST['titulo'],
                     'Descricao' => $_POST['descricao']
@@ -159,7 +163,11 @@ class Hub extends ControladorAbstrato {
         $this->checkLogin('hub','Faça Login primeiro');
         $idCompost = $this->uri->segment(3);
         $query = $this->main_model->get_main_where_array('compost','idCompost',$idCompost);
-        $this->checkPermsV2($_POST['idAuthor'],$this->data['idUser'],1,$this->data['perms']);
+        $levelsNeeded = array(
+            MODPERM,
+            ADMPERM
+        );
+        $this->checkPermsV2($query[0]['idUser'],$this->data['idUser'],$levelsNeeded,$this->data['perms']);
         //$query = $this->main_model->get_main_where_array('comentariocompost','id')
         $msg = 'Removido ' . $query[0]['titulo'];
         $valuesml = array(
@@ -252,7 +260,13 @@ class Hub extends ControladorAbstrato {
             //allowed file types. * means all types
             $config['allowed_types'] = '*';
             //allowed max file size. 0 means unlimited file size
-            $config['max_size'] = '0';
+            if($this->data['perms'] < 2)
+                $config['max_size'] = '0';
+            else{
+                $config['max_size'] = '1000000';
+                redirect();
+            }
+
             //max file name size
             $config['max_filename'] = '255';
             //whether file name should be encrypted or not

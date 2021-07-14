@@ -97,6 +97,10 @@ class User extends ControladorAbstrato {
 	public function editUser(){
         if($this->login_model->isLoggedIn() == true) {
             if(isset($_POST['Editar'])){
+                if(strlen($_POST['username']) > 8 || strlen($_POST['username']) < 3){
+                    $this->session->set_flashdata('error','O seu Username tem mais de 8 caractéres ou menos de 3.');
+                    redirect('User/myprofile/'.$_POST['idUser']);
+                }
                 $values = array(
                     'Username' => $_POST['username']
                 );
@@ -116,6 +120,10 @@ class User extends ControladorAbstrato {
                     $values = array_merge($values,$valuepfp);
                 }
                 if(isset($_POST['password'])){
+                    if(strlen($_POST['password']) > 128 || strlen($_POST['password'] < 8)){
+                        $this->session->set_flashdata('error','A sua Password tem mais de 128 caractéres ou menos de 8');
+                        redirect('User/myprofile/'.$_POST['idUser']);
+                    }
                     $password = hash('sha256',$_POST['password']);
                     $valuespass = array(
                         'Password' => $password
@@ -135,6 +143,7 @@ class User extends ControladorAbstrato {
                 $idUser = $this->uri->segment(3);
                 $query = $this->main_model->get_main_where_array('user','idUser',$idUser);
                 $this->data['idUser'] = $idUser;
+                $this->data['selected'] = 'selected';
                 if($user['idUser'] == $query[0]['idUser']){
                     $this->data['isUser'] = 1;
                 }else if($user['Permissoes'] == 5){

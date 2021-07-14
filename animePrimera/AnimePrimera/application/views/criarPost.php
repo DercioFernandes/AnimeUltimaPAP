@@ -40,7 +40,7 @@
             <?php
             if(!empty($user)):
                 ?>
-                <?php if($perms == 1): ?>
+                <?php if($perms > 3): ?>
                     <div class="form-group">
                         <h6 class="labelEdit text-center">Anúncio de Staff</h6>
                         <input type="checkbox" name="staffpost" value="1" class="text-center">

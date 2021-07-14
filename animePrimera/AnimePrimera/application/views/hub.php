@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div id="npm" class="col">
+        <div id="npm" class="col-sm">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -45,21 +45,23 @@
                 </a>
             </div>
         </div>
-        <div id="npm" class="col">
+        <div id="npm" class="col-sm">
             <h4 class="mlptitle text-center">Favoritos da Comunidade</h4>
             <ul class="mlplist">
                 <?php foreach($comfav as $q): ?>
+                <?php if($q['status'] == 0): ?>
                 <li class="mlplistitem">
                     <a href="<?php echo base_url('hub/hubinfo/'.$q['idCompost']) ?>">
                         <?php echo $q['titulo'] ?>
                     </a>
                 </li>
+                <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col-sm">
             <h3 class="text-center hubt"> HUB </h3>
             <p class="text-center hubp"> Bem Vindo ao HUB!<br/> O HUB é um fórum da Anime Primera. Aqui podes postar mensagens sobre séries ou filmes que viste e podes até mesmo postar Imagens ou Vídeos! Ao mesmo tempo, a Staff irá postar trailers e fazer comunicados oficiais aqui. </p>
         </div>

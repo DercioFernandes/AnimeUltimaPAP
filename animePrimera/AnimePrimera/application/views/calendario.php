@@ -10,7 +10,7 @@
                     <thead>
                     <tr class="titlefm">
                         <th scope="col">DOMINGO</th>
-                        <th scope="col">SEGUNDA-FEIRA-</th>
+                        <th scope="col">SEGUNDA-FEIRA</th>
                         <th scope="col">TERÇA-FEIRA</th>
                         <th scope="col">QUARTA-FEIRA</th>
                         <th scope="col">QUINTA-FEIRA</th>
