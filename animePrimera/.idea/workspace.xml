@@ -20,7 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/goPrem.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/goPrem.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Notificacoes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/config/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Homepage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Temporada.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Temporada.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/addTemporada.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/addTemporada.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,22 +71,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Prog18_2020/CodeIgniter/CodeIgniter_man_imagens" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/AnimePrimera/application/controllers" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\views" />
       <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\controllers" />
+      <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\views" />
       <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\resources\js" />
       <recent name="C:\xampp\htdocs\pap\animePrimera\AnimePrimera\application\models" />
       <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower\resources" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\estagio\projetoEstagio\PressPower" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -166,7 +176,9 @@
       <workItem from="1626181286007" duration="564000" />
       <workItem from="1626254568535" duration="3376000" />
       <workItem from="1626289166828" duration="7731000" />
-      <workItem from="1626339168657" duration="5085000" />
+      <workItem from="1626339168657" duration="5115000" />
+      <workItem from="1626353989661" duration="1762000" />
+      <workItem from="1626376368314" duration="7742000" />
     </task>
     <servers />
   </component>
@@ -232,10 +244,10 @@
     </state>
     <state x="425" y="170" key="run.anything.popup/0.0.1536.816@0.0.1536.816" timestamp="1626105705028" />
     <state x="425" y="204" key="run.anything.popup/0.30.1536.834@0.30.1536.834" timestamp="1624265129601" />
-    <state x="431" y="153" width="672" height="664" key="search.everywhere.popup" timestamp="1626122529993">
+    <state x="431" y="153" width="672" height="664" key="search.everywhere.popup" timestamp="1626382857754">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="431" y="153" width="672" height="664" key="search.everywhere.popup/0.0.1536.816@0.0.1536.816" timestamp="1626122529993" />
+    <state x="431" y="153" width="672" height="664" key="search.everywhere.popup/0.0.1536.816@0.0.1536.816" timestamp="1626382857754" />
     <state x="431" y="186" width="672" height="678" key="search.everywhere.popup/0.30.1536.834@0.30.1536.834" timestamp="1625045465878" />
   </component>
 </project>

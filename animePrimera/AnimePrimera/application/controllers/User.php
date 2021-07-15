@@ -23,8 +23,10 @@ class User extends ControladorAbstrato {
             if($user['Permissoes'] >= 2 && !empty($user['Banner'])){
                 $this->data['bannerUrl'] = '../../resources/img/pfp/' . $user['Banner'];
             }
+            $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
+            $this->data['notif'] = $query;
+            print_r($query);
         }
-        $this->data['contSearch'] = 'User/search';
         $this->data['contSearch'] = 'User/search';
     }
 

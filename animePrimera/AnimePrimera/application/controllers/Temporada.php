@@ -36,10 +36,18 @@ class Temporada extends ControladorAbstrato {
             $values = array(
                 'idSerie' => $_POST['idSerie'],
                 'Titulo' => $_POST['tempTitle'],
-                'Status' => $_POST['status'],
                 'Thumbnail' => $imgname
             );
             $this->main_model->add('temporadas',$values);
+            $queryUS = $this->main_model->get_main_where_array('seguir','idSerie',$_POST['idSerie']);
+            foreach($queryUS as $s){
+                $valuesus = array(
+                    'idUser' => $s['idUser'],
+                    'idSerie' => $_POST['idSerie'],
+                    'info' => 'Foi adicionada uma nova temporada a ' . $query[0]->Titulo . ', veja agora!'
+                );
+                $this->main_model->add('notification',$valuesus);
+            }
             $valuesS = array(
                 'nTemporadas' => $query[0]->nTemporadas + 1
             );

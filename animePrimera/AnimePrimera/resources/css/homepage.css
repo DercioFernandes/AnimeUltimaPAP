@@ -333,6 +333,17 @@ th{
     background-color: #1E1B18;
 }
 
+.modal-footer{
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #cdc49b;
+    background-color: #1E1B18;
+}
+
+.modal-footer:hover{
+    background-color: #D8315B !important;
+}
+
 .logintitle{
     color: #cdc49b;
     background-color: #1E1B18;
@@ -422,6 +433,58 @@ th{
 .mypfpbg{
     background-image: url("../img/bg/BackgroundAPLogin.png");
     border-bottom: #1E1B18;
+}
+
+.bellicon{
+    width: 20px !important;
+    height: auto;
+    fill: #cdc49b !important;
+}
+
+.bellicon:hover{
+    fill: #0c0cfa !important;
+}
+
+.badge1{
+    width: 10px !important;
+    position: absolute;
+}
+
+.notifinfo{
+    color: #cdc49b;
+    background-color: #1E1B18;
+    display: inline-block;
+}
+
+.notifinfo:hover{
+    text-decoration: none;
+    color: #1E1B18 !important;
+    background-color: #cdc49b !important;
+}
+
+.removenotif{
+    width: 20px !important;
+    height: 20px;
+    display: inline;
+    padding: 1%;
+    fill: #cdc49b !important;
+}
+
+.removenotif:hover{
+    background-color: #cdc49b !important;
+    fill: #D8315B !important;
+}
+
+.clearAll{
+    color:#cdc49b !important;
+    text-align: center !important;
+    width: 100%;
+}
+
+.clearAll:hover{
+    color: #1E1B18 !important;
+    text-decoration: none;
+    width: 100%;
 }
 
 .imginput{

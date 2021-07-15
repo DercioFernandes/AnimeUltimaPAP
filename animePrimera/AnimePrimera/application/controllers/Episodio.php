@@ -88,7 +88,7 @@ class Episodio extends ControladorAbstrato {
                 );
                 $this->main_model->edit('idTemporada','temporadas',$queryml[0]['idTemporada'],$valuest);
                 $this->main_model->delete('idEpisodio','episodio',$_POST['Remover']);
-                redirect();
+                redirect('Episodio/gerirEps/'.$idTemporada);
             }else{
                 $idTemporada = $this->uri->segment(3);
                 $this->data['idTemporada'] = $idTemporada;
@@ -105,7 +105,7 @@ class Episodio extends ControladorAbstrato {
 
     public function addEps()
     {
-        $this->checkLogin();
+        $this->checkLogin('','');
         $levelsNeeded = array(
             MODPERM,
             ADMPERM
@@ -144,7 +144,19 @@ class Episodio extends ControladorAbstrato {
             $this->main_model->add('modlogs',$valuesml);
             $this->main_model->edit('idTemporada','temporadas',$_POST['idTemporada'],$valuest);
             $this->main_model->add('episodio',$values);
+            $queryLasteps = $this->main_model->get_table('episodio');
+            $queryUS = $this->main_model->get_main_where_array('seguir','idSerie',$queryS[0]['idSerie']);
+            $epsJustAdded = end($queryLasteps);
+            foreach($queryUS as $s){
+                $valuesus = array(
+                    'idUser' => $s['idUser'],
+                    'idEpisodio' => $epsJustAdded['idEpisodio'],
+                    'info' => 'Saiu o episódio de ' . $epsJustAdded['titulo'] . ', veja agora!'
+                );
+                $this->main_model->add('notification',$valuesus);
+            }
             redirect();
+
         }else{
             $idTemporada = $this->uri->segment(3);
             $this->data['idTemporada'] = $idTemporada;
@@ -182,22 +194,6 @@ class Episodio extends ControladorAbstrato {
         }
         $this->data['recommended'] = array_slice($q,0,5);
         $this->load->view('watcheps',$this->data);
-    }
-
-    public function addComment(){
-        if(isset($_POST['Submeter'])){
-            if($this->login_model->isLoggedIn() == true) {
-                $values = array(
-                    'idUser' => $_POST['idUser'],
-                    'idEpisodio' => $_POST['idEpisodio'],
-                    'texto' => $_POST['coment']
-                );
-                $this->main_model->add('comentario',$values);
-                redirect(base_url('Episodio/watchepisode/'.$_POST['idEpisodio']));
-            }else{
-
-            }
-        }
     }
 
     public function epsProximo(){
@@ -244,16 +240,6 @@ class Episodio extends ControladorAbstrato {
         return $querymerged;
     }
 
-    //appends all error messages
-    private function handle_error($err) {
-        $this->error .= $err . "\r\n";
-    }
-
-    //appends all success messages
-    private function handle_success($succ) {
-        $this->success .= $succ . "\r\n";
-    }
-
     private function UploadVideo($inputFileName){
         if ($this->input->post('video_upload')) {
             //set preferences
@@ -284,7 +270,6 @@ class Episodio extends ControladorAbstrato {
                 //check file successfully uploaded. 'video_name' is the name of the input
                 if (!$this->upload->do_upload('video_name')) {
                     //if file upload failed then catch the errors
-                    $this->handle_error($this->upload->display_errors());
                     $is_file_error = TRUE;
                 } else {
                     //store the video file info
@@ -303,12 +288,9 @@ class Episodio extends ControladorAbstrato {
                 $data['video_name'] = $video_data['file_name'];
                 $data['video_path'] = $upload_path;
                 $data['video_type'] = $video_data['file_type'];
-                $this->handle_success('Video was successfully uploaded to direcoty <strong>' . $upload_path . '</strong>.');
             }
         }
         //load the error and success messages
-        $data['errors'] = $this->error;
-        $data['success'] = $this->success;
         return $data;
     }
 

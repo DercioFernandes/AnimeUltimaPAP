@@ -37,6 +37,14 @@ class Comentario extends ControladorAbstrato {
                             'texto' => $_POST['coment'],
                             'idEpisodio' => $_POST['idEpisodio']
                         );
+                        $userWC = $this->main_model->get_main_where_array('comentario','idComentario',$_POST['commentComment']);
+                        $queryUserInfo = $this->main_model->get_main_where_array('user','idUser',$userWC[0]['idUser']);
+                            $valuesus = array(
+                                'idUser' => $userWC[0]['idUser'],
+                                'idEpisodio' => $_POST['idEpisodio'],
+                                'info' =>  $queryUserInfo[0]['Username'] . ' respondeu ao seu comentário, veja agora!'
+                            );
+                            $this->main_model->add('notification',$valuesus);
                     }else{
                         $values = array(
                             'idUser' => $_POST['idUser'],
@@ -67,7 +75,6 @@ class Comentario extends ControladorAbstrato {
                 }
                 if (strlen($_POST['coment']) < $maximumchar) {
                     if (isset($_POST['commentComment'])) {
-                        echo $_POST['commentComment'];
                         $q = $this->main_model->get_main_where_array('comentariocompost', 'idComentarioC', $_POST['commentComment']);
                         $values = array(
                             'idUser' => $_POST['idUser'],
@@ -75,6 +82,14 @@ class Comentario extends ControladorAbstrato {
                             'texto' => $_POST['coment'],
                             'idCompost' => $_POST['idCompost']
                         );
+                        $userWC = $this->main_model->get_main_where_array('comentariocompost','idComentarioc',$_POST['commentComment']);
+                        $queryUserInfo = $this->main_model->get_main_where_array('user','idUser',$userWC[0]['idUser']);
+                        $valuesus = array(
+                            'idUser' => $userWC[0]['idUser'],
+                            'idCompost' => $_POST['idCompost'],
+                            'info' =>  $queryUserInfo[0]['Username'] . ' respondeu ao seu comentário, veja agora!'
+                        );
+                        $this->main_model->add('notification',$valuesus);
                     } else {
                         $values = array(
                             'idUser' => $_POST['idUser'],
