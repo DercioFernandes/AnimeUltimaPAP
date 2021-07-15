@@ -18,10 +18,10 @@
                         </a>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="<?=base_url('/resources/img/Carrousel/kmaad.png')?>" alt="Second slide">
+                        <img class="d-block w-100" src="<?=base_url('/resources/img/Carrousel/kmaad2.png')?>" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="<?=base_url('/resources/img/Carrousel/PremiumAdd.png')?>" alt="Third slide">
+                        <img class="d-block w-100" src="<?=base_url('/resources/img/Carrousel/kscc.png')?>" alt="Third slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -67,6 +67,24 @@
                     </div>
                 </a>
             </div>
+        </div>
+    </div>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="https://www.mcdonalds.pt/">
+                    <img class="d-block w-100" src="<?=base_url('/resources/img/Carrousel/mcdonaldsad.png')?>" alt="Second slide">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.coca-cola.com/">
+                    <img class="d-block w-100" src="<?=base_url('/resources/img/Carrousel/cocacolaad.png')?>" alt="First slide">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.mcdonalds.pt/">
+                    <img class="d-block w-100" src="<?=base_url('/resources/img/Carrousel/mcdonaldsad.png')?>" alt="Second slide">
+                </a>
         </div>
     </div>
     <div class="row">

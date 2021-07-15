@@ -20,7 +20,11 @@ class User extends ControladorAbstrato {
             $this->data['email'] = $user['Email'];
             $this->data['idUser'] = $user['idUser'];
             $this->data['perms'] = $user['Permissoes'];
+            if($user['Permissoes'] >= 2 && !empty($user['Banner'])){
+                $this->data['bannerUrl'] = '../../resources/img/pfp/' . $user['Banner'];
+            }
         }
+        $this->data['contSearch'] = 'User/search';
         $this->data['contSearch'] = 'User/search';
     }
 
@@ -97,14 +101,10 @@ class User extends ControladorAbstrato {
 	public function editUser(){
         if($this->login_model->isLoggedIn() == true) {
             if(isset($_POST['Editar'])){
-                if(strlen($_POST['username']) > 8 || strlen($_POST['username']) < 3){
-                    $this->session->set_flashdata('error','O seu Username tem mais de 8 caractéres ou menos de 3.');
-                    redirect('User/myprofile/'.$_POST['idUser']);
-                }
                 $values = array(
                     'Username' => $_POST['username']
                 );
-                if(isset($_POST['email'])){
+                if(!empty($_POST['email'])){
                     $valuesemail = array(
                         'Email' => $_POST['email']
                     );
@@ -119,7 +119,17 @@ class User extends ControladorAbstrato {
                     );
                     $values = array_merge($values,$valuepfp);
                 }
-                if(isset($_POST['password'])){
+                if(!isset($_POST['manterBanner'])){
+                    $uploadFileB = $this->UploadFile('banner');
+                    $b = $uploadFileB['fileData'];
+                    $banner = $b['file_name'];
+                    $valueban = array(
+                        'Banner' => $banner
+                    );
+                    $values = array_merge($values,$valueban);
+                    $this->session->set_flashdata('error',"Tem de fazer login novamente para atualizar a Banner.");
+                }
+                if(!empty($_POST['password'])){
                     if(strlen($_POST['password']) > 128 || strlen($_POST['password'] < 8)){
                         $this->session->set_flashdata('error','A sua Password tem mais de 128 caractéres ou menos de 8');
                         redirect('User/myprofile/'.$_POST['idUser']);
@@ -350,6 +360,8 @@ class User extends ControladorAbstrato {
         //post_max_size=15M -> pelo POST
         // upload_max_size=15M // Por Upload
         $config['max_size'] = '51120';//em KB
+        $config['max_width'] = 700;
+        $config['max_height'] = 700;
 
         //Definimos que o nome do arquivo será criptografado
         $config['encrypt_name'] = TRUE;

@@ -424,6 +424,11 @@ th{
     border-bottom: #1E1B18;
 }
 
+.imginput{
+    display: block;
+    min-width: 100%;
+}
+
 .myprofilepfp{
     display: block;
     margin-left: auto;

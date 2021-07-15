@@ -21,24 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/ControladorAbstrato.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/ControladorAbstrato.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Hub.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Hub.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Logs.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Logs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/PermsAbstrato.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Register.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Register.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/animesRequested.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/animesRequested.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/calendario.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/calendario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/criarPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/criarPost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/hub.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/hub.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/hubinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/hubinfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/logComentarios.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/logComentarios.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/logComentariosC.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/logComentariosC.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/logCompost.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/logCompost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/logMod.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/logMod.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/myprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/myprofile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/myprofileedit.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/myprofileedit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/img/Carrousel/PremiumAdd.png" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/img/Carrousel/PremiumAdd.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +68,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../estagio" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Prog18_2020/CodeIgniter/CodeIgniter_man_imagens" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="Errors" />
@@ -184,6 +173,7 @@
       <workItem from="1626181286007" duration="564000" />
       <workItem from="1626254568535" duration="3376000" />
       <workItem from="1626289166828" duration="7731000" />
+      <workItem from="1626339168657" duration="4795000" />
     </task>
     <servers />
   </component>
@@ -227,10 +217,10 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state x="512" y="231" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.816@0.0.1536.816" timestamp="1626280641748" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1626291626697">
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1626341672025">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1626291626697" />
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1626341672025" />
     <state x="549" y="202" key="FileChooserDialogImpl/0.30.1536.834@0.30.1536.834" timestamp="1624442290646" />
     <state x="475" y="154" key="NewPhpClassDialog" timestamp="1622993505394">
       <screen x="0" y="30" width="1536" height="834" />

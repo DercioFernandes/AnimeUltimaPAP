@@ -23,12 +23,14 @@ abstract class ControladorAbstrato extends CI_Controller {
         }elseif(($idAuthor == $idUser) || $perms == 3){
 
         }else{
+            $this->session->set_flashdata('error',"Não tem permissões para concluir esta ação.");
             redirect();
         }
     }
 
     protected function checkPerms($levelNeeded,$perms){
         if(!in_array($perms,$levelNeeded)){
+            $this->session->set_flashdata('error',"Não tem permissões para concluir esta ação.");
             redirect();
         }
     }
