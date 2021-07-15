@@ -32,7 +32,6 @@
                 <br/>
                 <h6>Perks de ser um user Premium:</h6>
                 <ul>
-                    <li>Sem Publicidade</li>
                     <li>Mais customização de Perfil</li>
                     <li>Nome Dourado</li>
                     <li>Maior quantidade de Bytes para Posts no Hub</li>

@@ -20,14 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/ControladorAbstrato.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/ControladorAbstrato.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/myprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/myprofile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/myprofileedit.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/myprofileedit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/img/Carrousel/PremiumAdd.png" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/img/Carrousel/PremiumAdd.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/goPrem.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/goPrem.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +166,7 @@
       <workItem from="1626181286007" duration="564000" />
       <workItem from="1626254568535" duration="3376000" />
       <workItem from="1626289166828" duration="7731000" />
-      <workItem from="1626339168657" duration="4795000" />
+      <workItem from="1626339168657" duration="5085000" />
     </task>
     <servers />
   </component>
