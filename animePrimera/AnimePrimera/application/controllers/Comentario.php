@@ -15,6 +15,8 @@ class Comentario extends ControladorAbstrato {
             $this->data['seg'] = FALSE;
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
+            $this->data['notif'] = $query;
         }
         $this->data['contSearch'] = 'Serie/search';
     }

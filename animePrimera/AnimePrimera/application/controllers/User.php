@@ -25,7 +25,6 @@ class User extends ControladorAbstrato {
             }
             $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
             $this->data['notif'] = $query;
-            print_r($query);
         }
         $this->data['contSearch'] = 'User/search';
     }
@@ -113,7 +112,7 @@ class User extends ControladorAbstrato {
                     $values = array_merge($values,$valuesemail);
                 }
                 if(!isset($_POST['manterImagem'])){
-                    $uploadFile = $this->UploadFile('fotoperfil');
+                    $uploadFile = $this->UploadFile('fotoperfil',1);
                     $e = $uploadFile['fileData'];
                     $pfp = $e['file_name'];
                     $valuepfp = array(
@@ -122,7 +121,7 @@ class User extends ControladorAbstrato {
                     $values = array_merge($values,$valuepfp);
                 }
                 if(!isset($_POST['manterBanner'])){
-                    $uploadFileB = $this->UploadFile('banner');
+                    $uploadFileB = $this->UploadFile('banner',0);
                     $b = $uploadFileB['fileData'];
                     $banner = $b['file_name'];
                     $valueban = array(
@@ -340,7 +339,7 @@ class User extends ControladorAbstrato {
 
 
 
-    private function UploadFile($inputFileName)
+    private function UploadFile($inputFileName,$type)
     {
         /*
          * O CodeIgniter possui uma biblioteca nativa para trabalhar com upload de arquivos, chamada File Uploading.
@@ -355,7 +354,11 @@ class User extends ControladorAbstrato {
         $config['upload_path'] = $path;
 
         //Definimos os tipos de arquivos suportados
-        $config['allowed_types'] = 'jpg|png|gif|pdf|zip|rar|doc|xls';
+        if($type == 0){
+            $config['allowed_types'] = 'jpg|png|gif';
+        }else{
+            $config['allowed_types'] = 'jpg|png';
+        }
 
         //Definimos o maximo permitido
         //Php.ini definimos os tamanhos permitidos
@@ -379,6 +382,8 @@ class User extends ControladorAbstrato {
             //Em caso de erro retornamos os mesmos para uma variável e enviamos para a view
             $data['error'] = true;
             $data['message'] = $this->upload->display_errors();
+            $this->session->set_flashdata('error',"O tipo de imagem inserido não pode ser utilizado.");
+            redirect();
         } else {
             $data['error'] = false;
 
@@ -392,7 +397,6 @@ class User extends ControladorAbstrato {
             $downloadPath = base_url('resources/img/') . $data['fileData']['file_name'];
             //Passando para o Array Data
             $data['urlDownload'] = base_url($downloadPath);
-
 
         }
         return $data;

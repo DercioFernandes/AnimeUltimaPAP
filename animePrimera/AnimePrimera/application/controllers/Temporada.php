@@ -16,6 +16,8 @@ class Temporada extends ControladorAbstrato {
             $this->data['seg'] = FALSE;
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
+            $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
+            $this->data['notif'] = $query;
         }
         $this->data['contSearch'] = 'Serie/search';
     }
@@ -36,6 +38,7 @@ class Temporada extends ControladorAbstrato {
             $values = array(
                 'idSerie' => $_POST['idSerie'],
                 'Titulo' => $_POST['tempTitle'],
+                'DataRelease' => date("Y/m/d"),
                 'Thumbnail' => $imgname
             );
             $this->main_model->add('temporadas',$values);
@@ -87,7 +90,6 @@ class Temporada extends ControladorAbstrato {
         if(isset($_POST['Editar'])){
             $values = array(
                 'Titulo' => $_POST['titulo'],
-                'Status' => $_POST['status'],
                 'DataRelease' => $_POST['dataRelease']
             );
             $uploadFile = $this->UploadFile('thumbnail');

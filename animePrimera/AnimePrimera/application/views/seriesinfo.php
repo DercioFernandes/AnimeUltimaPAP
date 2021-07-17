@@ -32,9 +32,6 @@
                     <b>Autor:</b>
                     <?php echo $query[0]['Autor'] ?>
                     <br/>
-                    <b>Favoritos:</b>
-                    <?php echo $qFav; ?>
-                    <br/>
                     <b>Rating:</b>
                     <?php echo $query[0]['rating'] ?>
                 </p>

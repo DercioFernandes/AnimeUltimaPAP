@@ -11,10 +11,6 @@
                 <input class="form-control" id="titulo" name="titulo" placeholder="Título" type="text" required="required" value="<?php echo $temporada[0]['Titulo'] ?>"/>
             </div>
             <div class="form-group">
-                <h6 class="labelEdit text-center">Status</h6>
-                <input class="form-control" id="tipo" name="tipo" placeholder="Tipo" type="text" required="required" value="<?php echo $temporada[0]['Status']  ?>"/>
-            </div>
-            <div class="form-group">
                 <h6 class="labelEdit text-center">Data de Lançamento</h6>
                 <input class="form-control" id="dataRelease" name="dataRelease" placeholder="Data de Lançamento" type="text" required="required" value="<?php echo $temporada[0]['DataRelease'] ?>"/>
             </div>

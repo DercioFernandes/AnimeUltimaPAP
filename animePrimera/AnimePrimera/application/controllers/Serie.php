@@ -17,6 +17,8 @@ class Serie extends ControladorAbstrato {
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $this->data['perms'] = $user['Permissoes'];
+            $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
+            $this->data['notif'] = $query;
         }
         $this->data['contSearch'] = 'Serie/search';
     }
@@ -55,7 +57,7 @@ class Serie extends ControladorAbstrato {
                 'Autor' => $_POST['autor'],
                 'Descricao' => $_POST['descricao'],
                 'Tipo' => $_POST['tipo'],
-                'DataRelease' => getdate(),
+                'DataRelease' => date("Y/m/d"),
                 'idUser' => $this->data['idUser']
             );
             $msg = 'Adicionado ' . $_POST['titulo'];
@@ -95,7 +97,7 @@ class Serie extends ControladorAbstrato {
                 }
                 $msg = 'Editado ' . $_POST['titulo'];
                 $valuesml = array(
-                    'idUser' => $this->data['idUser'],
+                    'idUser' => $user['idUser'],
                     'info' => $msg,
                     'status' => 1
                 );
