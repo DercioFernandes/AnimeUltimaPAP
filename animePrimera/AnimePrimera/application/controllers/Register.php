@@ -85,7 +85,7 @@ class Register extends CI_Controller {
         $config['upload_path'] = $path;
 
         //Definimos os tipos de arquivos suportados
-        $config['allowed_types'] = 'jpg|png|gif|pdf|zip|rar|doc|xls';
+        $config['allowed_types'] = 'jpg|png|pdf|zip|rar|doc|xls';
 
         //Definimos o maximo permitido
         //Php.ini definimos os tamanhos permitidos

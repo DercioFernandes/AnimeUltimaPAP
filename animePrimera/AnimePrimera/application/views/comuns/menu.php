@@ -67,7 +67,7 @@
                             <?php endif; ?>
                             <button class="dropdown-item" data-toggle="modal" data-target="#request"> Solicitar Nova Série </button>
                             <?php if($perms < 3): ?>
-                            <a class="dropdown-item" href="<?=base_url('User/goPremium')?>">Go Premium</a>
+                            <a class="dropdown-item" href="<?=base_url('User/goPremium')?>">Doar Dinheiro</a>
                             <?php endif; ?>
                             <a class="dropdown-item" href="<?=base_url('login/logout')?>">LOGOUT</a>
                         </div>

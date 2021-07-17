@@ -21,21 +21,20 @@
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Calendario.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Calendario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/ControladorAbstrato.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/ControladorAbstrato.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Hub.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Hub.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Logs.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Logs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Notificacoes.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Notificacoes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Register.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/RequestAnime.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/RequestAnime.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Temporada.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Temporada.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/goPrem.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/goPrem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/hubinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/hubinfo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/myprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/myprofile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/viewprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/viewprofile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/img/Carrousel/PremiumAdd.png" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/img/Carrousel/PremiumAdd.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Demon_Slayer_Kimetsu_no_Yaiba_Trailer_1.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Demon_Slayer_Kimetsu_no_Yaiba_Trailer_11.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Demon_Slayer_Kimetsu_no_Yaiba_Trailer_12.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Demon_Slayer_Kimetsu_no_Yaiba_Trailer_13.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Kimetsu_no_YaibaDemon_SlayerO_Filme___O_Trem_Do_Infinito™Trailer_Legendado_PT_BR.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Kimetsu_no_YaibaDemon_SlayerO_Filme___O_Trem_Do_Infinito™Trailer_Legendado_PT_BR1.mp4" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +183,7 @@
       <workItem from="1626339168657" duration="5115000" />
       <workItem from="1626353989661" duration="1762000" />
       <workItem from="1626376368314" duration="8201000" />
-      <workItem from="1626513991297" duration="7819000" />
+      <workItem from="1626513991297" duration="14814000" />
     </task>
     <servers />
   </component>

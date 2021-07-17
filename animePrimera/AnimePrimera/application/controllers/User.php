@@ -20,9 +20,6 @@ class User extends ControladorAbstrato {
             $this->data['email'] = $user['Email'];
             $this->data['idUser'] = $user['idUser'];
             $this->data['perms'] = $user['Permissoes'];
-            if($user['Permissoes'] >= 2 && !empty($user['Banner'])){
-                $this->data['bannerUrl'] = '../../resources/img/pfp/' . $user['Banner'];
-            }
             $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
             $this->data['notif'] = $query;
             $this->checkIfBanned($user['Permissoes']);
@@ -35,6 +32,9 @@ class User extends ControladorAbstrato {
         $this->data['titulo'] = 'Meu Perfil';
         if($this->login_model->isLoggedIn() == true) {
             $user = $this->data['user'];
+            if($user['Permissoes'] >= 2 && !empty($user['Banner'])){
+                $this->data['bannerUrl'] = '../../resources/img/pfp/' . $user['Banner'];
+            }
             $this->data['serieFav'] = $this->main_model->get_both_main_where_limited('series', 'favorito', 'series.idSerie = favorito.idSerie', 'favorito.idUser', $user['idUser'],9);
             $this->data['serieSeg'] = $this->main_model->get_both_main_where_limited('series', 'seguir', 'series.idSerie = seguir.idSerie', 'seguir.idUser', $user['idUser'],9);
             $this->data['serieHol'] = $this->main_model->get_both_main_where_limited('series', 'onhold', 'series.idSerie = onhold.idSerie', 'onhold.idUser', $user['idUser'],9);
@@ -59,6 +59,9 @@ class User extends ControladorAbstrato {
         $this->data['likedPosts'] = $this->main_model->get_both_main_where_limited('compost', 'compostvotes', 'compost.idCompost = compostvotes.idCompost', 'compostvotes.idUser', $idUser,3);
         $this->data['userinfo'] = $this->main_model->get_main_where_array('user','idUser',$idUser);
         $this->data['titulo'] = 'Perfil de '.$this->data['userinfo'][0]['Username'];
+        if($this->data['userinfo'][0]['Permissoes'] >= 2 && !empty($this->data['userinfo'][0]['Banner'])){
+            $this->data['bannerUrl'] = '../../resources/img/pfp/' . $this->data['userinfo'][0]['Banner'];
+        }
         $this->load->view('viewprofile', $this->data);
     }
 
@@ -339,10 +342,6 @@ class User extends ControladorAbstrato {
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $this->data['idUser'] = $user['idUser'];
             $this->data['perms'] = $user['Permissoes'];
-            if($this->data['perms'] >= 2){
-                $this->session->set_flashdata('error',"A sua conta já é Premium.");
-                redirect();
-            }
         }
         $this->load->view('goPrem',$this->data);
     }
@@ -374,9 +373,13 @@ class User extends ControladorAbstrato {
 
         //Definimos os tipos de arquivos suportados
         if($type == 0){
-            $config['allowed_types'] = 'jpg|png|gif';
+            $config['max_width'] = 3840;
+            $config['max_height'] = 2160;
+            $config['allowed_types'] = 'jpg|png|gif|pdf|zip|rar|doc|xls';
         }else{
-            $config['allowed_types'] = 'jpg|png';
+            $config['max_width'] = 1000;
+            $config['max_height'] = 1000;
+            $config['allowed_types'] = 'jpg|png|pdf|zip|rar|doc|xls';
         }
 
         //Definimos o maximo permitido
@@ -384,8 +387,6 @@ class User extends ControladorAbstrato {
         //post_max_size=15M -> pelo POST
         // upload_max_size=15M // Por Upload
         $config['max_size'] = '51120';//em KB
-        $config['max_width'] = 700;
-        $config['max_height'] = 700;
 
         //Definimos que o nome do arquivo será criptografado
         $config['encrypt_name'] = TRUE;
@@ -401,7 +402,7 @@ class User extends ControladorAbstrato {
             //Em caso de erro retornamos os mesmos para uma variável e enviamos para a view
             $data['error'] = true;
             $data['message'] = $this->upload->display_errors();
-            $this->session->set_flashdata('error',"O tipo de imagem inserido não pode ser utilizado.");
+            $this->session->set_flashdata('error',$this->upload->display_errors());
             redirect();
         } else {
             $data['error'] = false;

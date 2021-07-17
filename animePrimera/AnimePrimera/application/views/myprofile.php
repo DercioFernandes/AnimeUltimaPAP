@@ -3,7 +3,7 @@
 <body>
 
 <div class="container-fluid">
-    <div class="row" style="background-image: url(<?php if(isset($bannerUrl)){echo $bannerUrl;} ?>);">
+    <div class="row" style="background-image: url(<?php if(isset($bannerUrl)){echo $bannerUrl;} ?>); background-repeat: no-repeat; background-size: cover;" >
         <div class="col">
             <img class="myprofilepfp text-center" src="<?php echo base_url('./resources/img/pfp/' . $fotoPerfil) ?>" title="userPFP" alt="userPFP"/>
             <h3 class="mypusername"><b>Username: </b><small><?php echo $username ?></small></h3>
