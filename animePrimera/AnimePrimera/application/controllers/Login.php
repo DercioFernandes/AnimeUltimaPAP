@@ -14,6 +14,7 @@ class Login extends CI_Controller {
     }
 
     public function login()	{
+        $this->data['titulo'] = 'Login';
         //if($this->login_model->isLoggedIn()) { redirect('admin'); }
         $this->form_validation->set_rules('username','user','required');
         $this->form_validation->set_rules('password','senha','required');
@@ -37,6 +38,7 @@ class Login extends CI_Controller {
     }
 
     public function logout(){
+        $this->data['titulo'] = 'Logout';
         session_destroy();
         $this->data['login_success'] = 'Logout com Sucesso.';
         $this->load->view('login',$this->data);

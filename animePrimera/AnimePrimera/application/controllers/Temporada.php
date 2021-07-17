@@ -18,11 +18,13 @@ class Temporada extends ControladorAbstrato {
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
             $this->data['notif'] = $query;
+            $this->checkIfBanned($user['Permissoes']);
         }
         $this->data['contSearch'] = 'Serie/search';
     }
 
     public function addTemp(){
+        $this->data['titulo'] = 'Adicionar Temporada';
         if(isset($_POST['Criar'])){
             $this->checkLogin('serie/seriesinfo/'.$_POST['idSerie'],"Faça Login primeiro.");
             $levelsNeeded = array(
@@ -79,6 +81,7 @@ class Temporada extends ControladorAbstrato {
     }
 
     public function editarTemp(){
+        $this->data['titulo'] = 'Editar Temporada';
         $idSerie = $this->uri->segment(3);
         $this->checkLogin('serie/seriesinfo/'.$idSerie,'Faça Login primeiro.');
         $querys = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
@@ -123,6 +126,7 @@ class Temporada extends ControladorAbstrato {
     }
 
     public function remover(){
+        $this->data['titulo'] = 'Remover Temporada';
         $idTemporada = $this->uri->segment(3);
         $queryml = $this->main_model->get_main_where_array('temporadas','idTemporada',$idTemporada);
         $this->checkLogin('serie/seriesinfo/'.$queryml[0]['idSerie'],'Faça Login primeiro.');

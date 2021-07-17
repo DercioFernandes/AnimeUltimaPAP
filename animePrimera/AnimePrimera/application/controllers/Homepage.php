@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require_once APPPATH.'controllers/ControladorAbstrato.php';
 
-class Homepage extends CI_Controller {
+class Homepage extends ControladorAbstrato {
 
     public function __construct(){
         parent::__construct();
@@ -18,7 +19,6 @@ class Homepage extends CI_Controller {
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $this->data['perms'] = $user['Permissoes'];
             $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
-            $this->data['notif'] = $query;
         }
         $this->data['contSearch'] = 'Serie/search';
     }

@@ -35,4 +35,10 @@ abstract class ControladorAbstrato extends CI_Controller {
         }
     }
 
+    protected function checkIfBanned($perms){
+        if($perms == 0){
+            redirect();
+        }
+    }
+
 }

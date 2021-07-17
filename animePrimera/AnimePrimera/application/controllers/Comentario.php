@@ -17,11 +17,13 @@ class Comentario extends ControladorAbstrato {
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
             $this->data['notif'] = $query;
+            $this->checkIfBanned($user['Permissoes']);
         }
         $this->data['contSearch'] = 'Serie/search';
     }
 
     public function addComment(){
+        $this->data['titulo'] = 'Adicionar Comentário';
         if(isset($_POST['Submeter'])){
             $this->checkLogin('Episodio/watchepisode/'.$_POST['idEpisodio'],"Faça login primeiro.");
             if($this->login_model->isLoggedIn() == true) {
@@ -67,6 +69,7 @@ class Comentario extends ControladorAbstrato {
 
     public function addCommentC()
     {
+        $this->data['titulo'] = 'Adicionar Comentário';
         if (isset($_POST['Submeter'])) {
             $this->checkLogin('Hub/hubinfo/' . $_POST['idCompost'],"Faça Login primeiro.");
             if ($this->login_model->isLoggedIn() == true) {
@@ -109,6 +112,7 @@ class Comentario extends ControladorAbstrato {
     }
 
     public function removeComment(){
+        $this->data['titulo'] = 'Remover Comentário';
         $this->checkLogin('Episodio/watchepisode/'.$_POST['idEpisodio'],"Faça login primeiro.");
         $idComentario = $this->uri->segment(3);
         $queryml = $this->main_model->get_main_where_array('comentario','idComentario',$idComentario);
@@ -130,6 +134,7 @@ class Comentario extends ControladorAbstrato {
     }
 
     public function removeCommentC(){
+        $this->data['titulo'] = 'Remover Comentário';
         $idComentarioc = $this->uri->segment(3);
         $queryml = $this->main_model->get_main_where_array('comentariocompost','idComentarioc',$idComentarioc);
         $this->checkLogin('Hub/hubinfo/' . $queryml[0]['idCompost'],"Faça Login primeiro.");
@@ -151,6 +156,7 @@ class Comentario extends ControladorAbstrato {
     }
 
     public function reportComment(){
+        $this->data['titulo'] = 'Reportar Comentário';
         $idComentario = $this->uri->segment(3);
         $idEpisodio = $this->uri->segment(4);
         $this->checkLogin('Episodio/watchepisode/'.$idEpisodio,"Faça login primeiro.");
@@ -164,6 +170,7 @@ class Comentario extends ControladorAbstrato {
     }
 
     public function reportCommentC(){
+        $this->data['titulo'] = 'Reportar Comentário';
         $idComentario = $this->uri->segment(3);
         $idCompost = $this->uri->segment(4);
         $this->checkLogin('Hub/hubinfo/'.$idCompost,"Faça login primeiro.");

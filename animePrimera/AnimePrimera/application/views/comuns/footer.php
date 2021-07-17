@@ -4,8 +4,6 @@
         <script src="<?=base_url('resources/js/modal.js')?>"></script>
         <script src="<?=base_url('resources/js/pass.js')?>"></script>
         <script src="<?=base_url('resources/js/js/bootstrap.min.js')?>"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.12.0/js/all.js"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.12.0/js/v4-shims.js"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

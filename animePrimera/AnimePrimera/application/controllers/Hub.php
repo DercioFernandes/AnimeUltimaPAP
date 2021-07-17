@@ -20,6 +20,7 @@ class Hub extends ControladorAbstrato {
             $this->data['perms'] = $user['Permissoes'];
             $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
             $this->data['notif'] = $query;
+            $this->checkIfBanned($user['Permissoes']);
         }
         $this->data['contSearch'] = 'Hub/search';
     }
@@ -33,8 +34,7 @@ class Hub extends ControladorAbstrato {
             //$this->data['perms'] = $perms;
             $this->data['idUser'] = $user['idUser'];
         }
-        $this->data['titulo'] = 'AP Hub';
-
+        $this->data['titulo'] = 'AnimePrimera Hub';
         $this->data['staffpost'] = $this->main_model->get_main_where_array('compost','isStaff',1);
         $this->data['posts'] = $this->main_model->get_table_limited('compost',9,'idCompost');
         $query = $this->main_model->get_table_orderby('compost','votes', 15);
@@ -50,6 +50,7 @@ class Hub extends ControladorAbstrato {
             //$this->data['perms'] = $perms;
             $this->data['idUser'] = $user['idUser'];
         }
+        $this->data['titulo'] = 'Posts Recentes';
         $this->data['h3title'] = 'Posts Recentes';
         $this->data['posts'] = $this->main_model->get_table_limited('compost',50,'idCompost');
         $this->load->view('allPost',$this->data);
@@ -95,6 +96,7 @@ class Hub extends ControladorAbstrato {
 
 	public function criarPost(){
         $this->checkLogin('hub','Faça Login primeiro.');
+        $this->data['titulo'] = 'Criar Post';
         if(isset($_POST['Criar'])){
             $values = array(
                 'titulo' => $_POST['titulo'],
@@ -136,6 +138,7 @@ class Hub extends ControladorAbstrato {
     }
 
     public function editarPost(){
+        $this->data['titulo'] = 'Editar Post';
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
@@ -162,6 +165,7 @@ class Hub extends ControladorAbstrato {
     }
 
     public function removerPost(){
+        $this->data['titulo'] = 'Remover Post';
         $this->checkLogin('hub','Faça Login primeiro');
         $idCompost = $this->uri->segment(3);
         $query = $this->main_model->get_main_where_array('compost','idCompost',$idCompost);
@@ -219,6 +223,7 @@ class Hub extends ControladorAbstrato {
     }
 
     public function search(){
+        $this->data['titulo'] = 'Procurar Post';
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];

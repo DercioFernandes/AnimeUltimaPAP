@@ -19,6 +19,7 @@ class Serie extends ControladorAbstrato {
             $this->data['perms'] = $user['Permissoes'];
             $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
             $this->data['notif'] = $query;
+            $this->checkIfBanned($user['Permissoes']);
         }
         $this->data['contSearch'] = 'Serie/search';
     }
@@ -32,6 +33,7 @@ class Serie extends ControladorAbstrato {
             $this->data['idUser'] = $user['idUser'];
             $this->data['perms'] = $user['Permissoes'];
         }
+        $this->data['titulo'] = 'Todas as Séries';
         $this->data['h3title'] = 'Series Recentes';
         $this->data['series'] = $this->main_model->get_table_limited('series',50,'idSerie');
         $this->load->view('all',$this->data);
@@ -45,6 +47,7 @@ class Serie extends ControladorAbstrato {
             MODPERM,
             ADMPERM
         );
+        $this->data['titulo'] = 'Adicionar Série';
         $this->checkPerms($levelsNeeded,$this->data['perms']);
         $this->data['titulo'] = 'Criar Série - AP';
         if(isset($_POST['Criar'])){
@@ -75,6 +78,7 @@ class Serie extends ControladorAbstrato {
     }
 
     public function editar(){
+        $this->data['titulo'] = 'Editar Série';
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
@@ -121,6 +125,7 @@ class Serie extends ControladorAbstrato {
     }
 
     public function remover(){
+        $this->data['titulo'] = 'Remover Série';
         $idSerie = $this->uri->segment(3);
         $this->checkLogin('','Faça Login primeiro.');
         $querys = $this->main_model->get_main_where_array('series','idSerie',$idSerie);
@@ -210,6 +215,7 @@ class Serie extends ControladorAbstrato {
             $queryE = array_merge($queryE,$this->main_model->get_main_where_array('episodio','idTemporada',$queryT[$i]['idTemporada']));
         }
         $this->data['qFav'] = count($this->main_model->get_table('favorito'));
+        $this->data['titulo'] = $query[0]['Titulo'];
         //print_r($queryE);
         $this->data['idSerie'] = $idSerie;
         $this->data['temporadas'] = $queryT;
@@ -335,6 +341,7 @@ class Serie extends ControladorAbstrato {
     }
 
     public function search(){
+        $this->data['titulo'] = 'Procurar Série';
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];

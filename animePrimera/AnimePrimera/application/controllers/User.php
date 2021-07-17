@@ -25,12 +25,14 @@ class User extends ControladorAbstrato {
             }
             $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
             $this->data['notif'] = $query;
+            $this->checkIfBanned($user['Permissoes']);
         }
         $this->data['contSearch'] = 'User/search';
     }
 
 	public function myprofile()
 	{
+        $this->data['titulo'] = 'Meu Perfil';
         if($this->login_model->isLoggedIn() == true) {
             $user = $this->data['user'];
             $this->data['serieFav'] = $this->main_model->get_both_main_where_limited('series', 'favorito', 'series.idSerie = favorito.idSerie', 'favorito.idUser', $user['idUser'],9);
@@ -56,6 +58,7 @@ class User extends ControladorAbstrato {
         $this->data['myPosts'] = $this->main_model->get_main_where_limited('compost','idUser',$idUser,3);
         $this->data['likedPosts'] = $this->main_model->get_both_main_where_limited('compost', 'compostvotes', 'compost.idCompost = compostvotes.idCompost', 'compostvotes.idUser', $idUser,3);
         $this->data['userinfo'] = $this->main_model->get_main_where_array('user','idUser',$idUser);
+        $this->data['titulo'] = 'Perfil de '.$this->data['userinfo'][0]['Username'];
         $this->load->view('viewprofile', $this->data);
     }
 
@@ -71,6 +74,7 @@ class User extends ControladorAbstrato {
             $this->data['users'][$cont]['Permissoes'] = $this->getPermissionsName($user['Permissoes']);
             $cont += 1;
         }
+        $this->data['titulo'] = 'Gerir Utilizadores';
         $this->load->view('gerirUser',$this->data);
     }
 
@@ -100,6 +104,7 @@ class User extends ControladorAbstrato {
     }
 
 	public function editUser(){
+        $this->data['titulo'] = 'Editar User';
         if($this->login_model->isLoggedIn() == true) {
             if(isset($_POST['Editar'])){
                 $values = array(
@@ -172,6 +177,7 @@ class User extends ControladorAbstrato {
             $idUser = $this->uri->segment(3);
             $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'favorito', 'series.idSerie = favorito.idSerie', 'series.idUser', $idUser);
             $this->data['h3title'] = 'Meus Favoritos';
+            $this->data['titulo'] = 'Favoritos';
             $this->load->view('all',$this->data);
         }
     }
@@ -182,6 +188,7 @@ class User extends ControladorAbstrato {
             $idUser = $this->uri->segment(3);
             $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'seguir', 'series.idSerie = seguir.idSerie', 'series.idUser', $idUser);
             $this->data['h3title'] = 'Séries que Segues';
+            $this->data['titulo'] = 'Seguindo';
             $this->load->view('all',$this->data);
         }
     }
@@ -192,6 +199,7 @@ class User extends ControladorAbstrato {
             $idUser = $this->uri->segment(3);
             $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'onhold', 'series.idSerie = onhold.idSerie', 'series.idUser', $idUser);
             $this->data['h3title'] = 'Séries em Espera ';
+            $this->data['titulo'] = 'Em Espera';
             $this->load->view('all',$this->data);
         }
     }
@@ -202,6 +210,7 @@ class User extends ControladorAbstrato {
             $idUser = $this->uri->segment(3);
             $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'completo', 'series.idSerie = completo.idSerie', 'series.idUser', $idUser);
             $this->data['h3title'] = 'Séries Completas';
+            $this->data['titulo'] = 'Completas';
             $this->load->view('all',$this->data);
         }
     }
@@ -212,6 +221,7 @@ class User extends ControladorAbstrato {
             $idUser = $this->uri->segment(3);
             $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'watching', 'series.idSerie = watching.idSerie', 'series.idUser', $idUser);
             $this->data['h3title'] = 'Séries que estás a ver ';
+            $this->data['titulo'] = 'A ver';
             $this->load->view('all',$this->data);
         }
     }
@@ -222,6 +232,7 @@ class User extends ControladorAbstrato {
             $idUser = $this->uri->segment(3);
             $this->data['series'] = $this->main_model->get_both_main_whereV2('series', 'dropped', 'series.idSerie = dropped.idSerie', 'series.idUser', $idUser);
             $this->data['h3title'] = 'Séries Dropadas ';
+            $this->data['titulo'] = 'Dropadas';
             $this->load->view('all',$this->data);
         }
     }
@@ -232,6 +243,7 @@ class User extends ControladorAbstrato {
             $idUser = $this->uri->segment(3);
             $this->data['posts'] = $this->main_model->get_main_where_array('compost','idUser',$idUser);
             $this->data['h3title'] = 'Posts';
+            $this->data['titulo'] = 'Posts';
             $this->load->view('allPost',$this->data);
         }
     }
@@ -242,6 +254,7 @@ class User extends ControladorAbstrato {
             $idUser = $this->uri->segment(3);
             $this->data['posts'] = $this->main_model->get_both_main_whereV2('compost', 'compostvotes', 'compost.idCompost = compostvotes.idCompost' , 'compostvotes.idUser', $idUser);
             $this->data['h3title'] = 'Posts Curtidos';
+            $this->data['titulo'] = 'Posts Curtidos';
             $this->load->view('allPost',$this->data);
         }
     }
@@ -282,6 +295,7 @@ class User extends ControladorAbstrato {
     }
 
     public function search(){
+        $this->data['titulo'] = 'Procurar User';
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
@@ -317,6 +331,7 @@ class User extends ControladorAbstrato {
     }
 
     public function goPremium(){
+        $this->data['titulo'] = 'Go Premium';
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
             /*$perms = $this->getPerms($user['perms']);
@@ -324,6 +339,10 @@ class User extends ControladorAbstrato {
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $this->data['idUser'] = $user['idUser'];
             $this->data['perms'] = $user['Permissoes'];
+            if($this->data['perms'] >= 2){
+                $this->session->set_flashdata('error',"A sua conta já é Premium.");
+                redirect();
+            }
         }
         $this->load->view('goPrem',$this->data);
     }

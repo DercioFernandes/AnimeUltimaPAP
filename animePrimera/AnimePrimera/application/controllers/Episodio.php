@@ -18,6 +18,7 @@ class Episodio extends ControladorAbstrato {
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
             $this->data['notif'] = $query;
+            $this->checkIfBanned($user['Permissoes']);
         }
         $this->data['contSearch'] = 'Serie/search';
     }
@@ -31,12 +32,14 @@ class Episodio extends ControladorAbstrato {
             $this->data['idUser'] = $user['idUser'];
             $this->data['perms'] = $user['Permissoes'];
         }
+        $this->data['titulo'] = 'Episódios Adicionados Recentemente';
         $this->data['h3title'] = 'Adicionados Recentemente';
         $this->data['episodios'] = $this->main_model->get_table_limited('episodio',50,'idEpisodio');
         $this->load->view('allEps',$this->data);
     }
 
 	public function gerirEps(){
+        $this->data['titulo'] = 'Gerir Episódio';
         if($this->login_model->isLoggedIn() == true){
             $user = $this->data['user'];
             $this->data['perms'] = $user['Permissoes'];
@@ -112,6 +115,7 @@ class Episodio extends ControladorAbstrato {
             MODPERM,
             ADMPERM
         );
+        $this->data['titulo'] = 'Adicionar Episódio';
         $idTemporada = $this->uri->segment(3);
         if(isset($_POST['idTemporada'])){
             $queryt = $this->main_model->get_main_where_array('temporadas','idTemporada',$_POST['idTemporada']);
@@ -196,11 +200,13 @@ class Episodio extends ControladorAbstrato {
             $q[] = $this->main_model->get_main_where('series','idSerie',$r->idSerie);
         }
         $this->data['recommended'] = array_slice($q,0,5);
+        $this->data['titulo'] = $query[0]->titulo;
         $this->load->view('watcheps',$this->data);
     }
 
     public function epsProximo(){
         $idEpisodio = $this->uri->segment(3);
+        $this->data['titulo'] = "Próximo Episódio";
         $query = $this->main_model->get_main_where_array('episodio','idEpisodio',$idEpisodio);
         $queryEps = $this->main_model->get_main_where_array('episodio','idTemporada',$query[0]['idTemporada']);
         for($i = 0; $i < count($queryEps); $i++){
@@ -218,6 +224,7 @@ class Episodio extends ControladorAbstrato {
 
     public function epsAnterior(){
         $idEpisodio = $this->uri->segment(3);
+        $this->data['titulo'] = 'Episódio Anterior';
         $query = $this->main_model->get_main_where_array('episodio','idEpisodio',$idEpisodio);
         $queryEps = $this->main_model->get_main_where_array('episodio','idTemporada',$query[0]['idTemporada']);
         for($i = count($queryEps) - 1; $i >= 0; $i--){

@@ -18,6 +18,7 @@ class Calendario extends ControladorAbstrato {
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
             $this->data['notif'] = $query;
+            $this->checkIfBanned($user['Permissoes']);
         }
         $this->data['contSearch'] = 'Serie/search';
     }
@@ -31,12 +32,14 @@ class Calendario extends ControladorAbstrato {
             $this->data['idUser'] = $user['idUser'];
             $this->data['perms'] = $user['Permissoes'];
         }
+        $this->data['titulo'] = 'Calendário';
         $query = $this->main_model->get_table('calendario');
         $this->data['calendario'] = $query;
         $this->load->view('calendario',$this->data);
     }
 
     public function addCalendario(){
+        $this->data['titulo'] = 'Adicionar ao Calendário';
         if(isset($_POST['submitcalendar'])){
             $idSerie = $this->uri->segment(3);
             $this->checkLogin('Serie/seriesinfo/' . $idSerie,"Faça Login primeiro.");
@@ -80,6 +83,7 @@ class Calendario extends ControladorAbstrato {
     }
 
     public function removerCalendario(){
+        $this->data['titulo'] = 'Remover do Calendário';
         $idSerie = $this->uri->segment(3);
         $this->checkLogin('Serie/seriesinfo/'.$idSerie,"Faça Login com sucesso.");
         $levelsNeeded = array(
