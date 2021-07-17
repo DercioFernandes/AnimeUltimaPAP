@@ -22,15 +22,6 @@ class Register extends CI_Controller {
         $this->form_validation->set_rules('password','senha','required');
         if($this->form_validation->run()) {
             if(isset($_POST['username']) && isset($_POST['password'])){
-                if(strlen($_POST['username']) > 8 || strlen($_POST['username']) < 3){
-                    $this->session->set_flashdata('error','O seu Username tem mais de 8 caractéres ou menos de 3.');
-                    redirect('register');
-                }
-                echo  strlen($_POST['password']);
-                if(strlen($_POST['password']) > 128  || strlen($_POST['password']) < 8){
-                    $this->session->set_flashdata('error','A sua Password tem mais de 128 caractéres ou menos de 8.');
-                    redirect('register');
-                }
                 $uploadFile = $this->UploadFile('fotoperfil');
                 $e = $uploadFile['fileData'];
                 $pfp = $e['file_name'];

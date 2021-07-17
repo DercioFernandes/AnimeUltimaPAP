@@ -93,6 +93,7 @@ class Episodio extends ControladorAbstrato {
                 );
                 $this->main_model->edit('idTemporada','temporadas',$queryml[0]['idTemporada'],$valuest);
                 $this->main_model->delete('idEpisodio','episodio',$_POST['Remover']);
+                $this->main_model->delete('idEpisodio','notification',$_POST['Remover']);
                 redirect('Episodio/gerirEps/'.$idTemporada);
             }else{
                 $idTemporada = $this->uri->segment(3);
@@ -281,6 +282,8 @@ class Episodio extends ControladorAbstrato {
                 if (!$this->upload->do_upload('video_name')) {
                     //if file upload failed then catch the errors
                     $is_file_error = TRUE;
+                    $this->session->set_flashdata('error',$this->upload->display_errors());
+                    redirect();
                 } else {
                     //store the video file info
                     $video_data = $this->upload->data();

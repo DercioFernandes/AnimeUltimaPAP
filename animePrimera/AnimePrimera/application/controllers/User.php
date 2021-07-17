@@ -139,10 +139,6 @@ class User extends ControladorAbstrato {
                     $this->session->set_flashdata('error',"Tem de fazer login novamente para atualizar a Banner.");
                 }
                 if(!empty($_POST['password'])){
-                    if(strlen($_POST['password']) > 128 || strlen($_POST['password'] < 8)){
-                        $this->session->set_flashdata('error','A sua Password tem mais de 128 caractéres ou menos de 8');
-                        redirect('User/myprofile/'.$_POST['idUser']);
-                    }
                     $password = hash('sha256',$_POST['password']);
                     $valuespass = array(
                         'Password' => $password
@@ -168,10 +164,37 @@ class User extends ControladorAbstrato {
                 }else if($user['Permissoes'] == 5){
                     $this->data['isAdmin'] = 1;
                 }
+                $levelsNeeded = array(
+                    MODPERM,
+                    ADMPERM
+                );
+                $this->checkPermsV2($query[0]['idUser'],$this->data['idUser'],$levelsNeeded,$this->data['perms']);
                 $this->data['query'] = $query[0];
                 $this->load->view('myprofileedit', $this->data);
             }
         }
+    }
+
+    public function removerUser(){
+        $this->checkLogin('','Não tem permissões.');
+        $levelsNeeded = array(
+            ADMPERM
+        );
+        $this->checkPerms($levelsNeeded,$this->data['perms']);
+        $idUser = $this->uri->segment(3);
+        $this->main_model->delete('idUser','user',$idUser);
+        $this->main_model->delete('idUser','comentario',$idUser);
+        $this->main_model->delete('idUser','comentariocompost',$idUser);
+        $this->main_model->delete('idUser','notification',$idUser);
+        $this->main_model->delete('idUser','rating',$idUser);
+        $this->main_model->delete('idUser','seguir',$idUser);
+        $this->main_model->delete('idUser','onhold',$idUser);
+        $this->main_model->delete('idUser','completo',$idUser);
+        $this->main_model->delete('idUser','compostvotes',$idUser);
+        $this->main_model->delete('idUser','dropped',$idUser);
+        $this->main_model->delete('idUser','favorito',$idUser);
+        $this->main_model->delete('idUser','compost',$idUser);
+        redirect('User/gerirUser');
     }
 
     public function allSeriesFav(){

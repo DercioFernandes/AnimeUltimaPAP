@@ -19,6 +19,7 @@ class Homepage extends ControladorAbstrato {
             $this->data['fotoPerfil'] = $user['FotoPerfil'];
             $this->data['perms'] = $user['Permissoes'];
             $query = $this->main_model->get_main_where_array('notification','idUser',$user['idUser']);
+            $this->data['notif'] = $query;
         }
         $this->data['contSearch'] = 'Serie/search';
     }

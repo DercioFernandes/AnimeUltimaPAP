@@ -24,7 +24,6 @@ class Login extends CI_Controller {
             if($user = $this->login_model->getByUsername($username)){
                 if($this->login_model->checkPassword($password,$user['Password'])){
                     $this->login_model->createSession($user);
-                    echo 'Correto';
                     redirect();
                 }else{
                     $this->data['login_error'] = 'Palavra-passe incorreta';

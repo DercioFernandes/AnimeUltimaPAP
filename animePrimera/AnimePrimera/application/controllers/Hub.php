@@ -185,6 +185,7 @@ class Hub extends ControladorAbstrato {
         $this->main_model->delete('idCompost','comentariocompost',$idCompost);
         $this->main_model->delete('idCompost','compostvotes',$idCompost);
         $this->main_model->delete('idCompost','compost',$idCompost);
+        $this->main_model->delete('idCompost','notification',$idCompost);
         redirect('hub');
     }
 
@@ -271,9 +272,7 @@ class Hub extends ControladorAbstrato {
                 $config['max_size'] = '0';
             else{
                 $config['max_size'] = '1000000';
-                redirect();
             }
-
             //max file name size
             $config['max_filename'] = '255';
             //whether file name should be encrypted or not
@@ -296,6 +295,8 @@ class Hub extends ControladorAbstrato {
                     //if file upload failed then catch the errors
                     $this->handle_error($this->upload->display_errors());
                     $is_file_error = TRUE;
+                    $this->session->set_flashdata('error',$this->upload->display_errors());
+                    redirect();
                 } else {
                     //store the video file info
                     $video_data = $this->upload->data();
