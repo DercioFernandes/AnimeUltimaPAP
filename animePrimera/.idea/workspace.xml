@@ -21,71 +21,16 @@
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Episodio.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Hub.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Hub.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Login.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Register.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/gerirUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/gerirUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Logs.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Logs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Serie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Temporada.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Temporada.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/editarSerie.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/editarSerie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/editarTemporada.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/editarTemporada.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/goPrem.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/goPrem.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/homepage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/hubinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/hubinfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/img/65c07ca98fcd6460fee9f339bb832455.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/img/compost/10252031765c6aec52d9b04066d7f4da.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/img/compost/846315d30412a8cf5874e48f67642f80.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/img/compost/8f5e8208a7bf5cb7e977592aea3b1e1c.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/img/compost/ab14d323d64f23331f5649f7ae08909f.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/img/compost/b98a1dd05276856000c0bd9b38c0a5ba.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/img/compost/c015e78cc7834c21eb5f2e1922ee9703.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/img/compost/fe6af0bd51b6738bec8ca6559d40c253.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/img/seriesthumb/034bd4c9ac322d38557edc472d1f91ed.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/img/seriesthumb/68e1d1f7534b213d3aa8a186f06f86c5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/059991fa9f6e96de0cc38c4bd406a140.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/1614666567805-1.webm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/1614666567805-11.webm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/1614666567805-12.webm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/2021-05-10_19-07-48.mkv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/2021-05-10_19-07-481.mkv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/80fb44fa0fecc487e49954df15cd3f09.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/80fb44fa0fecc487e49954df15cd3f091.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/80fb44fa0fecc487e49954df15cd3f092.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/80fb44fa0fecc487e49954df15cd3f093.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/80fb44fa0fecc487e49954df15cd3f094.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/80fb44fa0fecc487e49954df15cd3f095.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/80fb44fa0fecc487e49954df15cd3f096.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/80fb44fa0fecc487e49954df15cd3f097.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/ALAHUAK_BAK-1.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Gojo_Satoru_Domain_Expansion_Immeasurable_Void_Trim.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Just_shot_us_fellow_and_took_his_boots_full_version.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Rock_vs._paper.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Seven_vs_Redtooth.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/VID-20210430-WA0022.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/VID-20210506-WA0030.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Video_Editor_Music_Movie_Maker_20201212161618625.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Video_Editor_Music_Movie_Maker_202012121616186251.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Video_Editor_Music_Movie_Maker_202012121616186252.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/WIP-6th-anniversary-wallpaper-dark.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Yea_I_know...mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Yea_I_know..1.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Yea_I_know..2.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Yea_I_know..3.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/Yea_I_know..4.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/gvb.xyz-8Wtp1geHaw2nOjHW-1.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/received_506374330741832.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/turk_army.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/twitter_20210315_143320.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video0(1).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video0(2).mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video0(2)1.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video0-34-1.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video0-34-11.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video0-5-3.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video0-5-31.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video0.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video01.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video011.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/vid/video0_1.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/seriesinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/seriesinfo.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,6 +180,7 @@
       <workItem from="1626353989661" duration="1762000" />
       <workItem from="1626376368314" duration="8201000" />
       <workItem from="1626513991297" duration="23829000" />
+      <workItem from="1626602827319" duration="6736000" />
     </task>
     <servers />
   </component>

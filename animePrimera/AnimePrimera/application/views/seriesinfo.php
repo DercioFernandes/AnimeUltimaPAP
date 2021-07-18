@@ -66,11 +66,12 @@
         <?php endif; ?>
         <?php
         $contador = 0;
+        $count = 0;
         foreach($temporadas as $t): ?>
         <div class="row">
             <div class="col">
                 <h6 class="tempname">
-                    <?php $colapse = 'collapse' . $contador ?>
+                    <?php $colapse = 'collapse' . $count ?>
 
                     <?php
                     if(!empty($user)):
@@ -92,7 +93,7 @@
                             for($i = 0 ; $i < $t['nEpisodios']; $i++): ?>
                             <li class="text-center">
                                 <a class="btn-block text-center" href="<?php echo base_url('/Episodio/watchepisode/' . $episodios[$contador]['idEpisodio']) ?>"><?php echo $episodios[$contador]['titulo'] ?></a>
-                                <?php $contador += 1 ?>
+                                <?php $contador = $contador + 1 ?>
                             </li>
                             <?php endfor; ?>
                             <?php
@@ -108,6 +109,7 @@
                     </div>
             </div>
         </div>
+        <?php $count += 1; ?>
         <?php endforeach; ?>
         <?php
         if(!empty($user)):

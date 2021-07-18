@@ -30,6 +30,7 @@ class Logs extends ControladorAbstrato {
 	{
         $this->checkLogin('','');
         $levelsNeeded = array(
+            UPLPERM,
             MODPERM,
             ADMPERM
         );

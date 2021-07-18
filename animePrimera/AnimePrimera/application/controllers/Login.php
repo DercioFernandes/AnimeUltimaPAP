@@ -26,11 +26,10 @@ class Login extends CI_Controller {
                     $this->login_model->createSession($user);
                     redirect();
                 }else{
-                    $this->data['login_error'] = 'Palavra-passe incorreta';
-                    echo 'Palavra-Passe incorreta';
+                    $this->session->set_flashdata('error',"Palavra-Passe incorreta.");
                 }
             }else
-                $this->data['login_error'] = 'User não existe';
+                $this->session->set_flashdata('error',"User não existe.");
         }
         $this->data['titulo'] = 'Login';
         $this->load->view('login',$this->data);

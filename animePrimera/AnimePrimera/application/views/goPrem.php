@@ -18,7 +18,6 @@
                 <h6>Perks de doar:</h6>
                 <ul>
                     <li>Mais customização de Perfil</li>
-                    <li>Nome Dourado</li>
                     <li>Maior quantidade de Bytes para Posts no Hub</li>
                     <li>Limite de palavras numa Mensagem maior</li>
                     <li>Prioridade ao solicitar um anime</li>

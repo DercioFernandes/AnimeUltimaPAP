@@ -19,6 +19,11 @@
                 <input class="form-control text-center" id="thumbnail" name="thumbnail" placeholder="Thumbnail" type="file"/>
             </div>
 
+            <div class="form-group">
+                Manter Foto de Perfil:
+                <input class="text-center" checked type="checkbox" id="manterImagem" name="manterImagem" value="1">
+            </div>
+
             <input type="hidden" name="idSerie" value="<?php echo $idSerie; ?>">
             <input type="hidden" name="idTemporada" value="<?php echo $idTemporada; ?>">
 

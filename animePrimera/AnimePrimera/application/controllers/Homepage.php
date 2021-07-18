@@ -36,6 +36,7 @@ class Homepage extends ControladorAbstrato {
         }
         $this->data['titulo'] = 'AnimePrimera';
         $this->data['series'] = $this->main_model->get_table_limited('series',9,'idSerie');
+        $this->data['seriessuprise'] = $this->main_model->get_table('series');
         $this->data['episodios'] = $this->main_model->get_table_limited('episodio',9,'idEpisodio');
         $this->data['favseries'] = $this->main_model->get_table_orderby('series','rating',10);
 

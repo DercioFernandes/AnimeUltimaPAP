@@ -90,14 +90,16 @@ class Serie extends ControladorAbstrato {
                     'Tipo' => $_POST['tipo'],
                     'DataRelease' => $_POST['dataRelease']
                 );
-                $uploadFile = $this->UploadFile('thumbnail');
-                if($uploadFile['error'] == 0){
-                    $e = $uploadFile['fileData'];
-                    $imgname = $e['file_name'];
-                    $valuesImg = array(
-                        'Photo' => $imgname
-                    );
-                    $values = array_merge($values,$valuesImg);
+                if(!isset($_POST['manterImagem'])){
+                    $uploadFile = $this->UploadFile('thumbnail');
+                    if($uploadFile['error'] == 0){
+                        $e = $uploadFile['fileData'];
+                        $imgname = $e['file_name'];
+                        $valuesImg = array(
+                            'Photo' => $imgname
+                        );
+                        $values = array_merge($values,$valuesImg);
+                    }
                 }
                 $msg = 'Editado ' . $_POST['titulo'];
                 $valuesml = array(
@@ -429,6 +431,8 @@ class Serie extends ControladorAbstrato {
             //Em caso de erro retornamos os mesmos para uma variável e enviamos para a view
             $data['error'] = true;
             $data['message'] = $this->upload->display_errors();
+            $this->session->set_flashdata('error',$this->upload->display_errors());
+            redirect();
         } else {
             $data['error'] = false;
 
