@@ -35,6 +35,7 @@ class Comentario extends ControladorAbstrato {
                 if(strlen($_POST['coment']) < $maximumchar){
                     if(isset($_POST['commentComment'])){
                         $q = $this->main_model->get_main_where_array('comentario','idComentario',$_POST['commentComment']);
+                        $qu = $this->main_model->get_main_where_array('user','idUser',$this->data['idUser']);
                         $values = array(
                             'idUser' => $_POST['idUser'],
                             'idCC' => $_POST['commentComment'],
@@ -42,11 +43,11 @@ class Comentario extends ControladorAbstrato {
                             'idEpisodio' => $_POST['idEpisodio']
                         );
                         $userWC = $this->main_model->get_main_where_array('comentario','idComentario',$_POST['commentComment']);
-                        $queryUserInfo = $this->main_model->get_main_where_array('user','idUser',$userWC[0]['idUser']);
+                        $queryUserInfo = $this->main_model->get_main_where_array('user','idUser',$q[0]['idUser']);
                             $valuesus = array(
                                 'idUser' => $userWC[0]['idUser'],
                                 'idEpisodio' => $_POST['idEpisodio'],
-                                'info' =>  $queryUserInfo[0]['Username'] . ' respondeu ao seu comentário, veja agora!'
+                                'info' =>  $qu[0]['Username'] . ' respondeu ao seu comentário, veja agora!'
                             );
                             $this->main_model->add('notification',$valuesus);
                     }else{
@@ -81,6 +82,7 @@ class Comentario extends ControladorAbstrato {
                 if (strlen($_POST['coment']) < $maximumchar) {
                     if (isset($_POST['commentComment'])) {
                         $q = $this->main_model->get_main_where_array('comentariocompost', 'idComentarioC', $_POST['commentComment']);
+                        $qu = $this->main_model->get_main_where_array('user','idUser',$this->data['idUser']);
                         $values = array(
                             'idUser' => $_POST['idUser'],
                             'idCC' => $_POST['commentComment'],
@@ -92,7 +94,7 @@ class Comentario extends ControladorAbstrato {
                         $valuesus = array(
                             'idUser' => $userWC[0]['idUser'],
                             'idCompost' => $_POST['idCompost'],
-                            'info' =>  $queryUserInfo[0]['Username'] . ' respondeu ao seu comentário, veja agora!'
+                            'info' =>  $qu[0]['Username'] . ' respondeu ao seu comentário, veja agora!'
                         );
                         $this->main_model->add('notification',$valuesus);
                     } else {

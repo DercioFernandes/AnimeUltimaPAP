@@ -73,7 +73,7 @@ class RequestAnime extends ControladorAbstrato {
         $query = $this->main_model->get_both_main_whereV2('requestanime','user','requestanime.idUser = user.idUser','requestanime.idRequest=',$idRequest);
         $info = ' Completou o request: ' . $query[0]['info'] . ' do User: ' . $query[0]['Username'];
         $valuesml = array(
-            'idUser' => $query[0]['idUser'],
+            'idUser' => $this->data['idUser'],
             'info' => $info,
             'status' => 1
         );
@@ -95,9 +95,9 @@ class RequestAnime extends ControladorAbstrato {
         $this->checkPerms($levelsNeeded,$this->data['perms']);
         $idRequest = $this->uri->segment(3);
         $query = $this->main_model->get_both_main_whereV2('requestanime','user','requestanime.idUser = user.idUser','requestanime.idRequest=',$idRequest);
-        $info = ' Rejeitou o request: ' . $query[0]['info'] . ' do User: ' . $query[0]['Username'];
+        $info = ' Rejeitou o request: ' . $query[0]['info'];
         $valuesml = array(
-            'idUser' => $query[0]['idUser'],
+            'idUser' => $this->data['idUser'],
             'info' => $info,
             'status' => 1
         );

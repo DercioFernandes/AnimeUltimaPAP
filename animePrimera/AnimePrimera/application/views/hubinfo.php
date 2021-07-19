@@ -83,7 +83,7 @@
                             </a>
                             <?php
                             if(!empty($idUser)):
-                                if($comentario['idUser'] == $idUser):
+                                if($comentario['idUser'] == $idUser  || $perms >= 4):
                                     ?>
                                     <a href="<?php echo base_url('Comentario/removeCommentC/' . $comentario['idComentarioc'] )?>">
                                         <img class="flag" src="<?php echo base_url('./resources/img/Icons/remove.png') ?>" alt ="" title="editIcon"/>
