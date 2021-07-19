@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="formSerie">
-        <h1 class="text-center formTitle">CRIAR POST</h1>
+        <h1 class="text-center formTitle">CRIAR PUBLICAÇÃO</h1>
         <form class="formBody" action="<?= base_url('hub/criarPost')?>" method="post" enctype="multipart/form-data">
 
             <div class="row">

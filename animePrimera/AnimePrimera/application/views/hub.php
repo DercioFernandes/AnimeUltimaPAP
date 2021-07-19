@@ -63,13 +63,13 @@
     <div class="row">
         <div class="col-sm">
             <h3 class="text-center hubt"> HUB </h3>
-            <p class="text-center hubp"> Bem Vindo ao HUB!<br/> O HUB é um fórum da Anime Primera. Aqui podes postar mensagens sobre séries ou filmes que viste e podes até mesmo postar Imagens ou Vídeos! Ao mesmo tempo, a Staff irá postar trailers e fazer comunicados oficiais aqui. </p>
+            <p class="text-center hubp"> Bem Vindo ao HUB!<br/> O HUB é um fórum da Anime Primera. Aqui podes publicar mensagens sobre séries ou filmes que viste e podes até mesmo publicar Imagens ou Vídeos! Ao mesmo tempo, a Staff irá publicar trailers e fazer comunicados oficiais aqui. </p>
         </div>
     </div>
     <?php
     if(!empty($user)):
         ?>
-        <a class="hubbtn text-center" href="<?php echo base_url('hub/criarPost') ?>">Criar Post</a>
+        <a class="hubbtn text-center" href="<?php echo base_url('hub/criarPost') ?>">Publicar</a>
     <?php endif; ?>
 
     <div class="row">

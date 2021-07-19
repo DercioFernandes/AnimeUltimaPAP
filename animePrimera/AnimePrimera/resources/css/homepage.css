@@ -1015,6 +1015,10 @@ th{
 
 }
 
+.navbar-toggler-icon{
+    color: #cdc49b !important;
+}
+
 
 @media all and (max-width: 1080px) {
 

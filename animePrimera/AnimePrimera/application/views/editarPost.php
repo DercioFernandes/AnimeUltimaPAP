@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
     <div class="formSerie">
-        <h1 class="text-center formTitle">EDITAR POST</h1>
+        <h1 class="text-center formTitle">EDITAR PUBLICAÇÃO</h1>
         <form class="formBody" action="<?= base_url('hub/editarPost')?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <h6 class="labelEdit text-center">Título</h6>

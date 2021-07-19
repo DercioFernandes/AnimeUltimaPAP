@@ -14,14 +14,13 @@
                     <h6 class="labelEdit text-center">Nome de Utilizador</h6>
                     <input type="text" class="form-control" name="username" placeholder="Nome de Utilizador"/>
                 </div>
-
-                <div class="form-group" id="show_hide_password">
-                    <h6 class="labelEdit text-center">Password</h6>
-                    <input class="form-control" name="password" placeholder="Palavra-passe" type="password"/>
-                </div>
                 <div class="form-group">
                     <h6 class="labelEdit text-center">Email</h6>
                     <input type="email" class="form-control" name="email" placeholder="Email" >
+                </div>
+                <div class="form-group" id="show_hide_password">
+                    <h6 class="labelEdit text-center">Password</h6>
+                    <input class="form-control" name="password" placeholder="Palavra-passe" type="password"/>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btnSubmitEdit btn-block" type="submit">Registrar</button>

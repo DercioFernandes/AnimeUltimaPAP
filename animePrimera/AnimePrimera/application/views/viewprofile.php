@@ -168,7 +168,7 @@
 
     <div class="row">
         <div class="col">
-            <h3 id="centered" class="text-center"> Séries Dropadas </h3>
+            <h3 id="centered" class="text-center"> Séries Paradas </h3>
         </div>
     </div>
     <div class="row">

@@ -21,10 +21,16 @@
   <component name="ChangeListManager">
     <list default="true" id="e36b1740-300f-4606-9213-252d7d1fb072" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/Comentario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/controllers/RequestAnime.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/controllers/RequestAnime.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/hubinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/hubinfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/watcheps.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/comuns/menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/criarPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/criarPost.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/editarPost.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/editarPost.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/gerirEpisodio.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/gerirEpisodio.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/gerirUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/gerirUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/hub.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/hub.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/myprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/myprofile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/registrar.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/registrar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/application/views/viewprofile.php" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/application/views/viewprofile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/AnimePrimera/resources/css/homepage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +181,8 @@
       <workItem from="1626376368314" duration="8201000" />
       <workItem from="1626513991297" duration="23829000" />
       <workItem from="1626602827319" duration="6736000" />
-      <workItem from="1626690759587" duration="1149000" />
+      <workItem from="1626690759587" duration="3940000" />
+      <workItem from="1626713016603" duration="1073000" />
     </task>
     <servers />
   </component>

@@ -12,8 +12,8 @@
                         <th scope="col">ID</th>
                         <th scope="col">TITULO</th>
                         <th scope="col">URL</th>
-                        <th scope="col">DATA RELEASE</th>
-                        <th scope="col">ACTION</th>
+                        <th scope="col">DATA DE LANÇAMENTO</th>
+                        <th scope="col">AÇÕES</th>
                     </tr>
                     </thead>
                     <?php foreach ($querye as $episodio): ?>

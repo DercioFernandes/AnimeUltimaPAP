@@ -12,7 +12,7 @@
                     <th scope="col">USERNAME</th>
                     <th scope="col">EMAIL</th>
                     <th scope="col">PERMISSÕES</th>
-                    <th scope="col">ACTION</th>
+                    <th scope="col">AÇÓES</th>
                 </tr>
                 </thead>
                 <?php foreach ($users as $user): ?>
